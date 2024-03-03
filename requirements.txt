@@ -1,0 +1,8 @@
+
+requests
+beautifulsoup4
+selenium
+pandas
+numpy
+seaborn
+psycopg2
