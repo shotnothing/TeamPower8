@@ -9,5 +9,8 @@ else
 endif
 	pip install -r requirements.txt
 
-deploy:
+deploy_build:
 	pip install -r requirements.txt
+
+deploy_start:
+	python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
