@@ -13,4 +13,4 @@ deploy_build:
 	pip install -r requirements.txt
 
 deploy_start:
-	python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
+	python -m gunicorn backend_server.asgi:application -k uvicorn.workers.UvicornWorker
