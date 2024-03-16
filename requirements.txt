@@ -1,8 +1,10 @@
-
 requests
 beautifulsoup4
 selenium
 pandas
 numpy
 seaborn
-psycopg2
+webdriver-manager
+requests-HTML
+supabase
+python-dotenv
