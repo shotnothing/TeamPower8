@@ -5,6 +5,9 @@ build:
 ifeq ($(OS),Windows_NT)
 	venv\Scripts\activate
 else
-	venv/Scripts/activate
+	source venv/Scripts/activate
 endif
+	pip install -r requirements.txt
+
+deploy:
 	pip install -r requirements.txt
