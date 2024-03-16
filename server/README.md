@@ -10,6 +10,12 @@ This is the backend server for the project. It is a RESTful API that provides th
 
 - django
 
+## Installation
+
+```bash
+make build
+```
+
 ## Usage
 
 To start the server, run the following command:
