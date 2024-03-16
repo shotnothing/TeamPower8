@@ -6,15 +6,22 @@
 
 import requests
 import requests_html
-#from selenium import webdriver
-#from selenium.webdriver.chrome.service import Service
-#from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from datetime import date,timedelta
-import pandas as pd
+from datetime import date
+from supabase import create_client, Client
+from dotenv import load_dotenv
+from selenium_functions import(
+start_driver,
+click_element_with_retry
+)
+import os
 
 s = HTMLSession()
+
+
 def get_promotion_category_links(session: requests_html.HTMLSession,
                                  promotions_url: str) -> dict[str,str]:
     result = {}
@@ -35,19 +42,26 @@ def get_promotions_listing(session: requests_html.HTMLSession,
         r = session.get(link)
         soup = BeautifulSoup(r.text, "html.parser")
         try:
-            promotions = soup.find("section",class_="offers-listing component-wrapper container").find_all("div",class_="listing-card__content")
+            promotions = soup.find("section",class_="offers-listing component-wrapper container").find_all("section",class_="listing-card")
             for p in promotions:
                 age_group = None
                 type_of_listing = "Promotion"
-                p_title = p.find("h3",class_="listing-card__title").text
-                p_price = p.find("span",class_="listing-card__price-value").text
+                p_image = p.find("div",class_="listing-card__image-wrapper").find("img")["src"]
+                listing_card_content = p.find("div",class_="listing-card__content")
+                p_title = listing_card_content.find("h3",class_="listing-card__title").text
+                p_price = listing_card_content.find("span",class_="listing-card__price-value").text
+                p_description = "\n".join([t for t in listing_card_content.find("div",class_="listing-card__description").stripped_strings])
                 result.append({
-                    "product": p_title,
+                    "company":"rwssentosa",
+                    "product_name": p_title,
+                    "description":p_description,
                     "price": p_price,
-                    "age_group": age_group,
+                    "source_link":link,
+                    "remarks": None,
+                    "image": p_image,
                     "category": type_of_listing,
-                    "sub_category": category,
-                    "source": link
+                    "subcategory": category,
+                    "scrapped_at": date.today()
                 })
                 print(f"Successful Scrape: {p_title}")
 
@@ -66,18 +80,23 @@ def get_SEA_VIP_listing(session: requests_html.HTMLSession,
     try:
         card_listings = soup.find("section",class_="offers-listing component-wrapper container").find_all("section",class_="listing-card--left")
         for cl in card_listings:
-            age_group = None
             category = None
             type_of_listing = "VIP Experience"
+            p_image = cl.find("div",class_="listing-card__image-wrapper").find("img")["src"]
             p_title = cl.find("div",class_="listing-card__content-descriptive").find("h3",class_="listing-card__title").text
             p_price = cl.find("span",class_="listing-card__price-value").text
+            p_description = "\n".join([t for t in cl.find("div",class_="listing-card__content-descriptive").stripped_strings])
             result.append({
-                "product":p_title,
-                "price":p_price,
-                "age_group":age_group,
+                "company": "rwssentosa",
+                "product_name":p_title,
+                "description": p_description,
+                "price": p_price,
+                "source_link": SEA_VIP_url,
+                "remarks": None,
+                "image": p_image,
                 "category":type_of_listing,
-                "sub_category":category,
-                "source":SEA_VIP_url
+                "subcategory":category,
+                "scrapped_at": date.today()
             })
             print(f"Successful Scrape: {p_title}")
     except:
@@ -110,17 +129,22 @@ def get_deep_dive_listings(session: requests_html.HTMLSession,
         try:
             category_listings = soup.find("section",class_="offers-listing").find_all("section",class_="listing-card")
             for cl in category_listings:
-                age_group = None
                 type_of_listing = "Deep Dive"
+                p_image = cl.find("div",class_="listing-card__image-wrapper").find("img")["src"]
                 p_title = cl.find("h3",class_="listing-card__title").text
                 p_price =cl.find("span",class_="listing-card__price-value").text
+                p_description = "\n".join([t for t in cl.find("div",class_="listing-card__content-descriptive").stripped_strings])
                 result.append({
-                    "product": p_title,
+                    "company": "rwssentosa",
+                    "product_name": p_title,
+                    "description": p_description,
                     "price": p_price,
-                    "age_group": age_group,
+                    "source_link": link,
+                    "remarks": None,
+                    "image":p_image,
                     "category": type_of_listing,
-                    "sub_category": category,
-                    "source": link
+                    "subcategory": category,
+                    "scrapped_at":date.today()
                 })
                 print(f"Successful Scrape: {p_title}")
         except AttributeError as e:
@@ -163,33 +187,49 @@ def get_attraction_links(session: requests_html.HTMLSession,
 def get_attraction_listings(session: requests_html.HTMLSession,
                             attraction_links: dict[str,str],
                             items_unable_to_scrape: list) -> list:
+    """            for j in range(tt_tags_count):
+                    print("We are in the 2nd loop")
+                    tt = find_tt_tags(driver)[j]
+                    driver.refresh()
+                    find_tt_tags(driver)[j].click()
+                    #click_element_with_retry(driver, tag, max_attempts=5)
+                    """
+    # To deal with stale element reference
+    def find_ticket_types(driver):
+        return driver.find_element(By.CLASS_NAME, "ticket-types").find_elements(By.CLASS_NAME, "ticket-types--ticket")
+    def find_tt_tags(driver):
+        return driver.find_element(By.CLASS_NAME, "ticket-tags").find_elements(By.CLASS_NAME, "swiper-slide")
     result = []
     for attraction_name, link in attraction_links.items():
-        r = s.get(link)
-        soup = BeautifulSoup(r.text,"html.parser")
-        listings = soup.find_all("div", class_="offer-card__type")
-        listings_data = []
-        try:
-            for l in listings:
-                age_group = None
-                category = None
-                type_of_listing = "Main Attractions"
-                p_title = l.find("h6",class_="offer-card__type-name").text
-                p_price = l.find("span",class_="best-price__price").text
-                listings_data.append({
-                    "product": p_title,
-                    "price": p_price,
-                    "age_group": age_group,
-                    "category": type_of_listing,
-                    "sub_category": category,
-                    "source": SEA_VIP_url
+        print(f"Attraction name: {attraction_name}")
+        print(f"link: {link}")
+        driver = start_driver(link,headless=True,implict_wait_time=10)
+        ticket_types_count = len(find_ticket_types(driver))
+
+        for i in range(ticket_types_count):
+            driver.refresh()
+            ticket_type = find_ticket_types(driver)[i]
+            category = ticket_type.get_attribute('innerText')
+            click_element_with_retry(driver,ticket_type,max_attempts=5)
+            products = driver.find_element(By.CLASS_NAME, "ticket-offers").find_elements(By.CLASS_NAME, "offer-card")
+            for p in products:
+                p_info = p.find_element(By.CLASS_NAME,"offer-card__type")
+                result.append({
+                    "company": "rwssentosa",
+                    "product_name": p_info.find_element(By.CLASS_NAME,"offer-card__type-name").text,
+                    "description": p_info.find_element(By.CLASS_NAME,"offer-card__type-description").get_attribute('innerText'), #"\n".join([t for t in p_info.find_element(By.CLASS_NAME,"offer-card__type-description").stripped_strings]),
+                    "price": p_info.find_element(By.CLASS_NAME,"best-price__price").text,
+                    "source_link": link,
+                    "remarks": None,
+                    "image": p.find_element(By.CLASS_NAME,"offer-card__image").find_element(By.TAG_NAME,"img").get_attribute("src"),
+                    "category": category,
+                    "subcategory": None,
+                    "scrapped_at": date.today()
                 })
-            result.extend(listings_data)
-            print(f"Successful Scrape: {attraction_name}")
-        except AttributeError as e:
-            items_unable_to_scrape.append([attraction_name, link])
-            print(f"Unable to get prices from '{attraction_name}' category. Link used:\n{link}")
+
+        driver.close()
     return result
+
 
 items_unable_to_scrape = []
 #Collecting Promotion Data
@@ -213,8 +253,14 @@ deep_dive_listings = get_deep_dive_listings(s,deep_dive_category_links,items_una
 #Collectin Attraction Data
 attractions_url = "https://www.rwsentosa.com/en/attractions"
 attraction_links = get_attraction_links(s,attractions_url)
-attraction_listings = get_attraction_listings(s,attraction_links,items_unable_to_scrape)
-#Might need to edit to incorporate selenium
+for i in range(3):
+    #This is not far from optimal coding. But we don't have time so...
+    try:
+        attraction_listings = get_attraction_listings(s,attraction_links,items_unable_to_scrape)
+        break
+    except:
+        continue
+
 
 data_collected = []
 data_collected.extend(promotion_listings)
@@ -222,46 +268,29 @@ data_collected.extend(SEA_VIP_listings)
 data_collected.extend(deep_dive_listings)
 data_collected.extend(attraction_listings)
 
+#Remove duplicates
+shifted_lst = []
+encountered_lst = set()
+for d in data_collected:
+    p_name = d["product_name"]
+    if p_name in encountered_lst:
+        continue
+    else:
+        shifted_lst.append(d)
+        encountered_lst.add(p_name)
+print(f"Num Products before removing duplicates: {len(data_collected)}")
+print(f"Num Products after removing duplicates: {len(shifted_lst)}")
+data_collected = shifted_lst
 
+#Further cleaning
+for d in data_collected:
+    d["scrapped_at"] = d["scrapped_at"].isoformat()
+    d["price"] = float("".join([c for c in d["price"] if c.isdigit()]))
+# Inserting data into Supabase
+load_dotenv()
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
+supabase: Client = create_client(url, key)
+data, count = supabase.table("sc_products").insert(data_collected).execute()
 
 print("hello")
-"""def start_driver(RWSentosa_URL,headless=False):
-    service = Service(executable_path=ChromeDriverManager().install())
-    options = webdriver.ChromeOptions()
-    if headless:
-        options.add_argument('--headless')
-    driver = webdriver.Chrome(service=service, options=options)
-    return driver
-def get():
-    ''' Should return a list of dicts like:
-    [
-        {
-            'product': 'Cable Car Sky Pass',
-            'age_group': 'Adult',
-            'price': 35.0,
-        },
-        {
-            'product': 'Cable Car Sky Pass',
-            'age_group': 'Child (4-12 years)',
-            'price': 30.0,
-        },
-        {
-            'product': 'Wings of Fire',
-            'age_group': 'Adult',
-            'price': 25.0,
-        },
-        {
-            'product': 'Wings of Fire',
-            'age_group': 'Child (4-12 years)',
-            'price': 10.0,
-        }
-    ]
-    How to get the data is up to you, but in the format above (or something else agreed upon).
-    We can hand this over to another component that does the CRUD to the database, perhaps some ORM.
-    This segregation of concerns is good for testing and maintainability, as well as side-effect management.
-    '''
-    return
-
-if __name__ == "__main__":
-    driver = start_driver(RWSentosa_URL="https://www.rwsentosa.com/en/attractions",headless=False)
-"""

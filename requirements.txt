@@ -1,10 +1,10 @@
-lxml
 requests
 beautifulsoup4
 selenium
 pandas
 numpy
 seaborn
-psycopg2-binary
 webdriver-manager
 requests-HTML
+supabase
+python-dotenv
