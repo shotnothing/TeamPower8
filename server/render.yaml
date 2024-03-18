@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: my-web-service
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: PYTHONDONTWRITEBYTECODE
+        value: "1"
+    buildCommand: echo "No build command needed, Dockerfile handles the build"
+    startCommand: python manage.py runserver 0.0.0.0:8000
+    healthCheckPath: /
+    port: 8000
