@@ -6,14 +6,10 @@
 
 This is the backend server for the project. It is a RESTful API that provides the data for the frontend.
 
-## Requirements
-
-- django
-
 ## Installation
 
 ```bash
-make build
+docker pull shotnothing/priceprobe-image
 ```
 
 ## Usage
@@ -21,5 +17,5 @@ make build
 To start the server, run the following command:
 
 ```bash
-make run
+docker-compose up
 ```
