@@ -285,7 +285,7 @@ data_collected = shifted_lst
 #Further cleaning
 for d in data_collected:
     d["scrapped_at"] = d["scrapped_at"].isoformat()
-    d["price"] = float("".join([c for c in d["price"] if c.isdigit()]))
+    d["price"] = float("".join([c for c in d["price"] if c.isdigit() or c == "."]))
 # Inserting data into Supabase
 load_dotenv()
 url: str = os.environ.get("SUPABASE_URL")
