@@ -1,10 +1,8 @@
-# Backend Server
+# API Server
 
-(Readme is WIP, will be updated soon.)
+![](https://github.com/shotnothing/TeamPower8/actions/workflows/django.yml//badge.svg)
 
-## Description
-
-This is the backend server for the project. It is a RESTful API that provides the data for the frontend.
+This is the API server for the platform. It is a RESTful API that provides the data for the frontend.
 
 ## Installation
 
