@@ -39,7 +39,7 @@ for product in product_links:
     dict['description'] = description
 
     price_div = soup.find('div', class_='price-bold')
-    price_text = price_div.text.replace('\xa0', '')
+    price_text = price_div.text.replace('SGD\xa0', '')
     dict['price']= price_text #problem: cannot get just the numbers, it seems to have some attachment \xa
 
     dict['source_link'] = product
