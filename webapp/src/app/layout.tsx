@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css'
+import TopBar from '@/app/topbar/page';
 
 export const metadata = {
   title: 'Next.js',
@@ -13,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><TopBar />{children}</body>
     </html>
   )
 }
