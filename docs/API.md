@@ -1,7 +1,7 @@
 
 
 
-# API Spec
+# API Specification
 **Version 0.1**
 
 **Date: 23/03/2024**
