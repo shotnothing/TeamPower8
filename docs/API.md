@@ -36,6 +36,7 @@ None
 	-   `remarks`: Any additional remarks or notes about the product.
 	-   `image_url`: The URL of the product's image.
 	-   `tags`: An array of tags associated with the product.
+   
 **Example Usage:**
 
 Command: `GET /product/p/3`
@@ -69,6 +70,7 @@ None
 - **Content-Type**: `application/json`
 - **Body**:
 	- `products`: An array of products.
+   
 **Example Usage:**
 
 Command: `GET /product/all`
@@ -91,11 +93,13 @@ Retrieves a list of products and their info, filtered by specified fields.
 - `company`: (optional) Filter products by company name.
 - `name`: (optional) Filter products that have product name that contains `name` .
 - `tag`: (optional) Filter products by those who are tagged with `tag`.
+  
 **Response**
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
 - **Content-Type**: `application/json`
 - **Body**:
 	- `products`: An array of products that match the specified filters.
+ 
 **Example Usage:**
 
 Command: `GET /product/filter?company=ABC-Inc&tag=cable-car`
@@ -124,6 +128,7 @@ None
 - **Content-Type**: `application/json`
 - **Body**:
 	- `companies`: An array of company IDs.
+   
 **Example Usage:**
 
 Command: `GET /company/all`
@@ -151,6 +156,7 @@ None
 - **Body**:
 	- `company_id`: The unique identifier of the company.
 	- `name`: The name of the company.
+   
 **Example Usage:**
 
 Command: `GET /company/c/ABC-Inc`
@@ -169,6 +175,7 @@ Retrieves analytics about a particular product.
 
 **Parameters**
 - `threshold`: (optional) Define threshold needed to be considered similar product. Default value provided by server.
+  
 **Response**
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
 - **Content-Type**: `application/json`
@@ -176,6 +183,7 @@ Retrieves analytics about a particular product.
 	- `prices`: An array which contains the prices of similar products (from similarity heuristic). Same length as `similar`.
 	- `ranking`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
 	- `similar`: An array of product IDs of similar products. Same length as `prices`.
+   
 **Example Usage:**
 
 Command: `GET /analytics/p/3`
