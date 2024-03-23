@@ -2,7 +2,7 @@
 
 
 # API Specification
-**Version 0.1.1**
+**Version 0.1.2**
 
 **Date: 23/03/2024**
 
@@ -10,6 +10,7 @@ Specifications for PriceProbe's RESTful API. All requests are GET requests unles
 
 Changelog:
 - Fixed typos
+- Fixed wrong desciptions
 
 ## Product
 ### Get Product Info
@@ -67,7 +68,7 @@ None
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
 - **Content-Type**: `application/json`
 - **Body**:
-	- `products`: An array of product IDs.
+	- `products`: An array of products.
 **Example Usage:**
 
 Command: `GET /product/all`
@@ -94,7 +95,7 @@ Retrieves a list of products and their info, filtered by specified fields.
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
 - **Content-Type**: `application/json`
 - **Body**:
-	- `products`: An array of product IDs that match the specified filters.
+	- `products`: An array of products that match the specified filters.
 **Example Usage:**
 
 Command: `GET /product/filter?company=ABC-Inc&tag=cable-car`
