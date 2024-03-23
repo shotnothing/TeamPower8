@@ -2,11 +2,14 @@
 
 
 # API Specification
-**Version 0.1**
+**Version 0.1.1**
 
 **Date: 23/03/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
+
+Changelog:
+- Fixed typos
 
 ## Product
 ### Get Product Info
@@ -33,6 +36,7 @@ None
 	-   `image_url`: The URL of the product's image.
 	-   `tags`: An array of tags associated with the product.
 **Example Usage:**
+
 Command: `GET /product/p/3`
 ```json
 {  
@@ -65,6 +69,7 @@ None
 - **Body**:
 	- `products`: An array of product IDs.
 **Example Usage:**
+
 Command: `GET /product/all`
 ```json
 {  "products":  [ 
@@ -91,6 +96,7 @@ Retrieves a list of products and their info, filtered by specified fields.
 - **Body**:
 	- `products`: An array of product IDs that match the specified filters.
 **Example Usage:**
+
 Command: `GET /product/filter?company=ABC-Inc&tag=cable-car`
 ```json
 {  "products":  [ 
@@ -118,6 +124,7 @@ None
 - **Body**:
 	- `companies`: An array of company IDs.
 **Example Usage:**
+
 Command: `GET /company/all`
 ```json
 {  "companies":  [  
@@ -144,6 +151,7 @@ None
 	- `company_id`: The unique identifier of the company.
 	- `name`: The name of the company.
 **Example Usage:**
+
 Command: `GET /company/c/ABC-Inc`
 ```json
 {  
@@ -168,6 +176,7 @@ Retrieves analytics about a particular product.
 	- `ranking`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
 	- `similar`: An array of product IDs of similar products. Same length as `prices`.
 **Example Usage:**
+
 Command: `GET /analytics/p/3`
 ```json
 {  
