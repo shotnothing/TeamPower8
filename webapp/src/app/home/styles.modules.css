@@ -1,0 +1,32 @@
+.home-page {
+    background-color: #eee;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+.search-bar-container {
+    padding-top: 5vh;
+    /* width: 40%; */
+    /* margin: auto; */
+    /* display: flex;
+    flex-direction: column; */
+    /* min-width: 300px; */
+    }
+
+.alert-dashboard {
+      display: flex;
+      flex-direction: column;
+  }
+  
+.product-list-container, .price-bar-container, .alert-list-container {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+}
+
+@media (min-width: 768px) {
+    .alert-dashboard {
+        flex-direction: row;
+    }
+}
