@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 from datetime import date
+from supabase import create_client, Client
+from dotenv import load_dotenv
+import os
 
 url = "https://www.skyparksentosa.com/activities"
 
@@ -31,6 +34,8 @@ for product in product_links:
     soup = BeautifulSoup(page_a.text, 'html.parser')
     dict = {}
     dict['company'] = 'skyparksentosa'
+
+    #title = product.find_all('a', href=lambda href: href and href.startswith('/activities/'))
     title_element = soup.find('h1', class_='Heading__StyledHeading-sc-1ikhowk-0 jCdENO')
     title = title_element.text if title_element else None
     dict['product_name'] = title
@@ -40,7 +45,7 @@ for product in product_links:
 
     price_div = soup.find('div', class_='price-bold')
     price_text = price_div.text.replace('SGD\xa0', '')
-    dict['price']= price_text #problem: cannot get just the numbers, it seems to have some attachment \xa
+    dict['price']= price_text
 
     dict['source_link'] = product
     dict['remarks'] = 'Free Perks'
@@ -52,11 +57,18 @@ for product in product_links:
 
     dict['subcategory'] = 'Thrill'
 
-    dict['scrapped_at'] = date.today()
+    dict['scrapped_at'] = date.today().isoformat()
 
     results.append(dict)
 
 print(results)
+
+# Inserting data into Supabase
+load_dotenv()
+url = os.environ.get("supabaseUrl")
+key = os.environ.get("supabaseKey")
+supabase: Client = create_client(url, key)
+supabase.table("sc_products").insert(results).execute()
 
 
 #company
