@@ -8,7 +8,7 @@ from datetime import date,timedelta
 from datetime import date
 from selenium.webdriver.chrome.options import Options
 import os
-from supabase import create_client, Client
+from supabase import create_client, Client, ClientOptions
 from dotenv import load_dotenv
 
 #url = 'https://www.thepalawansentosa.com/attractions-dining/'
@@ -283,5 +283,5 @@ further_cleaning()
 load_dotenv()
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
-data, count = supabase.table("sc_products").insert(data_collected).execute()
+supabase: Client = create_client(url, key,options=ClientOptions().replace(schema="data"))
+data, count = supabase.table("auto_scraped_attractions").insert(data_collected).execute()
