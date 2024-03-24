@@ -19,8 +19,6 @@ const HomePage: React.FC = () => {
                 <SearchBar />
             </div>
 
-
-            {/* alert dashboard will go by key= product id */}
             <div className='alert-dashboard'>
                 <div className='product-list-container'>
                     <p>product list - not sure how to tie to search bar results yet</p>
@@ -30,7 +28,7 @@ const HomePage: React.FC = () => {
                     <p> price bars</p>
                 </div>
 
-                <div className='alert-list-container'>
+                <div className='product-list-container'>
                     <p> alert list</p>
                 </div>
             </div>
