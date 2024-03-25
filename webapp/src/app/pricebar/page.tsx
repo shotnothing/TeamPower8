@@ -15,15 +15,17 @@ import * as d3 from 'd3';
 
 const BoxPlot: React.FC = () => {
     const svgRef = useRef<SVGSVGElement>(null);
-    const data = { e: 10, a: 30, d: 40, f: 58, g: 70, i: 95, j: 100 }; // Sample data
+    const data = { e: 10, a: 30, d: 40, f: 53, g: 70, i: 90, j: 200 }; // Sample data
+    const newData = { k: 120 };
 
     useEffect(() => {
         const dataArray = Object.values(data); // Extract values from the object
+        const newDataArray = Object.values(newData);
 
         if (dataArray.length === 0) return;
 
-        const width = 400; // Example width
-        const height = 200; // Example height
+        const width = 500; // Example width
+        const height = 150; // Example height
         const margin = { top: 20, right: 50, bottom: 50, left: 40 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
@@ -114,6 +116,13 @@ const BoxPlot: React.FC = () => {
             .attr('y1', yScale('Box Plot'))
             .attr('y2', yScale('Box Plot'))
             .attr('x1', xScale(d3.min(dataArray)!))
+            .attr('x2', xScale(d3.quantile(dataArray, 0.25)))
+            .attr('stroke', 'black')
+        
+        boxPlotGroup.append('line')
+            .attr('y1', yScale('Box Plot'))
+            .attr('y2', yScale('Box Plot'))
+            .attr('x1', xScale(d3.quantile(dataArray, 0.75)))
             .attr('x2', xScale(d3.max(dataArray)!))
             .attr('stroke', 'black')
         
@@ -130,6 +139,32 @@ const BoxPlot: React.FC = () => {
             .attr('x1', xScale(d3.quantile(dataArray, 0.25)))
             .attr('x2', xScale(d3.quantile(dataArray, 0.75)))
             .attr('stroke', 'black')
+
+        Object.entries(data).forEach(([key, value]) => {
+            // For each key-value pair in the data object
+            boxPlotGroup.append('rect')
+                .attr('y', yScale('Box Plot') - 20)
+                .attr('x', xScale(d3.quantile(dataArray, 0.25)))
+                .attr('height', 40)
+                .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
+                .attr('fill', 'rgba(0, 0, 0, 0.01)');
+            // Draw circles
+            const jitter = Math.random() * 10 - 5; // Generate random jitter within range [-5, 5]
+            boxPlotGroup.append('circle')
+                .attr('cy', yScale('Box Plot'))
+                .attr('cx', xScale(value)) // Add jitter to x position
+                .attr('r', key === 'a' ? 12 : 8) // 'a' has a bigger circle
+                .attr('fill', 'steelblue');
+        });
+
+
+        
+        
+        boxPlotGroup.append('circle')
+            .attr('cy', yScale('Box Plot'))
+            .attr('cx', xScale(newDataArray[0])) // x position for the new red circle
+            .attr('r', 12) // red circle radius
+            .attr('fill', 'red');
 
         
         const xAxis = d3.axisBottom(xScale);
