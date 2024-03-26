@@ -2,14 +2,7 @@
 import React, {useEffect} from 'react';
 import './style.css';
 import { IonIcon } from '@ionic/react';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    Link
-} from "react-router-dom";
-import PageA from "./productA/PageA";
+import { BrowserRouter, Link } from 'react-router-dom'
 
 const Component: React.FC = () => {
   useEffect(() => {
@@ -49,9 +42,9 @@ const Component: React.FC = () => {
           {" "}
           Description here
         </p>
-        <Link to="\productA\page">
-              <button onClick={() => navigate("/PageA")}>Only this!</button>
-            </Link>
+        <a href="/mflg/productA">
+              <button>Only this!</button>
+            </a>
       </div>
     </li>
     <li
@@ -153,5 +146,7 @@ const Component: React.FC = () => {
 
   );
 };
+
+
 
 export default Component;
