@@ -178,142 +178,7 @@
 
 "use client"
 
-// import React, { useEffect, useRef } from 'react';
-// import Boxplot from './components/boxplot';
-// import CurrentPrices from './components/currentprices';
-// import OptimisedPrices from './components/optimisedprice';
-// import './pricebar.css';
 
-// const pricebar = () => {
-//     const svgref = useRef<SVGSVGElement>(null);
-//     const data = { e: 10, a: 30, d: 40, f: 53, g: 70, i: 90, j: 200 }; // Sample data
-//     const newData = { k: 120 };
-
-//     // useEffect(() => {
-//     //     if (svgref.current) {
-//     //         // Add any necessary cleanup code
-//     //     }
-//     // }, []);
-
-//     return (
-//         <div className="container">
-//             <div className="boxplot-container">
-//             <svg ref={svgref} style={{
-//             flex: 1, // Take up remaining space within the parent container
-//             margin: 'auto', // Center horizontally within the parent container
-//             display: 'block' // Ensure block-level display
-//         }}></svg>
-//             <Boxplot data={data} svgRef={svgref} width={500} height={150} />
-//             <CurrentPrices data={data} svgRef={svgref} width={500} height={150} />
-//             <OptimisedPrices data={data} newData={newData} svgRef={svgref} width={500} height={150} />
-//         </div>
-//         </div>
-        
-//     );
-// }
-
-// export default pricebar;
-
-
-// -----------------------------
-
-
-
-// import React, { useRef, useEffect } from 'react';
-// import Boxplot from './components/boxplot';
-// import CurrentPrices from './components/currentprices';
-// import OptimisedPrices from './components/optimisedprice';
-// import './pricebar.css';
-
-// const PriceBar = () => {
-//     const svgRef = useRef<SVGSVGElement>(null);
-//     const data = { e: 10, a: 30, d: 40, f: 53, g: 70, i: 90, j: 200 }; // Sample data
-//     const newData = { k: 120 };
-//     const width = 500
-//     const height = 150
-
-//     // useEffect(() => {
-//     //     if (svgRef.current) {
-//     //         svgRef.current.setAttribute('viewBox', `0 0 ${width} ${height}`);
-//     //         svgRef.current.setAttribute('width', `${width}px`);
-//     //         svgRef.current.setAttribute('height', `${height}px`);
-//     //     }
-//     // }, []);
-
-//     return (
-//         <div className="container">
-//             <div className="boxplot-container">
-//                 <svg ref={svgRef} style={{
-//                     width: '100%',
-//                     height: '100%', // Set height to 100% to fill the container
-//                     display: 'block'
-//                 }}>
-//                     <g transform={`translate(${svgRef.current ? svgRef.current.clientWidth / 2 : 0}, ${svgRef.current ? svgRef.current.clientHeight / 2 : 0})`}>
-//                         <Boxplot data={data} svgRef={svgRef} width={width} height={height} />
-//                     </g>
-//                 </svg>
-//                 <div className="content">
-//                     <div className="prices">
-//                         <CurrentPrices data={data} svgRef={svgRef} width={width} height={height} />
-//                         <OptimisedPrices data={data} newData={newData} svgRef={svgRef} width={width} height={height}/>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default PriceBar;
-
-// import React, { useRef, useEffect, useState } from 'react';
-// import Boxplot from './components/boxplot';
-// import CurrentPrices from './components/currentprices';
-// import OptimisedPrices from './components/optimisedprice';
-// import DiscreteSlider from './components/slidebar'; // Import DiscreteSlider component
-// import './pricebar.css';
-
-// const PriceBar = () => {
-//     const svgRef = useRef<SVGSVGElement>(null);
-//     const data = { e: 10, a: 30, d: 40, f: 53, g: 70, i: 90, j: 200 }; // Sample data
-//     const [newData, setNewData] = useState({ k: 120 }); // State for newData
-//     const width = 500;
-//     const height = 150;
-
-//     const handleSliderChange = (newValue: number) => {
-//         console.log('New slider value:', newValue);
-//         // Update newData when the slider value changes
-//         setNewData({ k: newValue }); // Update only the 'k' property with the new slider value
-//         console.log('New data:', newData);
-//     };
-    
-
-//     return (
-//         <div className="container">
-//             <div className="boxplot-container">
-//                 <svg ref={svgRef} style={{
-//                     width: '100%',
-//                     height: '100%', // Set height to 100% to fill the container
-//                     display: 'block'
-//                 }}>
-//                     <g transform={`translate(${svgRef.current ? svgRef.current.clientWidth / 2 : 0}, ${svgRef.current ? svgRef.current.clientHeight / 2 : 0})`}>
-//                         <Boxplot data={data} svgRef={svgRef} width={width} height={height} />
-//                     </g>
-//                 </svg>
-//                 <div className="content">
-//                     <div className="prices">
-//                     <h2>Slide to choose percentile</h2>
-//                         <DiscreteSlider handleChange={handleSliderChange} /> {/* Pass handleSliderChange as a prop */}
-//                         <CurrentPrices data={data} svgRef={svgRef} width={width} height={height} />
-//                         <OptimisedPrices data={data} newData={newData} svgRef={svgRef} width={width} height={height}/>
-                        
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default PriceBar;
 import React, { useRef, useEffect, useState } from 'react';
 import Boxplot from './components/boxplot';
 import CurrentPrices from './components/currentprices';
@@ -324,24 +189,37 @@ import './pricebar.css';
 
 const PriceBar = () => {
     const svgRef = useRef<SVGSVGElement>(null);
-    const data = { e: 10, a: 30, mflg: 40, f: 53, g: 70, i: 90, j: 200 }; // State for data
+    const [data,setData] = useState({ e: 10, a: 30, mflg: 40, f: 53, g: 70, i: 90, j: 200 }); // State for data
     const [newData, setNewData] = useState({ k: 50 }); // State for newData
     const [sliderValue, setSliderValue] = useState(50);// State for newData
     const width = 500;
     const height = 150;
 
     const handleSliderChange = (newValue: number) => {
-        console.log('New slider value:', newValue);
-        // Update newData when the slider value changes
-        
-        console.log('New data:', newData);
         setSliderValue(newValue);
     };
 
+
+
     const handleUpdateData = () => {
-        // Update data with the new value of 'k'
-        setNewData({ k: sliderValue }); // Update only the 'k' property with the new slider value
+        // Clear the original data and newData
+        setData({});
+        setNewData({});
+    
+        // Clear the SVG element containing the original Boxplot and prices circles
+        const svg = svgRef.current;
+        if (svg) {
+            while (svg.firstChild) {
+                svg.removeChild(svg.firstChild);
+            }
+        }
+    
+        // Delay the addition of new data to ensure the original data is cleared
+        setData({ e: 10, a: 30, mflg: 40, f: 53, g: 70, i: 90, j: 200 });
+        setNewData({ k: sliderValue })
     };
+    
+    
 
     return (
         <div className="container">
@@ -361,7 +239,7 @@ const PriceBar = () => {
                         {/* Render DiscreteSlider component here */}
                         <div className="slider-button-container">
                             <DiscreteSlider handleChange={handleSliderChange} />
-                            <button onClick={handleUpdateData}>Update Data</button>
+                            <button onClick={handleUpdateData}>Show optimised price</button>
                         </div>
                         {/* Pass handleSliderChange as a prop */}
                         <CurrentPrices data={data} svgRef={svgRef} width={width} height={height} />
