@@ -181,6 +181,7 @@ Retrieves analytics about a particular product.
 - **Content-Type**: `application/json`
 - **Body**:
 	- `prices`: An array which contains the prices of similar products (from similarity heuristic). Same length as `similar`.
+ 	- `product_price`: Gets the price of the product.	
 	- `ranking`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
 	- `similar`: An array of product IDs of similar products. Same length as `prices`.
    
