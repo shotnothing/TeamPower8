@@ -3,22 +3,21 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-interface OptimisedPricesProps {
+
+interface CurrentPricesProps {
     data: { [key: string]: number };
-    newData: { [key: string]: number };
     width: number;
     height: number;
     svgRef: React.MutableRefObject<SVGSVGElement | null>;
 }
 
-const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, height, svgRef }) => {
+const CurrentPricesMFLG:React.FC<CurrentPricesProps> = ({ data, width, height, svgRef }) => {
 
     useEffect(() => {
         const dataArray = Object.values(data); // Extract values from the object
-        const newDataArray = Object.values(newData);
+
 
         if (dataArray.length === 0) return;
-
         const margin = { top: 20, right: 50, bottom: 50, left: 40 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
@@ -45,21 +44,26 @@ const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, 
         // Draw box plot
         const boxPlotGroup = g.append('g');
 
-        // const boxHeight = yScale.bandwidth();
-        
-        boxPlotGroup.append('circle')
-            .attr('cy', yScale('Box Plot'))
-            .attr('cx', xScale(d3.quantile(dataArray, newDataArray[0]/100))) // x position for the new red circle
-            .attr('r', 12) // red circle radius
-            .attr('fill', 'red');
+        const boxHeight = yScale.bandwidth();
 
+
+        Object.entries(data).forEach(([key, value]) => {
+            // Skip drawing the circle if key is 'mflg'
+            const jitter = Math.random() * 10 - 5;
+            if (key === 'mflg')
+                boxPlotGroup.append('circle')
+                    .attr('cy', yScale('Box Plot'))
+                    .attr('cx', xScale(value)) // Add jitter to x position
+                    .attr('r', 12) // Circle radius
+                    .attr('fill', 'green');
+        });
         
-        }, [data, newData, width, height, svgRef]);
+
+    }, [data, width, height, svgRef]);
 
     return (
         <svg ref={svgRef}></svg>
     );
 }
 
-export default OptimisedPrices;
-
+export default CurrentPricesMFLG;

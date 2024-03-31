@@ -47,14 +47,18 @@ const CurrentPrices:React.FC<CurrentPricesProps> = ({ data, width, height, svgRe
         const boxHeight = yScale.bandwidth();
 
         Object.entries(data).forEach(([key, value]) => {
+            // Skip drawing the circle if key is 'mflg'
+            if (key === 'mflg') return;
+        
             // Draw circles
             const jitter = Math.random() * 10 - 5; // Generate random jitter within range [-5, 5]
             boxPlotGroup.append('circle')
                 .attr('cy', yScale('Box Plot'))
                 .attr('cx', xScale(value)) // Add jitter to x position
-                .attr('r', key === 'a' ? 12 : 8) // 'a' has a bigger circle
+                .attr('r', 8) // Circle radius
                 .attr('fill', 'steelblue');
         });
+        
 
 
 
