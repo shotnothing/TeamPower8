@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
+import loginBackground from '@/app/loginbackground.jpg'
 import './globals.css';
 
 export default function LoginPage() {
@@ -21,7 +22,7 @@ export default function LoginPage() {
             <section className="text-center">
                 {/* Background image */}
                 <div className="p-5 bg-image" style={{
-                    backgroundImage: "url('https://cdn-imgix.headout.com/microbrands-content-image/image/ce7515850d57f0afd752be5d0451c621-MountFaberLine_CableCar_towards-sentosa%20-%20.jpg')",
+                    backgroundImage: `url(${loginBackground.src})`,
                     height: '300px', 
                     backgroundSize: 'cover', 
                     backgroundPosition: '30% 70%'
