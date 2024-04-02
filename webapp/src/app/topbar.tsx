@@ -12,7 +12,7 @@ export const TopBar = () => {
     };
 
     const redirectToHomePage = () => {
-        router.push('/home');
+        router.push('/authorised/home');
     };
 
     const handleSignOut = async () => {
