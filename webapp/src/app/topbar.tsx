@@ -15,6 +15,10 @@ export const TopBar = () => {
         router.push('/authorised/home');
     };
 
+    const redirectToCataloguePage = () => {
+        router.push('/authorised/mflg');
+    };
+
     const handleSignOut = async () => {
         await signOut({ redirect: false });
         redirectToLoginPage(); 
@@ -30,6 +34,7 @@ export const TopBar = () => {
                 {session && 
                 <>
                     <button type="button" className="btn" onClick={redirectToHomePage}>Home</button>
+                    <button type="button" className="btn" onClick={redirectToCataloguePage}>Catalogue</button>
                     <button type="button" className="btn btn-light" onClick={handleSignOut}>Sign out</button>
                 </>
                 }
