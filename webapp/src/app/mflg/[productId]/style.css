@@ -101,7 +101,6 @@ strong {
   bottom: -500px;
   left: 0;
   height: 500px;
-  background-image: linear-gradient(#d8d8d8, #f2f2f2);
   transform-origin: 50% 0;
   transform: rotateX(-70deg);
 }

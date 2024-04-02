@@ -1,0 +1,88 @@
+{
+	"products": [
+		{
+			"product_id": "1",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "Central Beach Bazaar",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "./productA/CCB_Page.html",
+			"remarks": "",
+			"image_url": "https://firstclasse.com.my/wp-content/uploads/2022/07/Central-Beach-Bazaar-Day.jpg",
+			"tags": [
+				"Central Beach Bazaar"
+			]
+		},
+		{
+			"product_id": "2",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "Singapore Cable Car",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "CableCar_Page.html",
+			"remarks": "",
+			"image_url": "https://www.mountfaberleisure.com/wp-content/uploads/2023/04/Pokemon-Exterior-Harbour-2-scaled.jpg",
+			"tags": [
+				"Singapore Cable Car"
+			]
+		},
+		{
+			"product_id": "3",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "SkyHelix",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "SkyHelix_Page.html",
+			"remarks": "",
+			"image_url": "https://s.yimg.com/ny/api/res/1.2/82vUCc.8Bh5vOY60Ja1lew--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://s.yimg.com/os/creatr-uploaded-images/2021-11/fb7af260-42e7-11ec-aeb7-bbf878ba7ac8",
+			"tags": [
+				"SkyHelix"
+			]
+		},
+		{
+			"product_id": "4",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "Wings Of Time",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "WoT_Page.html",
+			"remarks": "",
+			"image_url": "https://www.mountfaberleisure.com/wp-content/uploads/2023/03/500-x-370_WOT_cleanup.png",
+			"tags": [
+				"Wings Of Time"
+			]
+		},
+		{
+			"product_id": "5",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "Singapore Island Bus Tour",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "BusTour_Page.html",
+			"remarks": "",
+			"image_url": "https://www.creditcard99.com/photo/HSBC/16808141.jpg",
+			"tags": [
+				"Singapore Island Bus Tour"
+			]
+		},
+		{
+			"product_id": "6",
+			"company": "Mount Faber Leisure Group",
+			"product_name": "Mount Faber Peak",
+			"scrape_timestamp": "2024-04-02T00:00:00Z",
+			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
+			"price": "",
+			"source_url": "Peak_Page.html",
+			"remarks": "",
+			"image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfkbOlKxnvvWwUYTpnBsIL-0WeKuFgPMCYUg&usqp=CAU",
+			"tags": [
+				"Mount Faber Peak"
+			]
+		}
+	]
+}
