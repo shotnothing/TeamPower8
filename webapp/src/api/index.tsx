@@ -1,7 +1,7 @@
 import { Product } from "./types";
 import MOCK_DATA from "./mock-data.json";
 
-const MOCK = false;
+const MOCK = true;
 
 const PRODUCTS_URL = "http://localhost:3010/product/all";
 const PRODUCT_URL = "http://localhost:3010/product/";
