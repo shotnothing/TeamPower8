@@ -1,19 +1,10 @@
 "use client"
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import loginBackground from '@/app/loginbackground.jpg'
 import './globals.css';
 
 export default function LoginPage() {
-    const router = useRouter();
     const { data: session } = useSession()
-
-    useEffect(() => {
-        if (session) {
-            router.push('/home');
-        }
-    }, [session, router]);
 
     return (
         <>
@@ -37,7 +28,7 @@ export default function LoginPage() {
                             <div className="col-lg-8">
                                 <h2 className="fw-bold mb-5">Hello!</h2>
                                 {/* Submit button */}
-                                <button className="gsi-material-button" onClick={() => signIn('google')}>
+                                <button className="gsi-material-button" onClick={() => signIn('google', { callbackUrl: '/authorised/home' })}>
                                     <div className="gsi-material-button-state"></div>
                                     <div className="gsi-material-button-content-wrapper">
                                         <div className="gsi-material-button-icon">
