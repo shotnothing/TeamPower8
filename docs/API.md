@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.2**
+**Version 0.1.3**
 
-**Date: 23/03/2024**
+**Date: 31/03/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
@@ -181,6 +181,7 @@ Retrieves analytics about a particular product.
 - **Content-Type**: `application/json`
 - **Body**:
 	- `prices`: An array which contains the prices of similar products (from similarity heuristic). Same length as `similar`.
+ 	- `product_price`: Gets the price of the product.	
 	- `ranking`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
 	- `similar`: An array of product IDs of similar products. Same length as `prices`.
    
@@ -190,6 +191,7 @@ Command: `GET /analytics/p/3`
 ```json
 {  
 	"prices": [ 10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
+	"product_price": 25.0,
 	"ranking": 0.82,
 	"similar": [ 3, 5, 6, 20, 35, 49 ]
 }
