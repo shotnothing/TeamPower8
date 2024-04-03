@@ -18,7 +18,7 @@ const CurrentPrices:React.FC<CurrentPricesProps> = ({ data, width, height, svgRe
 
 
         if (dataArray.length === 0) return;
-        const margin = { top: 20, right: 50, bottom: 50, left: 40 };
+        const margin = { top: 20, right: 50, bottom: 50, left: 2 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
 
@@ -64,9 +64,7 @@ const CurrentPrices:React.FC<CurrentPricesProps> = ({ data, width, height, svgRe
 
     }, [data, width, height, svgRef]);
 
-    return (
-        <svg ref={svgRef}></svg>
-    );
+    return null;
 }
 
 export default CurrentPrices;

@@ -19,7 +19,7 @@ const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, 
 
         if (dataArray.length === 0) return;
 
-        const margin = { top: 20, right: 50, bottom: 50, left: 40 };
+        const margin = { top: 20, right: 50, bottom: 50, left: 2 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
 
@@ -56,9 +56,7 @@ const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, 
         
         }, [data, newData, width, height, svgRef]);
 
-    return (
-        <svg ref={svgRef}></svg>
-    );
+    return null;
 }
 
 export default OptimisedPrices;
