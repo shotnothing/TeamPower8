@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
     useEffect(() => {
         fetchProductList(input)
         // setAlertColour("red")
-        setproductID(1)
+        // setproductID("2")
     });
 
     // https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md (our group's API)
@@ -96,7 +96,8 @@ const HomePage: React.FC = () => {
 
                     <div className='alert-list-container'>
                         {/* <Alert alertColour={alertColour}/> */}
-                        <Alert product_id={product_id}/>
+                        {console.log(product.product_id)}
+                        <Alert product_id={product.product_id}/>
                     </div>
                 </div>))};
         </div>
