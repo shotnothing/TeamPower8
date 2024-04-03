@@ -24,7 +24,9 @@
     "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "react-plotly.js": "^2.6.0"
+    "react-plotly.js": "^2.6.0",
+    "next-auth": "^4.24.7",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
