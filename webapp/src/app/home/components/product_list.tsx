@@ -1,12 +1,12 @@
 import React from 'react'
 import './product_list.css'
 // results from search bar
-const ProductList = ({ results }) => {
-    console.log(results)
+const ProductList = ({ productList }) => {
+    console.log(productList)
   return (
     <div className='search-bar-results'>
-        {results.map((result, id) => {
-            return <div key={id}>{result.name}</div>
+        {productList.map((product, id) => {
+            return <div key={id}>{product.product_name}</div>
         })}
     </div>
   )

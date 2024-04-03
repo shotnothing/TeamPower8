@@ -5,11 +5,11 @@ import './search_bar.css'
 
 // include relevant edits based on our defined API: https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md
 
-const search_bar = ({setInput, fetchData}) => {
+const SearchBar = ({setInput, fetchProductList}) => {
     
     const handleChange = (value) => {
         setInput(value);
-        fetchData(value);
+        fetchProductList(value);
       };
 
     return (
@@ -23,4 +23,4 @@ const search_bar = ({setInput, fetchData}) => {
     )
 }
 
-export default search_bar
+export default SearchBar
