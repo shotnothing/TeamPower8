@@ -1,4 +1,4 @@
-from transformers import pipeline
++from transformers import pipeline
 import pandas as pd
 import json
 import os
@@ -16,8 +16,6 @@ import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 
-
-classifier = pipeline("zero-shot-classification")
 
 label_set1 = ["Landmarks", "Nature","Culture","Wildlife","Entertainment", "Museums","Food","Adventure","Experience","History"]
 
@@ -39,6 +37,7 @@ load_dotenv()
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key,options=ClientOptions().replace(schema="data"))
+# need to change the table!
 response = supabase.table("cleaned_combined_tables").select("*").execute()
 df = pd.DataFrame(response.data)
 
@@ -46,20 +45,22 @@ df1 = df.fillna('missing value')
 
 classifier = pipeline("zero-shot-classification")
 
-def zero_shot_classify_sequences(dataframe, candidate_labels, threshold=0.8):
-    for i in range(len(df1)):
-          texts = df1.iloc[i]["description"]
-          results = classifier(texts, candidate_labels, multi_label=True)
-          final_results = []
-          labels = results["labels"]
-          scores = results['scores']
-          for label, score in zip(labels, scores):
-              if score > threshold:
-                  final_results.append(label)
-    dataframe['label'] = final_results
-    return dataframe
+def classify(df, labels, threshold=0):
+    def _get_labels(text):
+        result = classifier(text, labels)
+        labels_above_threshold = [
+            label for label, score in zip(result['labels'], result['scores']) 
+            if score > threshold]
+        return labels_above_threshold if labels_above_threshold else None
 
+    # df['labels'] = df['description'].apply(_get_labels)
 
-zero_shot_classify_sequences(df1, label_set1)
+    # do it with for loop
+    from tqdm import tqdm
+    for index, row in tqdm(df.iterrows()):
+        df.at[index, 'labels'] = _get_labels(row['description'])
 
+    return df
 
+df1 = classify(df1, label_set1)
+df1.head()
