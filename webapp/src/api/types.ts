@@ -10,3 +10,10 @@ export type Product = {
   image_url: string;
   tags: string[];
 };
+
+export type Analytics = {
+  prices: number[];
+  product_price: number;
+  ranking: number;
+  similar: number[]
+}
