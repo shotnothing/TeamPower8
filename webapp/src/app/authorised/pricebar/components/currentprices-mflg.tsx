@@ -48,13 +48,11 @@ const CurrentPricesMFLG:React.FC<CurrentPricesProps> = ({ data, width, height, s
 
 
         Object.entries(data).forEach(([key, value]) => {
-            // Skip drawing the circle if key is 'mflg'
-            const jitter = Math.random() * 10 - 5;
             if (key === 'mflg')
                 boxPlotGroup.append('circle')
                     .attr('cy', yScale('Box Plot'))
-                    .attr('cx', xScale(value)) // Add jitter to x position
-                    .attr('r', 12) // Circle radius
+                    .attr('cx', xScale(value))
+                    .attr('r', 6) 
                     .attr('fill', 'green');
         });
         

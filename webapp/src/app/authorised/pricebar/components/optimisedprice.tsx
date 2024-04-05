@@ -50,7 +50,7 @@ const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, 
         boxPlotGroup.append('circle')
             .attr('cy', yScale('Box Plot'))
             .attr('cx', xScale(d3.quantile(dataArray, newDataArray[0]/100))) // x position for the new red circle
-            .attr('r', 12) // red circle radius
+            .attr('r', 6) // red circle radius
             .attr('fill', 'red');
 
         

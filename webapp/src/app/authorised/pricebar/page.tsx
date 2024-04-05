@@ -12,7 +12,7 @@ import './pricebar.css';
 
 const PriceBar = () => {
     const svgRef = useRef<SVGSVGElement>(null);
-    const [data,setData] = useState({ e: 10, a: 30, mflg: 40, f: 53, g: 70, i: 90, j: 200 }); 
+    const [data,setData] = useState({ e: 10, a: 30, mflg: 40, z:40, aw:43.95, y:40, x:40, f: 53, g: 70, az:53, i: 90, j: 200 , ah:92.5, ab:90, ac:90, ad:200, ax:51}); 
     const [newData, setNewData] = useState({ k: 50 }); // State for newData
     const [sliderValue, setSliderValue] = useState(50);// State for newData
     const width = 500;
@@ -20,7 +20,7 @@ const PriceBar = () => {
     const legendItems = [
         { label: 'MFLG product optimised price', color: 'red' },
         { label: 'MFLG product current price', color: 'green' },
-        { label: 'Competitor product current price', color: 'blue' },
+        { label: 'Competitor product current price', color: 'steelblue' },
       ];
 
     const handleSliderChange = (newValue: number) => {
@@ -38,7 +38,7 @@ const PriceBar = () => {
                 svg.removeChild(svg.firstChild);
             }
         }
-        setData({ e: 10, a: 30, mflg: 40, f: 53, g: 70, i: 90, j: 200 });
+        setData({ e: 10, a: 30, mflg: 40, z:40, aw:43.95, y:40, x:40, f: 53, g: 70, az:53, i: 90, j: 200 , ah:92.5, ab:90, ac:90, ad:200, ax:51});
         setNewData({ k: sliderValue })
     };
     

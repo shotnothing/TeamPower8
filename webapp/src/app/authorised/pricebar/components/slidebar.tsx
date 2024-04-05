@@ -56,7 +56,6 @@ const DiscreteSlider: React.FC<DiscreteSliderProps> = ({ handleChange }) => {
   return (
     <Box sx={{ width: 300 }}>
       <Slider
-        aria-label="Temperature"
         defaultValue={50}
         getAriaValueText={valuetext}
         valueLabelDisplay="auto"
