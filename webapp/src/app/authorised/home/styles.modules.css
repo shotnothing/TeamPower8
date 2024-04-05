@@ -3,7 +3,11 @@
     width: 100vw;
     height: 100vh;
   }
-  
+
+.introduction-container {
+    padding-left: 1vh;
+}
+
 .search-bar-container {
     padding-top: 3vh;
     padding-bottom: 3vh;
