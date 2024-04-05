@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    build: ./server
+    command: python ./server/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/volume
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./webapp
+    ports:
+      - "3000:3000"
