@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  web:
+  backend:
     build: ./server
     command: python ./server/manage.py runserver 0.0.0.0:8000
     volumes:
