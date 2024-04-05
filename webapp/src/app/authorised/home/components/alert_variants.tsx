@@ -1,4 +1,5 @@
 // alert variants
+
 export const variants = [
     //red - top 10 %
     {

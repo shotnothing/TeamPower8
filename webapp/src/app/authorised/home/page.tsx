@@ -7,6 +7,7 @@ import ProductList from './components/product_list';
 import PriceBar from './components/price_bar';
 import Alert from './components/alert';
 import {variants} from './components/alert_variants';
+import OverviewTable from './components/overview_table';
 
 // to be deleted
 import productListData from './components/product_all.json';
@@ -78,11 +79,18 @@ const HomePage: React.FC = () => {
                 <Introduction />
             </div>
             
-            <div className='search-bar-container'>
-                <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
-                {/* <SearchBar /> */}
-                <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
+            <div className='search-and-summary-container'>
+                <div className='search-bar-container'>
+                    <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
+                    {/* <SearchBar /> */}
+                    <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
+                </div>
+
+                <div className='overview-container'>
+                    <OverviewTable />
+                </div>
             </div>
+            
 
             {productList.map((product, index) => (
                 <div className='alert-dashboard' key={index}>

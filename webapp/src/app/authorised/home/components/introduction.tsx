@@ -21,7 +21,7 @@ const Introduction: React.FC = () => {
       <ul>
         <li> <span style={{ color: redColor }}>Red</span>: Indicates attention required for products in the <span style={{ color: redColor }}>0-10</span> and <span style={{ color: redColor }}>90-100</span> percentile range.</li>
         <li> <span style={{ color: yellowColor }}>Yellow</span>: Signals caution for products ranking between <span style={{ color: yellowColor }}>10-25</span> and <span style={{ color: yellowColor }}>75-90</span> percentiles.</li>
-        <li> <span style={{ color: greenColor }}>Green</span>: Represents products in the favorable <span style={{ color: greenColor }}>25-75</span> percentile range. </li>
+        <li> <span style={{ color: greenColor }}>Green</span>: Represents products in the favourable <span style={{ color: greenColor }}>25-75</span> percentile range. </li>
       </ul>
     </div>
   );
