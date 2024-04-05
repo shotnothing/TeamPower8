@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './AlertSymbol.module.css';
+import './alert.css';
 import {variants} from './alert_variants';
 
 // to be deleted - fake data
@@ -33,22 +33,13 @@ const Alert: React.FC = ({product_id}) => {
   }
   
   const variant = alertVariantsBySymbol[fetchAlertColour(product_id)];
-
   return (
-    <div className="alert-container"
-    style={{
-      background: variant.mainColor,
-      border: "0.1rem solid " + variant.secondaryColor,
-    }}>
-      <div className='symbol-container'
-      style={{ background: variant.secondaryColor }}> 
-      <span class="material-symbols-outlined symbol">{variant.symbol}</span>{" "}
-      </div>
-      <div className='description-container'>
-        <span className='description-title'>{variant.title}:</span>
-        <span className='description-text'>{variant.text} </span>
-      </div>
 
+    <div className='alert-container'
+      style={{ background: variant.secondaryColor }}> 
+      <div className='alert-text'>
+        {variant.title}
+      </div>
     </div>
   );
 };
