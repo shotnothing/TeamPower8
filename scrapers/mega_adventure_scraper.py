@@ -3,7 +3,7 @@ from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from datetime import date,timedelta
 from datetime import date
-from supabase import create_client, Client
+from supabase import create_client, Client, ClientOptions
 from dotenv import load_dotenv
 import os
 
@@ -75,6 +75,5 @@ for d in data_collected:
 load_dotenv()
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
-data, count = supabase.table("sc_products").insert(data_collected).execute()
-print("hello")
+supabase: Client = create_client(url, key,options=ClientOptions().replace(schema="data"))
+data, count = supabase.table("auto_scraped_attractions").insert(data_collected).execute()
