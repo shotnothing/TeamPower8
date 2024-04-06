@@ -1,0 +1,24 @@
+
+
+.alert-container {
+display: flex;
+width: 100%;
+height: 100%;
+justify-content: flex-start; 
+align-items: center;
+/* box-shadow: 0px 0px 8px #a4a2a2; */
+/* opacity: 0.8; */
+}
+.alert-icon {
+display: flex; 
+}
+
+.alert-text {
+/* color: white; */
+font-size: 1.5rem;
+text-align: center; 
+display: flex; 
+justify-content: center; 
+align-items: center;
+/* text-shadow: 0 0 5px #d2d0d0, 0 0 5px #ffffff */
+}
