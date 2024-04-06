@@ -1,10 +1,25 @@
 "use client"
+
 import { signIn, useSession } from 'next-auth/react';
 import loginBackground from '@/app/loginbackground.jpg'
+import { useRouter } from 'next/navigation';
 import './globals.css';
 
 export default function LoginPage() {
-    const { data: session } = useSession()
+    const { data: session, status } = useSession()
+    const router = useRouter();
+
+    if (status === "loading") {
+        return (
+            <div className="text-center">
+                <div className="spinner-border" role="status"></div>
+            </div>
+        );
+    }
+
+    if (status === "authenticated") {
+        router.push('/authorised/home');
+    }
 
     return (
         <>
@@ -26,8 +41,8 @@ export default function LoginPage() {
                     <div className="card-body py-5 px-md-5">
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-8">
-                                <h2 className="fw-bold mb-5">Hello!</h2>
-                                {/* Submit button */}
+                                <h1 className="fw-bold mb-5">Hello!</h1>
+                                {/* Google submit button */}
                                 <button className="gsi-material-button" onClick={() => signIn('google', { callbackUrl: '/authorised/home' })}>
                                     <div className="gsi-material-button-state"></div>
                                     <div className="gsi-material-button-content-wrapper">
