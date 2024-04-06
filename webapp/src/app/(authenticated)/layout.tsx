@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react"
 import 'bootstrap/dist/css/bootstrap.css';
 
+// Rootlayout for pages that require authentication
 export default function RootLayout({
     children,
 }: {

@@ -26,7 +26,8 @@
     "react-dom": "^18",
     "react-plotly.js": "^2.6.0",
     "next-auth": "^4.24.7",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
