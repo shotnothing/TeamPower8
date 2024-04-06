@@ -86,9 +86,9 @@ const HomePage: React.FC = () => {
                     <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
                 </div>
 
-                <div className='overview-container'>
+                {/* <div className='overview-container'>
                     <OverviewTable />
-                </div>
+                </div> */}
             </div>
             
 
