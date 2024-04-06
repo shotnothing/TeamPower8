@@ -13,11 +13,11 @@ export const TopBar = () => {
     };
 
     const redirectToHomePage = () => {
-        router.push('/authorised/home');
+        router.push('/home');
     };
 
     const redirectToCataloguePage = () => {
-        router.push('/authorised/mflg');
+        router.push('/mflg');
     };
 
     const handleSignOut = async () => {
@@ -32,7 +32,7 @@ export const TopBar = () => {
                 {/* Left: logo and app name */}
                 <div className="left">
                     <Image src={logo} width={35} height={35} alt="logo" className="logo" />
-                    <a className="navbar-brand" href="/authorised/home">PriceProbe</a>
+                    <a className="navbar-brand" href="/home">PriceProbe</a>
                 </div>
                 {/* Right: home, catalogue, and sign out buttons when user is logged in */}
                 <div className="right">

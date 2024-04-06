@@ -18,7 +18,7 @@ export default function LoginPage() {
     }
 
     if (status === "authenticated") {
-        router.push('/authorised/home');
+        router.push('/home');
     }
 
     return (
@@ -43,7 +43,7 @@ export default function LoginPage() {
                             <div className="col-lg-8">
                                 <h1 className="fw-bold mb-5">Hello!</h1>
                                 {/* Google submit button */}
-                                <button className="gsi-material-button" onClick={() => signIn('google', { callbackUrl: '/authorised/home' })}>
+                                <button className="gsi-material-button" onClick={() => signIn('google', { callbackUrl: '/home' })}>
                                     <div className="gsi-material-button-state"></div>
                                     <div className="gsi-material-button-content-wrapper">
                                         <div className="gsi-material-button-icon">
