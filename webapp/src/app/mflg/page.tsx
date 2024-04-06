@@ -54,7 +54,7 @@ const AllProdutsPage = () => {
               <h2 className="title">{product.product_name}</h2>
               <p className="description">{product.description}</p>
               <a href={`/mflg/${product.product_id}`}>
-                <button>Only this!</button>
+                <button>Learn more</button>
               </a>
             </div>
           </li>

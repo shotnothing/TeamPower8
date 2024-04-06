@@ -10,6 +10,21 @@ type ProductPageType = {
   params: { productId: string };
 };
 
+function extractSimilarProducts(data: Analytics): { [key: string]: number } {
+  const similarPrices: number[] = data.prices;
+  const similarIndices: number[] = data.similar;
+  const productPrice: number = data.product_price;
+  const extractedData: { [key: string]: number } = {};
+
+  //Loop through similar indices and extract corresponding prices
+  for (let i = 0; i < similarPrices.length; i++) {
+    extractedData[similarIndices[i].toString()] = similarPrices[i];
+  }
+
+  extractedData['mflg'] = productPrice;
+
+  return extractedData;
+}
 const ProductPage = ({ params: { productId } }: ProductPageType) => {
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [similarProducts, setSimilarProducts] = useState<Analytics[]>([]);
