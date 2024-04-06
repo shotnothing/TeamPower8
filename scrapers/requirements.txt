@@ -8,3 +8,10 @@ webdriver-manager
 requests-HTML
 supabase
 python-dotenv
+transformers
+rake-nltk
+scikit-learn
+nltk
+torch
+torchvision
+parallel-pandas
