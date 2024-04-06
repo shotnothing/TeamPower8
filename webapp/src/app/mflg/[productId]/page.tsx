@@ -21,8 +21,6 @@ function extractSimilarProducts(data: Analytics): { [key: string]: number } {
     extractedData[similarIndices[i].toString()] = similarPrices[i];
   }
 
-  extractedData['mflg'] = productPrice;
-
   return extractedData;
 }
 const ProductPage = ({ params: { productId } }: ProductPageType) => {
