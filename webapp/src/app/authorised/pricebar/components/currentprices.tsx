@@ -1,6 +1,5 @@
 "use client"
 
-
 // import React, { useEffect, useRef } from 'react';
 // import * as d3 from 'd3';
 
@@ -68,14 +67,11 @@
 //                 counts[(Math.floor(value)+i).toString()] = (counts[(Math.floor(value)+i).toString()] || 0) + 1;
 //             }
             
-            
-            
 //             const circle = boxPlotGroup.append('circle')
 //                 .attr('cy', yScale('Box Plot')+jitter)
 //                 .attr('cx', xScale(value)) // Add jitter to x position
 //                 .attr('r', 6) // Circle radius
 //                 .attr('fill', 'steelblue');
-
 //         });
 
 //     }, [data, width, height, svgRef]);
@@ -84,6 +80,9 @@
 // }
 
 // export default CurrentPrices;
+
+
+
 
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
@@ -152,15 +151,54 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
                 counts[(Math.floor(value)+i).toString()] = (counts[(Math.floor(value)+i).toString()] || 0) + 1;
             }
             
-            
-            
             const circle = boxPlotGroup.append('circle')
                 .attr('cy', yScale('Box Plot')+jitter)
                 .attr('cx', xScale(value)) // Add jitter to x position
                 .attr('r', 6) // Circle radius
                 .attr('fill', 'steelblue');
-
         });
+        
+        // Object.entries(data).forEach(([key, value]) => {
+        //     // Skip drawing the circle if key is 'mflg'
+        //     if (key === 'mflg') return;
+        
+        //     const jitter_check = counts[Math.floor(value).toString()] ? (counts[Math.floor(value).toString()] / 2) : 0;
+        //     const jitter = Number.isInteger(jitter_check) ? jitter_check * -12 : Math.ceil(jitter_check) * 12;
+            
+        //     for (let i = -4; i <= 4; i++) {
+        //         counts[(Math.floor(value) + i).toString()] = (counts[(Math.floor(value) + i).toString()] || 0) + 1;
+        //     }
+            
+        //     const circle = boxPlotGroup.append('circle')
+        //         .attr('cy', yScale('Box Plot') + jitter)
+        //         .attr('cx', (d: any) => xScale(value)) // Arrow function to set cx attribute
+        //         .attr('r', 6) // Circle radius
+        //         .attr('fill', 'steelblue')
+        //         .on('mouseover', function(event: MouseEvent, d: any) {
+        //             tooltip.transition()
+        //                 .duration(200)
+        //                 .style('opacity', .9);
+        //             tooltip.html(`Value: ${d}`)
+        //                 .style('left', (event.pageX) + 'px')
+        //                 .style('top', (event.pageY - 28) + 'px');
+        //         })
+        //         .on('mouseout', function(event: MouseEvent, d: any) {
+        //             tooltip.transition()
+        //                 .duration(500)
+        //                 .style('opacity', 0);
+        //         })
+        //         .datum(value); // Pass the associated data to the circle element
+        // });
+        
+
+        // const tooltip = d3.select('body').append('div')
+        //     .attr('class', 'tooltip')
+        //     .style('opacity', 0)
+        //     .style('position', 'absolute')
+        //     .style('background-color', 'white')
+        //     .style('border', '1px solid #ccc')
+        //     .style('padding', '5px')
+        //     .style('border-radius', '5px');
 
     }, [data, width, height, svgRef]);
 
@@ -168,4 +206,3 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
 }
 
 export default CurrentPrices;
-
