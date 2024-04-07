@@ -1,7 +1,8 @@
+// product.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, BrowserRouter } from "react-router-dom"; // Import BrowserRouter from react-router-dom
 import "./style.css"; // Import CSS file
 import { fetchProduct, fetchAnalytics } from "../../../../api";
 import { Product, Analytics } from "../../../../api/types";
@@ -10,22 +11,10 @@ type ProductPageType = {
   params: { productId: string };
 };
 
-function extractSimilarProducts(data: Analytics): { [key: string]: number } {
-  const similarPrices: number[] = data.prices;
-  const similarIndices: number[] = data.similar;
-  const productPrice: number = data.product_price;
-  const extractedData: { [key: string]: number } = {};
 
-  //Loop through similar indices and extract corresponding prices
-  for (let i = 0; i < similarPrices.length; i++) {
-    extractedData[similarIndices[i].toString()] = similarPrices[i];
-  }
-
-  return extractedData;
-}
 const ProductPage = ({ params: { productId } }: ProductPageType) => {
   const [product, setProduct] = useState<Product | undefined>(undefined);
-  const [similarProducts, setSimilarProducts] = useState<Analytics[]>([]);
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,11 +26,14 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
       const analyticsResponse = await fetchAnalytics(productId);
 
       // Fetch details of similar products
-      const promises = analyticsResponse.similar.map(async (similarProductId: number) => {
-        return await fetchProduct(similarProductId.toString());
-      });
+      const promises = await Promise.all(
+        analyticsResponse.similar.map(async (similarProductId: number) => {
+          return await fetchProduct(similarProductId.toString());
+        })
+      );
+      // Remove empty products
+      const similarProductsData = promises.filter((v) => !!v) as Product[];
 
-      const similarProductsData = await Promise.all(promises);
       setSimilarProducts(similarProductsData);
     };
 
@@ -49,44 +41,47 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
   }, [productId]);
 
   return (
-    <>
-      {product && (
-        <div className="item-3d">
-          <span className="ground"></span>
-          <figure className="item-content group">
-            <div className="item-img">
-              <img src={product.image_url} alt="" />
-            </div>
-            <figcaption className="item-caption">
-              <p>
-                <strong>{product.product_name}</strong>
-                <br />
-                {product.company}
-                <br />
-                {product.description}
-                <br />
-                {product.price}
-                <br />
-                {product.tags}
-              </p>
-            </figcaption>
-          </figure>
+    <BrowserRouter>
+      <>
+        {product && (
+          <div className="item-3d">
+            <span className="ground"></span>
+            <figure className="item-content group">
+              <div className="item-img">
+                <img src={product.image_url} alt="" />
+              </div>
+              <figcaption className="item-caption">
+                <p>
+                  <strong>{product.product_name}</strong>
+                  <br />
+                  {product.company}
+                  <br />
+                  {product.description}
+                  <br />
+                  {product.price}
+                  <br />
+                  {product.tags}
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+        )}
+        <div>
+          <p>
+            Similar Products
+          </p>
+          <ul id="similar-products-list">
+            {similarProducts.map((similarProduct) => (
+              <li key={similarProduct.product_id}>
+                <Link to={`/product/p/${similarProduct.product_id}`}>
+                  {similarProduct.product_name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-
-      <div id="similar-products">
-        <h2>Similar Products</h2>
-        <ul id="similar-products-list">
-          {similarProducts.map((similarProduct) => (
-            <li key={similarProduct.product_id}>
-              <Link to={`/product/p/${similarProduct.product_id}`}>
-                {similarProduct.product_name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      </>
+    </BrowserRouter>
   );
 };
 
