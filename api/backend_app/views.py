@@ -14,7 +14,7 @@ supabase: sb.Client = sb.create_client(
     options = sb.ClientOptions().replace(schema="scraper")
 )
 
-similarity_matrix = pd.read_csv('analytics/export/similarity_matrix.csv', index_col=0)
+similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L1.csv', index_col=0)
 
 def test(request):
     user_ip = request.META.get('REMOTE_ADDR', '')
@@ -100,9 +100,49 @@ def route_get_product_filter(request):
     return JsonResponse(details)
 
 def route_get_product_analytics(request, product_id):
-    threshold = float(request.GET.get('threshold', 0.5))
+    threshold = float(request.GET.get('threshold', 0.3))
+
+    product = supabase \
+        .from_("cleaned") \
+        .select("*") \
+        .eq("id", product_id) \
+        .execute() \
+        .data[0]
+    details = get_product_info(product)
+
+    similar_product_ids = similarity_matrix[product_id] \
+        .sort_values(ascending=True) \
+        .reset_index() \
+        .rename(columns={product_id: 'similarity'}) \
+        .query(f'similarity < {threshold}') \
+        .query(f'id != {product_id}') \
+        .to_dict(orient='records')
+    
+    similar_products = []
+    for similar_product in similar_product_ids:
+        similar_product = supabase \
+            .from_("cleaned") \
+            .select("*") \
+            .eq("id", similar_product['id']) \
+            .execute() \
+            .data[0]
+        similar_products.append(get_product_info(similar_product))
 
 
+    # TODO: account for discounted price
+    prices = [product['original_price'] for product in similar_products]
+    similar = [product['product_id'] for product in similar_products]
+    similar_names = [product['product_name'] for product in similar_products]
+
+    response = {
+        'prices': prices,
+        'product_price': details['original_price'],
+        'similar': similar,
+        'similar_names': similar_names,
+        'product_name': details['product_name'],
+    }
+
+    return JsonResponse(response)
 
 def route_work_in_progress(request):
     return JsonResponse({'error': 'This route is not yet implemented.'})
