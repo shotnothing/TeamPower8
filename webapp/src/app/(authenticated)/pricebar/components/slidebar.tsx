@@ -61,7 +61,7 @@ const DiscreteSlider: React.FC<DiscreteSliderProps> = ({ handleChange }) => {
         valueLabelDisplay="auto"
         onChange={handleSliderChange}
         step={1}
-        marks
+        marks={false}
         min={0}
         max={100}
       />
