@@ -64,8 +64,8 @@ Retrieves a list of a range of products and their info.
 
 **Parameters**
 
-- `from`: Lower bound of index to filter products.
-- `to`: Upper bound of index to filter products.
+- `from`: Lower bound of index to filter products, inclusive.
+- `to`: Upper bound of index to filter products, inclusive.
 
 **Response**
 
@@ -76,14 +76,13 @@ Retrieves a list of a range of products and their info.
    
 **Example Usage:**
 
-Command: `GET /product/all`
+Command: `GET /product/range?from=1&to=4`
 ```json
 {  "products":  [ 
 	{ "product_id":  "1", "company":  "ABC-Inc", ...},
 	{ "product_id":  "2", "company":  "XYZ-leisure", ...},
 	{ "product_id":  "3", "company":  "ABC-Inc", ...},
-	{ "product_id":  "4", "company":  "IRTL", ...},
-	...
+	{ "product_id":  "4", "company":  "IRTL", ...}
 ]}
 ```
 
