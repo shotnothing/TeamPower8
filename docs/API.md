@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.3**
+**Version 0.1.4**
 
-**Date: 31/03/2024**
+**Date: 09/04/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
@@ -31,7 +31,8 @@ None
 	-   `product_name`: The name of the product.
 	-   `scrape_timestamp`: The timestamp when the product information was last scraped or updated.
 	-   `description`: A description of the product.
-	-   `price`: The price of the product.
+	-   `original_price`: The original price of the product.
+	-   `discounted_price`: The discounted price of the product.
 	-   `source_url`: The URL of the source website where the product information was obtained.
 	-   `remarks`: Any additional remarks or notes about the product.
 	-   `image_url`: The URL of the product's image.
@@ -47,7 +48,8 @@ Command: `GET /product/p/3`
 	"product_name":  "Cable Car Ride (Adult)",  
 	"scrape_timestamp":  "2024-03-23T12:00:00Z",  
 	"description":  "Experience the thrill of soaring through the skies on our cable car ride! As you embark on this aerial journey, you'll be treated to breathtaking panoramic views of the surrounding landscape.",  
-	"price":  "18.0",  
+	"original_price":  "18.0",
+	"discounted_price":  "15.0",
 	"source_url":  "https://www.abc.com/cable-car",  
 	"remarks":  "",  
 	"image_url":  "https://www.abc.com/images/cable-car.jpg",  
