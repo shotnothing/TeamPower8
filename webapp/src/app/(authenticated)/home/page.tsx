@@ -99,7 +99,12 @@ const HomePage: React.FC = () => {
                     </div>
 
                     <div className='price-bar-container'>
-                        <PriceBar/>
+                    <PriceBar sampleSimilarProducts={{
+                            "prices": [10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
+                            "product_price": 25.0,
+                            "ranking": 0.82,
+                            "similar": [3, 5, 6, 20, 35, 49]
+                        }} />
                     </div>
 
                     <div className='alert-list-container'>
