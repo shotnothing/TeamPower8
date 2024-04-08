@@ -8,6 +8,9 @@ services:
       - .:/volume
     ports:
       - "8000:8000"
+    environment:
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}
 
   website:
     build: ./webapp
