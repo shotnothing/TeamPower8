@@ -95,6 +95,7 @@ Retrieves a list of products and their info, filtered by specified fields.
 - `company`: (optional) Filter products by company name.
 - `name`: (optional) Filter products that have product name that contains `name` .
 - `tag`: (optional) Filter products by those who are tagged with `tag`.
+- `limit`: (optional) How many products to return. Defaults to 10.
   
 **Response**
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
