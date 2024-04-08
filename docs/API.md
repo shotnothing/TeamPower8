@@ -57,7 +57,7 @@ Command: `GET /product/p/3`
 }
 ```
 
-### Get Product List
+### Get Product Range
 **GET** `/product/range`
 
 Retrieves a list of a range of products and their info.
