@@ -58,13 +58,14 @@ Command: `GET /product/p/3`
 ```
 
 ### Get Product List
-**GET** `/product/all`
+**GET** `/product/range`
 
-Retrieves a list of **all** products and their info.
+Retrieves a list of a range of products and their info.
 
 **Parameters**
 
-None
+- `from`: Lower bound of index to filter products.
+- `to`: Upper bound of index to filter products.
 
 **Response**
 
