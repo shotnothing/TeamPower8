@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useState, useRef } from 'react';
-import Boxplot from './boxplot';
-import CurrentPricesMFLG from './currentprices-mflg';
+import Boxplot from '../../pricebar-component/components/boxplot';
+import CurrentPricesMFLG from '../../pricebar-component/components/currentprices-mflg';
 
 interface ProductData {
     prices: number[];
