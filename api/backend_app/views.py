@@ -14,7 +14,7 @@ supabase: sb.Client = sb.create_client(
     options = sb.ClientOptions().replace(schema="scraper")
 )
 
-similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L1.csv', index_col=0)
+similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L2.csv', index_col=0)
 
 def test(request):
     user_ip = request.META.get('REMOTE_ADDR', '')
