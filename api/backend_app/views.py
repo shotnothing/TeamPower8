@@ -104,7 +104,7 @@ def route_get_product_filter(request):
     return JsonResponse(details)
 
 def route_get_product_analytics(request, product_id):
-    threshold = float(request.GET.get('threshold', 0.15))
+    threshold = float(request.GET.get('threshold', 0.1))
 
     product = supabase \
         .from_("cleaned") \
@@ -145,7 +145,7 @@ def route_get_product_analytics(request, product_id):
     prices = [product['original_price'] for product in similar_products]
     similar = [product['product_id'] for product in similar_products]
     similar_names = [product['product_name'] for product in similar_products]
-
+    print(cache)
     response = {
         'prices': prices,
         'product_price': details['original_price'],
