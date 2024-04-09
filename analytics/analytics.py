@@ -91,7 +91,7 @@ def run_label_membership(df):
         device = 0 if torch.cuda.is_available() else -1
     )
 
-    label_set = list(set(LABEL_SET_1))
+    label_set = list(set(LABEL_SET_1+LABEL_SET_2))
     label_df = pd.DataFrame(
         np.zeros((len(df), len(label_set))),
         columns = label_set
