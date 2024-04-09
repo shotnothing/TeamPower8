@@ -16,6 +16,8 @@ supabase: sb.Client = sb.create_client(
 
 similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L2.csv', index_col=0)
 
+cache = {}
+
 def test(request):
     user_ip = request.META.get('REMOTE_ADDR', '')
     user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -44,6 +46,9 @@ def get_product_info(product):
     return details
 
 def route_get_product_info(request, product_id):
+    if product_id in cache:
+        return JsonResponse(cache[product_id])
+    
     product = supabase \
         .from_("cleaned") \
         .select("*") \
@@ -88,7 +93,6 @@ def route_get_product_filter(request):
     
     if name:
         return JsonResponse({'error': 'Name filtering is unstable, disabled for now.'})
-        products =  products.ilike("title", f"%{name}%")
 
     products = products \
         .limit(limit) \
@@ -100,7 +104,7 @@ def route_get_product_filter(request):
     return JsonResponse(details)
 
 def route_get_product_analytics(request, product_id):
-    threshold = float(request.GET.get('threshold', 0.3))
+    threshold = float(request.GET.get('threshold', 0.15))
 
     product = supabase \
         .from_("cleaned") \
@@ -110,24 +114,32 @@ def route_get_product_analytics(request, product_id):
         .data[0]
     details = get_product_info(product)
 
-    similar_product_ids = similarity_matrix[product_id] \
-        .sort_values(ascending=True) \
-        .reset_index() \
-        .rename(columns={product_id: 'similarity'}) \
-        .query(f'similarity < {threshold}') \
-        .query(f'id != {product_id}') \
-        .to_dict(orient='records')
-    
+    similar_product_ids_x = similarity_matrix.loc[int(product_id)]
+    similar_product_ids_y = similarity_matrix[product_id]
+
+    similar_product_ids_x = similar_product_ids_x[
+        (similar_product_ids_x < threshold) & (similar_product_ids_x.index != product_id)]
+    similar_product_ids_y = similar_product_ids_y[
+        (similar_product_ids_y < threshold) & (similar_product_ids_y.index != int(product_id))]
+
+    similar_product_ids = pd.concat([similar_product_ids_x, similar_product_ids_y])
+    similar_product_ids = similar_product_ids.sort_values(ascending=True)
+
     similar_products = []
-    for similar_product in similar_product_ids:
-        similar_product = supabase \
+    for similar_product in similar_product_ids.index:
+        if similar_product in cache:
+            similar_products.append(cache[similar_product])
+            continue
+
+        similar_product_info = supabase \
             .from_("cleaned") \
             .select("*") \
-            .eq("id", similar_product['id']) \
+            .eq("id", similar_product) \
             .execute() \
             .data[0]
-        similar_products.append(get_product_info(similar_product))
-
+        product_info = get_product_info(similar_product_info)
+        cache[similar_product] = product_info
+        similar_products.append(product_info)
 
     # TODO: account for discounted price
     prices = [product['original_price'] for product in similar_products]
