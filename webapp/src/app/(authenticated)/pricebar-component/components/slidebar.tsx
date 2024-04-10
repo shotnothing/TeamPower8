@@ -54,7 +54,7 @@ const DiscreteSlider: React.FC<DiscreteSliderProps> = ({ handleChange }) => {
   };
 
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ width: 500 }}>
       <Slider
         defaultValue={50}
         getAriaValueText={valuetext}
