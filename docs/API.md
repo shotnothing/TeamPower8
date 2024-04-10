@@ -90,6 +90,7 @@ Command: `GET /product/range?from=1&to=4`
 **GET** `/product/filter`
 
 Retrieves a list of products and their info, filtered by specified fields.
+TODO: Combine with product range
 
 **Parameters**
 - `company`: (optional) Filter products by company name.
