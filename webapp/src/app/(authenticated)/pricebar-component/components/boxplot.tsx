@@ -52,7 +52,7 @@ const BoxPlot: React.FC<BoxPlotProps> = ({ data, width, height, svgRef }) => {
                 .attr('x', xScale(d3.quantile(dataArray, 0.25)))
                 .attr('height', 40)
                 .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
-                .attr('fill', 'rgba(0, 0, 0, 0.01)');
+                .attr('fill', 'rgba(0, 0, 0, 0.005)');
         });
 
 

@@ -94,8 +94,8 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
             })
             .on('mousemove', function(event: MouseEvent) {
                 tooltip
-                    .style('left', (event.pageX+20) + 'px')
-                    .style('top', (event.pageY+20) + 'px');
+                    .style('left', (event.pageX+40) + 'px')
+                    .style('top', (event.pageY+40) + 'px');
             })
             .on('mouseout', function(event: MouseEvent, d: any) {
                 d3.select(this)
