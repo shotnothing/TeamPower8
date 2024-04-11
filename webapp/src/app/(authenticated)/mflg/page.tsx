@@ -6,7 +6,7 @@ import { fetchProducts } from "../../../api";
 import { Product } from "../../../api/types";
 import { arrowBack, arrowForward } from "ionicons/icons";
 
-const AllProdutsPage = () => {
+const AllProductsPage = () => {
   const [products, setProducts] = useState<Product[] | undefined>(undefined);
   useEffect(() => {
     const _ = async () => {
@@ -68,4 +68,4 @@ const AllProdutsPage = () => {
   );
 };
 
-export default AllProdutsPage;
+export default AllProductsPage;

@@ -6,13 +6,12 @@
 
 body {
   height: 100vh;
-  display: grid;
   place-items: center;
   overflow: hidden;
 }
 
 main {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -107,6 +106,10 @@ main {
   z-index: 5;
   user-select: none;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   & .btn {
     background-color: rgba(255,255,255,0.5);
     color: rgba(0,0,0,0.7);
@@ -155,3 +158,4 @@ main {
     &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
   }
 }
+

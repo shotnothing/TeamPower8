@@ -58,7 +58,7 @@ export const fetchProduct = async (
 };
 
 // Fetch analytics
-export const fetchAnalytics = async (productId: string): Promise<Analytics[]> => {
+export const fetchAnalytics = async (productId: string): Promise<Analytics> => {
   if (MOCK) return MOCK_DATA.analytics;
   const endpoint = ANALYTICS_URL;
 
