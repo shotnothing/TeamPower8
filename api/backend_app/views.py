@@ -8,13 +8,20 @@ import os
 
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
+ci: int = os.environ.get("IS_CI", 0)
 
 supabase: sb.Client = sb.create_client(
     url, key, 
     options = sb.ClientOptions().replace(schema="scraper")
 )
 
-similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L2.csv', index_col=0)
+if not os.path.exists('./analytics/export/similarity_matrix_L2.csv'):
+    if ci:
+        similarity_matrix = pd.DataFrame(np.random.rand(1000, 1000))
+    else:
+        raise FileNotFoundError('Similarity matrix not found. Please run the analytics script.')
+else:
+    similarity_matrix = pd.read_csv('./analytics/export/similarity_matrix_L2.csv', index_col=0)
 
 cache = {}
 
@@ -87,8 +94,6 @@ def route_get_product_filter(request):
         .range(from_index, to_index) \
         .execute() \
         .data
-    
-    
 
     details = {'products': [get_product_info(product) for product in products]}
 
