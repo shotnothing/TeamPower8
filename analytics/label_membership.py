@@ -40,4 +40,4 @@ class LabelMembershipPipeline:
         Returns:
             dict: The labels and their membership scores.
         '''
-        return self.classifier(text, label_set)
+        return self.classifier(text, label_set, multi_label=True)

@@ -55,7 +55,7 @@ strong {
 }
 .item-3d {
   width: 100%;
-  margin-bottom: 20%;
+  /* margin-bottom: 20%; */
   padding-top: 10%;
   padding-bottom: 5%;
   transform-origin: 50% 100%;
@@ -353,4 +353,13 @@ strong {
 }
 .footer a:hover:before, .footer a:active:before, .footer a:focus:before {
   opacity: 0.5;
+}
+
+.boxplot-container {
+  /* border: 2px solid black; Add border styling */
+  padding: 10px; /* Add padding to create space around the boxplot */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }

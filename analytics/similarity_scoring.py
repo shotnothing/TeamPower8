@@ -143,10 +143,12 @@ class SimilarityScoringPipeline:
 
         labels = label_df.drop(columns=['title', 'id'])
 
-        if similarity_heuristic(labels.iloc[0], labels.iloc[0]) == 0:
-            similarity_matrix = np.ones((len(label_df), len(label_df)))
-        else:
-            similarity_matrix = np.zeros((len(label_df), len(label_df)))
+        # if similarity_heuristic(labels.iloc[0], labels.iloc[0]) == 0:
+        #     similarity_matrix = np.ones((len(label_df), len(label_df)))
+        # else:
+        #     similarity_matrix = np.zeros((len(label_df), len(label_df)))
+
+        similarity_matrix = np.nan * np.ones((len(label_df), len(label_df)))
 
         pairs = []
         for i in range(len(label_df)):
