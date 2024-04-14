@@ -26,16 +26,28 @@ else:
 cache = {}
 
 def test(request):
+    '''Test route to check if the server is running.
+    
+    Returns:
+        HttpResponse: A simple response to indicate that the server is running.
+    '''
     user_ip = request.META.get('REMOTE_ADDR', '')
     user_agent = request.META.get('HTTP_USER_AGENT', '')
 
-    # Bear witness to templating in raw string!
     response = f"Hello, world! Your IP address is {user_ip}. " \
                f"Your user agent is {user_agent}."
 
     return HttpResponse(response)
 
 def get_product_info(product):
+    '''Get product details from the product dictionary.
+    
+    Args:
+        product (dict): The product dictionary.
+        
+    Returns:
+        dict: The product details dictionary.
+    '''
     details = {}
 
     details['product_id'] = product['id']
@@ -53,6 +65,16 @@ def get_product_info(product):
     return details
 
 def route_get_product_info(request, product_id):
+    '''Get product details from the product ID.
+    Refer to https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md for more details.
+    
+    Args:
+        request (HttpRequest): The request object.
+        product_id (str): The product ID.
+        
+    Returns:
+        JsonResponse: The product details.
+    '''
     if product_id in cache:
         return JsonResponse(cache[product_id])
     
@@ -68,6 +90,15 @@ def route_get_product_info(request, product_id):
     return JsonResponse(details)
 
 def route_get_product_filter(request):
+    '''Filter products based on the query parameters.
+    Refer to https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md for more details.
+    
+    Args:
+        request (HttpRequest): The request object.
+        
+    Returns:
+        JsonResponse: The filtered products.
+    '''
     company = request.GET.get('company', None)
     name = request.GET.get('name', None)
     tag = request.GET.get('tag', None)
@@ -105,6 +136,13 @@ def route_get_product_filter(request):
     return JsonResponse(details)
 
 def get_similar_products(product_id, product, threshold):
+    '''Get similar products based on the similarity matrix.
+    
+    Args:
+        product_id (str): The product ID.
+        product (dict): The product dictionary.
+        threshold (float): The threshold for similarity.
+    '''
     similar_product_ids_x = similarity_matrix.loc[int(product_id)]
     similar_product_ids_y = similarity_matrix[product_id]
 
@@ -118,7 +156,18 @@ def get_similar_products(product_id, product, threshold):
     return similar_product_ids
     
 def get_product_analytics(product_id, product, threshold):
+    '''Get product analytics based on the product ID.
 
+    Args:
+        product_id (str): The product ID.
+        product (dict): The product dictionary.
+        threshold (float): The threshold for similarity.
+
+    Returns:
+        list: The prices of similar products.
+        list: The IDs of similar products.
+        list: The names of similar products.
+    '''
     similar_product_ids = get_similar_products(product_id, product, threshold)
 
     similar_products = []
@@ -150,6 +199,16 @@ def get_product_analytics(product_id, product, threshold):
     return prices, similar, similar_names
 
 def route_get_product_analytics(request, product_id):
+    '''Get product analytics based on the product ID.
+    Refer to https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md for more details.
+
+    Args:
+        request (HttpRequest): The request object.
+        product_id (str): The product ID.
+
+    Returns:
+        JsonResponse: The product analytics.
+    '''
     threshold = float(request.GET.get('threshold', 0.1))
     product = supabase \
             .from_("cleaned") \
@@ -175,7 +234,6 @@ def route_get_product_analytics(request, product_id):
     else:
         rank = 0
         rank_normalized = 0
-
 
     response = {
         'prices': prices,
