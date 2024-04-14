@@ -74,17 +74,21 @@ def route_get_product_filter(request):
         .from_("cleaned") \
         .select("*")
     
+    if name:
+        return JsonResponse({'error': 'Name filtering in api is unstable, implement it client-side.'})
+        # products = products \
+        #     .ilike("title", f"%{name}%")
+    
     if company:
         products = products \
             .eq("is_mflg", company.lower() == 'mflg')
-
-    if name:
-        return JsonResponse({'error': 'Name filtering is unstable, disabled for now.'})
 
     products = products \
         .range(from_index, to_index) \
         .execute() \
         .data
+    
+    
 
     details = {'products': [get_product_info(product) for product in products]}
 

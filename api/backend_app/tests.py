@@ -5,7 +5,6 @@ class TestViews(TestCase):
         response = self.client.get('/api/test/')
         self.assertEqual(response.status_code, 200)
 
-
     def test_route_get_product_info(self):
         response = self.client.get('/api/product/p/1/')
         self.assertEqual(response.status_code, 200)

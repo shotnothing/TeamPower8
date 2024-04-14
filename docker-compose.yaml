@@ -15,7 +15,7 @@ services:
     ports:
       - "81:80"
 
-  test_api:
+  test:
   # Run tests in the api container, will not be run by default.
   # Do not use in production!
   # Usage: docker-compose --profile dev up test_api
