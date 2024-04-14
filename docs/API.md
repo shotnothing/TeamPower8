@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.4**
+**Version 0.1.5**
 
-**Date: 09/04/2024**
+**Date: 14/04/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
@@ -57,35 +57,6 @@ Command: `GET /product/p/3`
 }
 ```
 
-### Get Product Range
-**GET** `/product/range`
-
-Retrieves a list of a range of products and their info.
-
-**Parameters**
-
-- `from`: Lower bound of index to filter products, inclusive.
-- `to`: Upper bound of index to filter products, inclusive.
-
-**Response**
-
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `products`: An array of products.
-   
-**Example Usage:**
-
-Command: `GET /product/range?from=1&to=4`
-```json
-{  "products":  [ 
-	{ "product_id":  "1", "company":  "ABC-Inc", ...},
-	{ "product_id":  "2", "company":  "XYZ-leisure", ...},
-	{ "product_id":  "3", "company":  "ABC-Inc", ...},
-	{ "product_id":  "4", "company":  "IRTL", ...}
-]}
-```
-
 ### Get Filtered Product List
 **GET** `/product/filter`
 
@@ -95,8 +66,8 @@ TODO: Combine with product range
 **Parameters**
 - `company`: (optional) Filter products by company name.
 - `name`: (optional) Filter products that have product name that contains `name` .
-- `tag`: (optional) Filter products by those who are tagged with `tag`.
-- `limit`: (optional) How many products to return. Defaults to 10.
+- `from`: Lower bound of index to filter products, inclusive.
+- `to`: Upper bound of index to filter products, inclusive.
   
 **Response**
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
@@ -106,69 +77,12 @@ TODO: Combine with product range
  
 **Example Usage:**
 
-Command: `GET /product/filter?company=ABC-Inc&tag=cable-car`
+Command: `GET /product/filter?company=ABC-Inc&from=0&to=1`
 ```json
 {  "products":  [ 
 	{ "product_id":  "1", "company":  "ABC-Inc", ...},
 	{ "product_id":  "3", "company":  "ABC-Inc", ...}
 ]}
-```
-
-
-
-
-## Company
-### Get Company List
-**GET** `/company/all`
-
-Retrieves a list of all companies tracked.
-
-**Parameters**
-
-None
-
-**Response**
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `companies`: An array of company IDs.
-   
-**Example Usage:**
-
-Command: `GET /company/all`
-```json
-{  "companies":  [  
-	"ABC-Inc",
-	"XYZ-leisure",
-	"IRTL",
-	...
-]}
-```
-
-### Get Company Info
-**GET** `/company/c/<company_id>`
-
-Retrieves info about a particular company.
-
-**Parameters**
-
-None
-
-**Response**
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `company_id`: The unique identifier of the company.
-	- `name`: The name of the company.
-   
-**Example Usage:**
-
-Command: `GET /company/c/ABC-Inc`
-```json
-{  
-	"company_id": "ABC-Inc",
-	"name": "ABC Incorporated"
-}
 ```
 
 ## Analytics
