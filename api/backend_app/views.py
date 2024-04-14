@@ -81,11 +81,6 @@ def route_get_product_filter(request):
         .from_("cleaned") \
         .select("*")
     
-    if name:
-        return JsonResponse({'error': 'Name filtering in api is unstable, implement it client-side.'})
-        # products = products \
-        #     .ilike("title", f"%{name}%")
-    
     if company:
         products = products \
             .eq("is_mflg", company.lower() == 'mflg')
@@ -97,6 +92,16 @@ def route_get_product_filter(request):
 
     details = {'products': [get_product_info(product) for product in products]}
 
+    if name:
+        import regex as re
+        details['products'] = [
+            product 
+            for product in details['products'] 
+            if re.search(
+                f".*{name}.*",
+                product['product_name'], 
+                re.IGNORECASE)]
+        
     return JsonResponse(details)
 
 def get_similar_products(product_id, product, threshold):
@@ -156,12 +161,27 @@ def route_get_product_analytics(request, product_id):
     prices, similar, similar_names = get_product_analytics(product_id, product, threshold)
     details = get_product_info(product)
 
+    if 'discounted_price' not in details or details['discounted_price'] is None:
+        price = details['original_price']
+    else:
+        price = details['discounted_price']
+
+    # Rank prices
+    temp = prices.copy()
+    temp.append(price)
+    temp = sorted(temp)
+    rank = temp.index(price)
+
+
     response = {
         'prices': prices,
-        'product_price': details['original_price'],
+        'product_price': price,
+        'original_price': details['original_price'],
+        'discounted_price': details['discounted_price'],
         'similar': similar,
         'similar_names': similar_names,
         'product_name': details['product_name'],
+        'ranking': rank,
     }
 
     return JsonResponse(response)
