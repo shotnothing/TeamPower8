@@ -28,4 +28,7 @@ jobs:
     - name: Run Tests
       run: |
         cd api
+        export SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+        export SUPABASE_KEY=${{ secrets.SUPABASE_KEY }} 
+        echo "The Supabase URL is ${{ secrets.SUPABASE_URL }}"
         python manage.py test
