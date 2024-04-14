@@ -30,5 +30,6 @@ jobs:
         cd api
         export SUPABASE_URL=${{ secrets.SUPABASE_URL }}
         export SUPABASE_KEY=${{ secrets.SUPABASE_KEY }} 
+        export IS_CI=1
         echo "The Supabase URL is ${{ secrets.SUPABASE_URL }}"
         python manage.py test
