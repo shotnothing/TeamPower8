@@ -51,7 +51,7 @@ def get_product_info(product):
     details = {}
 
     details['product_id'] = product['id']
-    details['company'] = 'WIP'
+    details['company'] = 'mflg' if product['is_mflg'] else 'not mflg'
     details['product_name'] = product['title']
     details['scrape_timestamp'] = 'WIP'
     details['description'] = product['description']
@@ -196,7 +196,7 @@ def get_product_analytics(product_id, product, threshold):
     similar = [product['product_id'] for product in similar_products]
     similar_names = [product['product_name'] for product in similar_products]
 
-    return prices, similar, similar_names
+    return prices, similar, similar_names, similar_products
 
 def route_get_product_analytics(request, product_id):
     '''Get product analytics based on the product ID.
@@ -217,7 +217,7 @@ def route_get_product_analytics(request, product_id):
             .execute() \
             .data[0]
     
-    prices, similar, similar_names = get_product_analytics(product_id, product, threshold)
+    prices, similar, similar_names, similar_products = get_product_analytics(product_id, product, threshold)
     details = get_product_info(product)
 
     if 'discounted_price' not in details or details['discounted_price'] is None:
@@ -241,7 +241,7 @@ def route_get_product_analytics(request, product_id):
         'original_price': details['original_price'],
         'discounted_price': details['discounted_price'],
         'similar': similar,
-        'similar_names': similar_names,
+        'similar_products': similar_products,
         'product_name': details['product_name'],
         'rank': rank,
         'rank_normalized': rank_normalized,
