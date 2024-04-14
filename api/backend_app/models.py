@@ -1,3 +1,3 @@
 from django.db import models
 
-# Create your models here.
+'''Should be empty as we are using Supabase as ORM, not Django's ORM'''
