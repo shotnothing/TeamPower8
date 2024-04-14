@@ -17,7 +17,7 @@ supabase: sb.Client = sb.create_client(
 
 if not os.path.exists('./analytics/export/similarity_matrix_L2.csv'):
     if ci:
-        similarity_matrix = pd.DataFrame(np.random.rand(1000, 1000))
+        similarity_matrix = pd.DataFrame(np.random.rand(1000, 1000), index=range(1000), columns=range(1000))
     else:
         raise FileNotFoundError('Similarity matrix not found. Please run the analytics script.')
 else:
@@ -99,9 +99,7 @@ def route_get_product_filter(request):
 
     return JsonResponse(details)
 
-def get_similar_products(product, threshold):
-    product_id = product['id']
-
+def get_similar_products(product_id, product, threshold):
     similar_product_ids_x = similarity_matrix.loc[int(product_id)]
     similar_product_ids_y = similarity_matrix[product_id]
 
@@ -114,9 +112,9 @@ def get_similar_products(product, threshold):
     similar_product_ids = similar_product_ids.sort_values(ascending=True)
     return similar_product_ids
     
-def get_product_analytics(product, threshold):
+def get_product_analytics(product_id, product, threshold):
 
-    similar_product_ids = get_similar_products(product, threshold)
+    similar_product_ids = get_similar_products(product_id, product, threshold)
 
     similar_products = []
     for similar_product in similar_product_ids.index:
@@ -134,8 +132,13 @@ def get_product_analytics(product, threshold):
         cache[similar_product] = product_info
         similar_products.append(product_info)
 
-    # TODO: account for discounted price
-    prices = [product['original_price'] for product in similar_products]
+    prices = []
+    for product in similar_products:
+        if 'discounted_price' not in product or product['discounted_price'] is None:
+            prices.append(product['original_price'])
+        else:
+            prices.append(product['discounted_price'])
+
     similar = [product['product_id'] for product in similar_products]
     similar_names = [product['product_name'] for product in similar_products]
 
@@ -143,7 +146,6 @@ def get_product_analytics(product, threshold):
 
 def route_get_product_analytics(request, product_id):
     threshold = float(request.GET.get('threshold', 0.1))
-
     product = supabase \
             .from_("cleaned") \
             .select("*") \
@@ -151,7 +153,7 @@ def route_get_product_analytics(request, product_id):
             .execute() \
             .data[0]
     
-    prices, similar, similar_names = get_product_analytics(product, threshold)
+    prices, similar, similar_names = get_product_analytics(product_id, product, threshold)
     details = get_product_info(product)
 
     response = {

@@ -24,3 +24,7 @@ class TestViews(TestCase):
         response = self.client.get('/api/product/filter/?company=mflg')
         self.assertEqual(response.status_code, 200)
 
+
+    def test_route_analytics(self):
+        response = self.client.get('/api/analytics/p/1')
+        self.assertEqual(response.status_code, 200)
