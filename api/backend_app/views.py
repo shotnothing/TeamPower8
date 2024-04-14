@@ -209,7 +209,7 @@ def route_get_product_analytics(request, product_id):
     Returns:
         JsonResponse: The product analytics.
     '''
-    threshold = float(request.GET.get('threshold', 0.1))
+    threshold = float(request.GET.get('threshold', 1))
     product = supabase \
             .from_("cleaned") \
             .select("*") \
