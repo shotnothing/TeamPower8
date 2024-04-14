@@ -113,8 +113,6 @@ const HomePage: React.FC = () => {
 
     return (
         <div className='home-page'>
-            <h1>Alert Dashboard</h1>
-
             <div className='introduction-container'>
                 <Introduction />
             </div>
