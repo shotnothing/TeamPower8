@@ -7,8 +7,8 @@ import CurrentPricesMFLG from '../../pricebar-component/components/currentprices
 interface ProductData {
     prices: number[];
     product_price: number;
-    ranking: number;
     similar: number[];
+    product_name : string;
 }
 
 interface PriceBarProps {
