@@ -9,6 +9,7 @@ import Alert from './components/alert';
 import {variants} from './components/alert_variants';
 import OverviewTable from './components/overview_table';
 
+
 // to be deleted
 import productListData from './components/product_all.json';
 import productAnalytics1 from './components/product_analytics_1.json'
@@ -25,10 +26,15 @@ const HomePage: React.FC = () => {
     // render all even if there is no interaction with search bar (when page is called)
     useEffect(() => {
         fetchProductList(input)
-        console.log(productList)
-        // setAlertColour("red")
-        // setproductID("2")
-    });
+        return () => {};
+    }, []);
+    
+    // useEffect(() => {
+    //     fetchProductList(input)
+    //     // console.log(productList)
+    //     // setAlertColour("red")
+    //     // setproductID("2")
+    // });
 
     
 
@@ -56,12 +62,13 @@ const HomePage: React.FC = () => {
     //         setProductList(productList)
     //     });
     // };
-
     const fetchProductList = (value) => {
-        // fetch("http://13.250.110.218/api/product/range")
+        // fetch("http://13.250.110.218:80/api/product/filter", {mode: 'no-cors'})
         //     .then((response) => response.json())
         //     .then((json) => {
         //         // Save the JSON data to the productList variable
+
+        //         console.log(json)
         //         setProductList(json.products);
                 
         //         // Now you can use the productList variable to access the fetched data
@@ -71,11 +78,11 @@ const HomePage: React.FC = () => {
         //         console.error("Error fetching product list:", error);
         //     });
 
-        // // using fake data - json file 
+        // using fake data - json file 
         const productList = productListData.products;
-    
+
         if (value === "") {
-            setProductList(productList); 
+            setProductList(productList);
         }
     
         const regex = new RegExp(value, 'i'); 
@@ -87,16 +94,13 @@ const HomePage: React.FC = () => {
             );
         });
 
-
         // order filtered list by ranking
         const updatedList = filteredList.map((product) => {
             const ranking = fetchProductRanking(product.product_id);
-            console.log(ranking)
             return { ...product, ranking };
         });
         updatedList.sort((a, b) => b.ranking - a.ranking);
         setProductList(updatedList);
-        // setProductList(filteredList);
     };
 
     const fetchProductRanking = (product_id) => {

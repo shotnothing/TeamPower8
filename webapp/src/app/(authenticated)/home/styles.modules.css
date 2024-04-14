@@ -2,6 +2,8 @@
     background-color: #ffffff;
     width: 100vw;
     height: 100vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
   }
 
 .introduction-container {
