@@ -166,11 +166,15 @@ def route_get_product_analytics(request, product_id):
     else:
         price = details['discounted_price']
 
-    # Rank prices
-    temp = prices.copy()
-    temp.append(price)
-    temp = sorted(temp)
-    rank = temp.index(price)
+    if len(prices):
+        temp = prices.copy()
+        temp.append(price)
+        temp = sorted(temp)
+        rank = temp.index(price)
+        rank_normalized = rank / len(temp)
+    else:
+        rank = 0
+        rank_normalized = 0
 
 
     response = {
@@ -181,7 +185,8 @@ def route_get_product_analytics(request, product_id):
         'similar': similar,
         'similar_names': similar_names,
         'product_name': details['product_name'],
-        'ranking': rank,
+        'rank': rank,
+        'rank_normalized': rank_normalized,
     }
 
     return JsonResponse(response)
