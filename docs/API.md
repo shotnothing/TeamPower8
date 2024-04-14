@@ -85,6 +85,61 @@ Command: `GET /product/filter?company=ABC-Inc&from=0&to=1`
 ]}
 ```
 
+
+## Company
+### Get Company List
+**GET** `/company/all`
+
+Retrieves a list of all companies tracked.
+
+**Parameters**
+
+None
+
+**Response**
+- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
+- **Content-Type**: `application/json`
+- **Body**:
+	- `companies`: An array of company IDs.
+   
+**Example Usage:**
+
+Command: `GET /company/all`
+```json
+{  "companies":  [  
+	"ABC-Inc",
+	"XYZ-leisure",
+	"IRTL",
+	...
+]}
+```
+
+### Get Company Info
+**GET** `/company/c/<company_id>`
+
+Retrieves info about a particular company.
+
+**Parameters**
+
+None
+
+**Response**
+- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
+- **Content-Type**: `application/json`
+- **Body**:
+	- `company_id`: The unique identifier of the company.
+	- `name`: The name of the company.
+   
+**Example Usage:**
+
+Command: `GET /company/c/ABC-Inc`
+```json
+{  
+	"company_id": "ABC-Inc",
+	"name": "ABC Incorporated"
+}
+```
+
 ## Analytics
 ### Get Product Analytics
 **GET** `/analytics/p/<product_id>`
