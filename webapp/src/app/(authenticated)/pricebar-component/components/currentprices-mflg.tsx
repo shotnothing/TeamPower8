@@ -53,7 +53,7 @@ const CurrentPricesMFLG:React.FC<CurrentPricesProps> = ({ data, width, height, s
                 const circle = boxPlotGroup.append('circle')
                     .attr('cy', yScale('Box Plot'))
                     .attr('cx', xScale(value))
-                    .attr('r', 5)
+                    .attr('r', 3)
                     .attr('fill', 'green')
                     .on('mouseover', function(event: MouseEvent, d:any) {
                         tooltip.transition()

@@ -47,29 +47,22 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
         const scale = d3.scaleQuantile()
             .domain(dataArray)
             .range(d3.range(0, 1.1, 0.1));
+        
+        const jitter_range =  Math.round((d3.max(dataArray)!-d3.min(dataArray)!) * 0.1)
 
         Object.entries(data).forEach(([key, value]) => {
-            const jitter_range_low = Math.round(d3.quantile(dataArray, scale(value))-d3.quantile(dataArray, scale(value)-0.25));
-            const jitter_range_high = Math.round(d3.quantile(dataArray, scale(value)+0.25)-d3.quantile(dataArray, scale(value)));
             if (key === 'mflg') 
 
-            for (let i = -jitter_range_low; i <= jitter_range_high; i++) {
+            for (let i = -jitter_range; i <= jitter_range; i++) {
                 counts[(Math.floor(value)+i).toString()] = (counts[(Math.floor(value)+i).toString()] || 0) + 1;
-            }
-            ;
-        });
+            };
 
-        Object.entries(data).forEach(([key, value]) => {
-            if (key === 'mflg') return;
- 
-            const jitter_range_low = Math.round(d3.quantile(dataArray, scale(value))-d3.quantile(dataArray, scale(value)-0.25));
-            const jitter_range_high = Math.round(d3.quantile(dataArray, scale(value)+0.25)-d3.quantile(dataArray, scale(value)));
 
             const jitter_check = counts[Math.floor(value).toString()] ? (counts[Math.floor(value).toString()] / 2) : 0;
-            const jitter = Number.isInteger(jitter_check) ? jitter_check * -6 : Math.ceil(jitter_check) * 6;
+            const jitter = Number.isInteger(jitter_check) ? jitter_check * -3 : Math.ceil(jitter_check) * 3;
             
             
-            for (let i = -jitter_range_low; i <= jitter_range_high; i++) {
+            for (let i = -jitter_range; i <= jitter_range; i++) {
                 counts[(Math.floor(value) + i).toString()] = (counts[(Math.floor(value) + i).toString()] || 0) + 1;
             }
             
@@ -80,7 +73,6 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
             .attr('fill', 'steelblue')
             .attr('fill-opacity', 0.5)
             .on('mouseover', function(event: MouseEvent, d: any) {
-                // Darken the fill color
                 d3.select(this)
                     .attr('fill', 'steelblue')
                     .attr('fill-opacity', 1);
