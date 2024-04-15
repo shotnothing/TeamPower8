@@ -28,40 +28,10 @@ const HomePage: React.FC = () => {
         fetchProductList(input)
         return () => {};
     }, []);
-    
-    // useEffect(() => {
-    //     fetchProductList(input)
-    //     // console.log(productList)
-    //     // setAlertColour("red")
-    //     // setproductID("2")
-    // });
-
-    
 
     // https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md (our group's API)
     // /product/all --> get product_name
 
-    // const fetchProductList = (value) => {
-    //     fetch("https://api.nusmods.com/v2/2023-2024/moduleList.json").then((response) => response.json())
-    //     .then((json) => {
-    //         // console.log(json);
-
-    //         if (value === "") {
-    //             setProductList(json); // Return all data
-    //             return;
-    //         }
-    //         const regex = new RegExp(value);
-    //         const productList = json.filter((row_data) => {
-    //             return (
-    //                 row_data &&
-    //                 row_data.title &&
-    //                 regex.test(row_data.title) // rmbr to change the product_list.tsx field as well
-    //               );
-    //         });
-    //         // console.log(results)
-    //         setProductList(productList)
-    //     });
-    // };
     const fetchProductList = (value) => {
         // fetch("http://13.250.110.218:80/api/product/filter", {mode: 'no-cors'})
         //     .then((response) => response.json())
@@ -84,7 +54,7 @@ const HomePage: React.FC = () => {
         if (value === "") {
             setProductList(productList);
         }
-    
+
         const regex = new RegExp(value, 'i'); 
         const filteredList = productList.filter((row_data) => {
             return (
