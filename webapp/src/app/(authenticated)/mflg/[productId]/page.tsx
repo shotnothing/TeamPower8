@@ -47,10 +47,10 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
           <div className="container">
             <div className="row gx-5">
               <aside className="col-lg-6">
-                <div className="border rounded-4 mb-3 d-flex justify-content-center" style={{ width: '100%', height: '400px' }}>
+                <div className="rounded-4 mb-3 d-flex justify-content-center" style={{ width: '100%', height: '400px' }}>
                   <a data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image">
                     <img
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'fill' }}
                       className="rounded-4 fit"
                       src={product.image_url}
                       alt=""
