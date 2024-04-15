@@ -45,9 +45,10 @@ const HomePage: React.FC = () => {
             // Wait for all ranking fetches to complete
             const updatedList = await Promise.all(updatedListPromises);
     
-            // Sort productList by rank_normalized
-            updatedList.sort((a, b) => b.rank_normalized - a.rank_normalized);
-    
+            // Sort productList by rank_normalized (no its not like that, because the two ends are the "greatest")
+            // count their difference from 0.5 (midpoint instead)
+            updatedList.sort((a, b) => Math.abs(b.rank_normalized - 0.5) - Math.abs(a.rank_normalized - 0.5));
+            console.log(updatedList);
             setProductList(updatedList);
         } catch (error) {
             console.error("Error fetching product list:", error);
@@ -58,59 +59,6 @@ const HomePage: React.FC = () => {
         return fetch(`http://13.250.110.218:80/api/analytics/p/${product_id}`);
     };
     
-
-    // const fetchProductList = (value) => {
-    //     fetch("http://13.250.110.218:80/api/product/filter")
-    //         .then((response) => response.json())
-    //         .then((json) => {
-    //             // Save the JSON data to the productList variable
-
-    //             console.log(json)
-    //             setProductList(json.products);
-                
-    //             // Now you can use the productList variable to access the fetched data
-    //             console.log(productList); // For example, log the productList to the console
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error fetching product list:", error);
-    //         });
-
-    //     // using fake data - json file 
-    //     // const productList = productListData.products;
-
-    //     if (value === "") {
-    //         setProductList(productList);
-    //     }
-
-    //     const regex = new RegExp(value, 'i'); 
-    //     const filteredList = productList.filter((row_data) => {
-    //         return (
-    //             row_data &&
-    //             row_data.product_name &&
-    //             regex.test(row_data.product_name)
-    //         );
-    //     });
-
-    //     // order filtered list by ranking
-    //     const updatedList = filteredList.map((product) => {
-    //         const rank_normalized = fetchProductRanking(product.product_id);
-    //         console.log(rank_normalized);
-    //         return { ...product, rank_normalized };
-    //     });
-    //     updatedList.sort((a, b) => b.rank_normalized - a.rank_normalized);
-    //     setProductList(updatedList);
-    // };
-
-    // const fetchProductRanking = (product_id: number) => {
-    //     let ranking
-    //     fetch(`http://13.250.110.218:80/api/analytics/p/${product_id}`)
-    //         .then((response) => response.json())
-    //         .then((json) => {
-    //             ranking = json.rank_normalized
-    //         })
-    //     return ranking;
-    // };
-
     return (
         <div className='home-page'>
             <div className='introduction-container'>
