@@ -1,3 +1,7 @@
+body {
+    overflow: scroll;
+}
+
 .topbar {
     background-color: #fff; 
     color: black; 
@@ -7,7 +11,6 @@
     align-items: center;
     padding: 10px 20px;
 }
-
 
 .left {
     display: flex;

@@ -7,7 +7,6 @@
 body {
   height: 100vh;
   place-items: center;
-  overflow: hidden;
 }
 
 main {
