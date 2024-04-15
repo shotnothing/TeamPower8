@@ -2,7 +2,7 @@
     background-color: #ffffff;
     width: 100vw;
     height: 100vh;
-  }
+}
 
 .introduction-container {
     padding-left: 1vh;
@@ -25,9 +25,9 @@
     flex-direction: column;
     border: 1px solid #ccc;
 }
-  
+
 .product-list-container{
-    width: 30%;
+    width: 25%;
     border: 1px;
     padding: 0px;
     margin: 5px;
@@ -39,7 +39,7 @@
     margin: 5px;
 }
 .alert-list-container {
-    width: 30%;
+    width: 25%;
     border: 1px;
     padding: 0px;
     margin: 0px;
