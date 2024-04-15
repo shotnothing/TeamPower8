@@ -153,9 +153,9 @@ const HomePage: React.FC = () => {
                         {/* <Alert alertColour={alertColour}/> */}
                         <Alert ranking={product.ranking}/>
                     </div>
-                </div>))};
+                </div>))}
         </div>
-    );
+    )
 };
 
 export default HomePage;

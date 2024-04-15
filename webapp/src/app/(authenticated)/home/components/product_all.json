@@ -1,40 +1,147 @@
-{"products":[ 
-	{  
-	"product_id":  "1",  
-	"company":  "ABC-Inc",  
-	"product_name":  "Cable Car Ride (Child)",  
-	"scrape_timestamp":  "2024-03-23T12:00:00Z",  
-	"description":  "Experience the thrill of soaring through the skies on our cable car ride! As you embark on this aerial journey, you'll be treated to breathtaking panoramic views of the surrounding landscape.",  
-	"price":  "18.0",  
-	"source_url":  "https://www.abc.com/cable-car",  
-	"remarks":  "",  
-	"image_url":  "https://www.abc.com/images/cable-car.jpg",  
-	"tags":  ["Ride",  "Cable Car", "Heights"]  
-    },
-
-    {  
-	"product_id":  "2",  
-	"company":  "XYZ-leisure",  
-	"product_name":  "Universal Studio tickets",  
-	"scrape_timestamp":  "2024-03-23T12:00:00Z",  
-	"description":  "transformers and roller coasters",  
-	"price":  "18.0",  
-	"source_url":  "https://www.abc.com/cable-car",  
-	"remarks":  "",  
-	"image_url":  "https://www.abc.com/images/cable-car.jpg",  
-	"tags":  ["Ride",  "Cable Car", "Heights"]  
-    },
-	{  
-	"product_id":  "3",  
-	"company":  "ABC-Inc",  
-	"product_name":  "Cable Car Ride (Adult)",  
-	"scrape_timestamp":  "2024-03-23T12:00:00Z",  
-	"description":  "Experience the thrill of soaring through the skies on our cable car ride! As you embark on this aerial journey, you'll be treated to breathtaking panoramic views of the surrounding landscape.",  
-	"price":  "18.0",  
-	"source_url":  "https://www.abc.com/cable-car",  
-	"remarks":  "",  
-	"image_url":  "https://www.abc.com/images/cable-car.jpg",  
-	"tags":  ["Ride",  "Cable Car", "Heights"]  
-    }
-]}
-
+{
+    "products": [
+        {
+            "product_id": 0,
+            "company": "WIP",
+            "product_name": "Universal Studios Singapore Ticket",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect at Universal Studios Singapore\nPurchase Universal Studios Singapore tickets and enter a world in Resorts World Sentosa where the worlds of blockbuster films and their iconic characters come to life! In this wonderful theme park, you and your companions can experience the thrills of cutting-edge rides, shows, and attractions based on movies and television shows like Puss In Boots’ Giant Journey, Battlestar Galactica: HUMAN vs. CYLON™, TRANSFORMERS The Ride: The Ultimate 3D Battle, Jurassic Park Rapids Adventure™, Sesame Street Spaghetti Space Chase and more! Whichever attractions you visit, Universal Studios Singapore will surely indulge the interests of thrill-seekers, movie buffs, and every imaginative child!",
+            "original_price": 83,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/117-universal-studios-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/eem5oi6okzy4ntvguu3t.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 1,
+            "company": "WIP",
+            "product_name": "Klook Pass Singapore",
+            "scrape_timestamp": "WIP",
+            "description": "What to expect for Klook Pass Singapore\nGet access to 2-10 attractions with this one pass for a great price to visit Singapore!\nThis Singapore tourist pass includes general entry to your favourite Singapore’s attractions, including Universal Studios Singapore (available as premium add-on), Gardens by the Bay Singapore, Singapore Cable Car, Skyhelix Sentosa Singapore, Singapore Flyer ticket, Singapore Zoo, Singapore River Cruise, Big Bus Singapore tour, and many more!\nYou have up to 15 days to activate your pass and another 30 days upon activation to visit all attractions, giving you the flexibility to pick and choose depending on when and where you would like to go during your trip! Visits can be applied on different days within the usage validity period.\nCheck out our Mandai Wildlife Pass or the Resorts World Sentosa Pass which gives you pass access to S.E.A. Aquarium, Singapore Zoo, and more of your all time favourites!\n",
+            "original_price": 139,
+            "discounted_price": 81.35,
+            "source_url": "https://www.klook.com/en-US/activity/69622-singapore-attractions-pass/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/eujffsefqpxq4pomqnmv.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 2,
+            "company": "WIP",
+            "product_name": "Gardens by the Bay Ticket in Singapore",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect at Gardens by the Bay\nGardens by the Bay is an iconic Singapore destination and is undoubtedly at the top of every visitor’s itinerary to the city. Its waterfront gardens (Bay South, Bay East, and Bay Central) and Conservatories (the Flower Dome and Cloud Forest), as well as Floral Fantasy and the Supertree Observatory, feature some of the most incredible man-made structures built to house flora and fauna from all over the world. Have full access to the each attractions and enter directly with your Klook tickets. Learn about the power interconnectedness of ecology, see the tallest indoor waterfall, and walk amid the Supertree Grove. With countless attractions for both grown-ups and children, Gardens by the Bay in Singapore will certainly ensure that you’ll have a day well-spent.\n\n[22 Mar - 21 Apr] Sakura 2024 Step under a canopy of delicate cherry blossoms and immerse yourself in the ethereal beauty of Sakura season.\n\nComplementing the Sakura experience that visitors have come to anticipate is Yozakura (night sakura), where the cherry blossom trees are lit up and whimsical light projections on the ground offer a magical ambience under the darkened sky.",
+            "original_price": 10,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/127-gardens-by-the-bay-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/xbjxqkhabl6zes0xhsjb.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 3,
+            "company": "WIP",
+            "product_name": "S.E.A. Aquarium Ticket Sentosa, Singapore",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect in S.E.A. Aquarium Sentosa\nVenture through the fascinating world beneath the sea as you explore the ocean realm of S.E.A. Aquarium Singapore, home to more than 100,000 marine animals of over 800 species across 49 different habitats, each one as fascinating as the next. Get acquainted with marine habitat as you meet magnificent hammerhead sharks and come face-to-face with bottlenose dolphins. As South East Asia's largest aquarium, an awe-inspiring experience awaits as you unfold the endless wonders of our blue planet. Buy your S.E.A. Aquarium ticket at Klook and enjoy great discounts!",
+            "original_price": 25,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/119-sea-aquarium-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/dczglcfjh2ivknwtjtb8.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 4,
+            "company": "WIP",
+            "product_name": "Night Safari Singapore Ticket With Tram Ride",
+            "scrape_timestamp": "WIP",
+            "description": "What to Expect at Night Safari Singapore\nAs dusk falls, take an after-hours look at over 2,500 nocturnal animals starting their nightly rituals with an adventure to the Singapore Night Safari. Managed by the Wildlife Reserves Singapore Group, Night Safari is one of the many exciting zoos you can visit in the city other than the Singapore Zoo, River Wonders, and Bird Paradise. When in the Night Safari come close as the fascinating animals frolic, graze and hunt throughout the night. Embark on exciting tram rides that take you through 7 geographical regions of a wide range of animals. The guided tour brings along an expert guide to answer all your questions about the animals you’ll see during the tram ride. Visitors can opt to also explore the walking trails for an even deeper journey into the park. Follow the exciting paths of the Fishing Cat Trail, Leopard Trail, East Lodge Trail, and Wallaby Trail to meet the animals that come alive at night. Don't miss out the interactive Creatures of the Night Show, where you can learn more about the natural abilities of fascinating nocturnal animals during the show! Book Night Safari Singapore as your exciting adventure with loved ones when in the city!\n\nGo on an exciting adventure at the world’s first nocturnal wildlife park with a memorable trip to Night Safari\nEnjoy flexibility and visit the park at your own leisure with this convenient open dated ticket\nJoin closer encounters with the wildlife at the 4 trails: Fishing Cat, Leopard, East Lodge, and Wallaby\nSee otters, civets, and other animals show off their talents during the famous Creatures of the Night show\nMeet the Night Safari animals of with exciting tram rides through 7 geographical regions\nSavour a unique dining experience reminiscent of the kampungs (villages) in Ulu Ulu Safari Restaurant. Situated in a cosy area of Night Safari, this 300-seater restaurant offers dining under burnished wooden beams and rustic rattan fans. Or you can choose to dine al fresco in the company of animals. Either way, a meal at Ulu Ulu Safari Restaurant is sure to be a delightful experience.",
+            "original_price": 10,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/3928-singapore-night-safari-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/e9lsycjm1wb884bvek1y.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 5,
+            "company": "WIP",
+            "product_name": "Splashtopia @ Sentosa Palawan Green",
+            "scrape_timestamp": "WIP",
+            "description": "What to expect\nDive into Extraordinary Fun at Splashtopia – Kiztopia’s First-of-its-Kind Mega Water- Themed Inflatable Park!\n\nEmbark on a water-themed adventure like never before at 'Splashtopia,' where Kiztopia and Sentosa have come together to create an inflatable extravaganza! Designed for children of all ages, this exclusive event introduces innovative inflatable bouncy castles, slides, and obstacle courses, ensuring a wild and thrilling environment. Immerse yourself in the excitement as Kiztopia Friends take the splash, adding an extra layer of joy to this unique water wonderland. Don't miss out on this limited-time experience – it's not just an event; it's an unforgettable celebration of family, laughter, and magical moments!",
+            "original_price": 19,
+            "discounted_price": 16.5,
+            "source_url": "https://www.klook.com/en-US/activity/108451-splashtopia-sentosa-palawan-green-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/llxpgywkfeqlxagbnoaj.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 6,
+            "company": "WIP",
+            "product_name": "Singapore Cable Car Sky Pass",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect from Singapore Cable Car Sky\nTake in impressive 360° aerial views of Singapore’s urban city, lush greenery of Mount Faber and Sentosa onboard the Singapore Cable Car. Have fun exploring Sentosa with Unlimited Rides and see the views evolve from day to night.\n\nSingapore Cable Car\nRelish gorgeous, 360-degree views of the country's southern regions with a Singapore Cable Car Sky Pass\nThe cable car is the most unique way to get to Sentosa – no Singapore trip is complete without it!\nGet convenient access to other attractions such as Megazip, Universal Studios Singapore, and Siloso Beach\nHead to the famous Mount Faber peak using the pass and relish breathtaking sceneries from the top\nEnjoy a 2 or 4 course Sky Dining dinner on the Singapore Cable Car that will take your taste buds to new heights!",
+            "original_price": 35,
+            "discounted_price": 28,
+            "source_url": "https://www.klook.com/en-US/activity/130-faber-peak-cable-car-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/lxbrecy95s5muqsgtpwb.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 7,
+            "company": "WIP",
+            "product_name": "Singapore Zoo Ticket With Tram Ride",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect at Singapore Zoo\nSet in one of the most beautiful wildlife environments in the world, Singapore Zoo is home to over 2,800 animals from over 300 species of mammals, birds and reptiles that roam freely in open enclosures resembling their natural habitats, separated from visitors only by moats and wooden fencing. The park also boasts the world's first free-ranging orangutan habitat in a zoo! Spend a day exploring this award winning zoo - a great family activity in Singapore. Book your Singapore Zoo ticket with great discount today!",
+            "original_price": 48,
+            "discounted_price": 45.6,
+            "source_url": "https://www.klook.com/en-US/activity/141-singapore-zoo-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/ym23fmzxlukoxvokw0bd.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 8,
+            "company": "WIP",
+            "product_name": "ArtScience Museum at Marina Bay Sands Ticket",
+            "scrape_timestamp": "WIP",
+            "description": "What To Expect from ArtScience Museum Singapore Tour\nEnter a world of wonder and discovery at Singapore’s ArtScience Museum at Marina Bay Sands! Since its opening in February 2011, the ArtScience Museum has become a must-visit destination for both locals and tourists alike thanks to its iconic lotus shape, its massive size of 6,000 square meters filled with 21 different gallery spaces, and fascinating exhibits!\n\nMarina Bay Sands and international Tokyo-based art collective teamLab has expanded their landmark collaboration with a major transformation of ArtScience Museum’s permanent exhibit, Future World: Where Art Meets Science, and Digital Light Canvas by teamLab at The Shoppes – both of which reopened to visitors on 26 November 2022. Known for its ever-changing artworks, Future World at ArtScience Museum is being transformed in one of its most dramatic redevelopments to date. Three new interactive artworks that rethink and showcase the endless possibilities of play will form a new gallery titled Exploring New Frontiers. Visitors can take a multi-sensory journey to the skies above in exploration of flight, continuing the exhibition’s story of the harmonious co-existence between people and nature.",
+            "original_price": 23,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/2501-marina-bay-sands-artscience-museum-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/hn0x3xjtb6y1wxdhwvsi.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 9,
+            "company": "WIP",
+            "product_name": "Singapore Flyer Ticket",
+            "scrape_timestamp": "WIP",
+            "description": "What to expect from the Singapore Flyer\nAt 165 metres, the iconic Singapore Flyer is Asia’s largest observation wheel. Book tickets on Klook and treat your family or visiting friends to breathtaking views of our sprawling urban metropolis. Be it a romantic date or a day out with the kids, a flight on the Singapore Flyer is perfect for all ages and just about any occasion.\n\nSpanning two levels of the Singapore Flyer, the Time Capsule is a multisensory attraction of Singapore's rich history, heritage, culture and landscape. Embark on an immersive and interactive journey with R65, your time-travelling companion, to discover the country’s past, present, and future.",
+            "original_price": 40,
+            "discounted_price": null,
+            "source_url": "https://www.klook.com/en-US/activity/4534-singapore-flyer/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/t2cvzkaisyvjcgz52rlz.jpg",
+            "tags": "WIP"
+        },
+        {
+            "product_id": 10,
+            "company": "WIP",
+            "product_name": "Marina Bay Sands Skypark Observation Deck",
+            "scrape_timestamp": "WIP",
+            "description": "What to Expect at Marina Bay Sands Skypark\nPerched on top of the iconic Marina Bay Sands towers, 57 levels above ground, a visit to the Skypark's Observation Deck is a must for anyone looking to get the best view of the city's gorgeous skyline. Enjoy hassle-free access to this popular landmark by booking through the Klook website/app - simply purchase your ticket at least one day prior to your preferred visit date, show your voucher at the entrance, and you're good to go! Drink in uninterrupted views of the busy city while you're 200 meters above the ground, where your eyes will be treated to some the city's best sights, including tourist attractions like Gardens by the Bay and Supertree Grove, stretching all the way out to Singapore Strait. Take unbeatable souvenir shots to commemorate your visit to Singapore at the top of the Marina Bay Sands' trio of towers, which are sure to impress your family and friends back home! Prepare to be amazed as you watch the sun setting at dusk, painting the clear skies with bright splashes of colors, then stare at the twinkling lights coming from the skyscrapers surrounding you. After capturing multiple pictures from the Skypark, come on down to the 1st floor Event Plaza to enjoy the Spectra Light and Water Show which happens every 8:00pm and 9:00pm daily with an additional 10:00pm show on Fridays and Saturdays.",
+            "original_price": 28,
+            "discounted_price": 26,
+            "source_url": "https://www.klook.com/en-US/activity/10552-marina-bay-sands-skypark-observation-deck-admission-ticket-singapore/",
+            "remarks": "WIP",
+            "image_url": "https://res.klook.com/image/upload/activities/sdlood2rymimaznvt7yf.jpg",
+            "tags": "WIP"
+        }
+    ]
+}
