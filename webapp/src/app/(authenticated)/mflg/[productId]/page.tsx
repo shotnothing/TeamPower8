@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "./style.css"; // Import CSS file
 import { fetchProduct, fetchAnalytics } from "../../../../api";
 import { Product, Analytics } from "../../../../api/types";
 import PriceBar from "../../pricebar-component/pricebar";
