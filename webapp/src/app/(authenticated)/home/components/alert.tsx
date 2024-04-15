@@ -15,22 +15,22 @@ variants.forEach(variant => {
     alertVariantsBySymbol[variant.symbol] = variant;
 }); // 'red', 'yellow', 'green'
 
-const Alert: React.FC = ({ranking}) => {
+const Alert: React.FC = ({rank_normalized}) => {
 
-  const fetchAlertColour = (ranking) => {
+  const fetchAlertColour = (rank_normalized) => {
     //red - 0-10, 90-100
     //yellow - 10-25, 75-90
     //green - 25-75
-    if (ranking <= 0.1 || ranking >= 0.9){
+    if (rank_normalized <= 0.1 || rank_normalized >= 0.9){
         return 'red';
-    } else if (ranking > 0.25 && ranking < 0.75){
+    } else if (rank_normalized > 0.25 && rank_normalized < 0.75){
         return 'green';
     } else {
         return 'yellow';
     }
   }
   
-  const variant = alertVariantsBySymbol[fetchAlertColour(ranking)];
+  const variant = alertVariantsBySymbol[fetchAlertColour(rank_normalized)];
   return (
 
     <div className='alert-container'>

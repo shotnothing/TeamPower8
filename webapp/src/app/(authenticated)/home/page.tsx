@@ -6,16 +6,6 @@ import SearchBar from './components/search_bar';
 import ProductList from './components/product_list';
 import PriceBar from './components/price_bar';
 import Alert from './components/alert';
-import {variants} from './components/alert_variants';
-import OverviewTable from './components/overview_table';
-
-
-// to be deleted
-import productListData from './components/product_all.json';
-import productAnalytics1 from './components/product_analytics_1.json'
-import productAnalytics2 from './components/product_analytics_2.json'
-import productAnalytics3 from './components/product_analytics_3.json'
-
 
 const HomePage: React.FC = () => {
     const [input, setInput] = useState("");
@@ -29,61 +19,97 @@ const HomePage: React.FC = () => {
         return () => {};
     }, []);
 
-    // https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md (our group's API)
-    // /product/all --> get product_name
-
-    const fetchProductList = (value) => {
-        // fetch("http://13.250.110.218:80/api/product/filter", {mode: 'no-cors'})
-        //     .then((response) => response.json())
-        //     .then((json) => {
-        //         // Save the JSON data to the productList variable
-
-        //         console.log(json)
-        //         setProductList(json.products);
-                
-        //         // Now you can use the productList variable to access the fetched data
-        //         console.log(productList); // For example, log the productList to the console
-        //     })
-        //     .catch((error) => {
-        //         console.error("Error fetching product list:", error);
-        //     });
-
-        // using fake data - json file 
-        const productList = productListData.products;
-
-        if (value === "") {
-            setProductList(productList);
+    const fetchProductList = async (value) => {
+        try {
+            const response = await fetch("http://13.250.110.218:80/api/product/filter");
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const json = await response.json();
+            let productList = json.products;
+            
+            // Filter the productList based on the value
+            if (value !== "") {
+                const regex = new RegExp(value, 'i');
+                productList = productList.filter((product) => regex.test(product.product_name));
+            }
+    
+            // Fetch ranking for each product and update productList
+            const updatedListPromises = productList.map(async (product) => {
+                const rankResponse = await fetchProductRanking(product.product_id);
+                const rankJson = await rankResponse.json();
+                const rank_normalized = rankJson.rank_normalized;
+                return { ...product, rank_normalized };
+            });
+    
+            // Wait for all ranking fetches to complete
+            const updatedList = await Promise.all(updatedListPromises);
+    
+            // Sort productList by rank_normalized
+            updatedList.sort((a, b) => b.rank_normalized - a.rank_normalized);
+    
+            setProductList(updatedList);
+        } catch (error) {
+            console.error("Error fetching product list:", error);
         }
-
-        const regex = new RegExp(value, 'i'); 
-        const filteredList = productList.filter((row_data) => {
-            return (
-                row_data &&
-                row_data.product_name &&
-                regex.test(row_data.product_name)
-            );
-        });
-
-        // order filtered list by ranking
-        const updatedList = filteredList.map((product) => {
-            const ranking = fetchProductRanking(product.product_id);
-            return { ...product, ranking };
-        });
-        updatedList.sort((a, b) => b.ranking - a.ranking);
-        setProductList(updatedList);
     };
+    
+    const fetchProductRanking = (product_id: number) => {
+        return fetch(`http://13.250.110.218:80/api/analytics/p/${product_id}`);
+    };
+    
 
-    const fetchProductRanking = (product_id) => {
-        let ranking
-        if (product_id == "1") {
-          ranking = productAnalytics1.ranking;
-        } else if (product_id == "2"){
-          ranking = productAnalytics2.ranking;
-        } else {
-          ranking = productAnalytics3.ranking;
-        }
-        return ranking;
-    }
+    // const fetchProductList = (value) => {
+    //     fetch("http://13.250.110.218:80/api/product/filter")
+    //         .then((response) => response.json())
+    //         .then((json) => {
+    //             // Save the JSON data to the productList variable
+
+    //             console.log(json)
+    //             setProductList(json.products);
+                
+    //             // Now you can use the productList variable to access the fetched data
+    //             console.log(productList); // For example, log the productList to the console
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching product list:", error);
+    //         });
+
+    //     // using fake data - json file 
+    //     // const productList = productListData.products;
+
+    //     if (value === "") {
+    //         setProductList(productList);
+    //     }
+
+    //     const regex = new RegExp(value, 'i'); 
+    //     const filteredList = productList.filter((row_data) => {
+    //         return (
+    //             row_data &&
+    //             row_data.product_name &&
+    //             regex.test(row_data.product_name)
+    //         );
+    //     });
+
+    //     // order filtered list by ranking
+    //     const updatedList = filteredList.map((product) => {
+    //         const rank_normalized = fetchProductRanking(product.product_id);
+    //         console.log(rank_normalized);
+    //         return { ...product, rank_normalized };
+    //     });
+    //     updatedList.sort((a, b) => b.rank_normalized - a.rank_normalized);
+    //     setProductList(updatedList);
+    // };
+
+    // const fetchProductRanking = (product_id: number) => {
+    //     let ranking
+    //     fetch(`http://13.250.110.218:80/api/analytics/p/${product_id}`)
+    //         .then((response) => response.json())
+    //         .then((json) => {
+    //             ranking = json.rank_normalized
+    //         })
+    //     return ranking;
+    // };
 
     return (
         <div className='home-page'>
@@ -121,7 +147,7 @@ const HomePage: React.FC = () => {
 
                     <div className='alert-list-container'>
                         {/* <Alert alertColour={alertColour}/> */}
-                        <Alert ranking={product.ranking}/>
+                        <Alert rank_normalized={product.rank_normalized}/>
                     </div>
                 </div>))}
         </div>
