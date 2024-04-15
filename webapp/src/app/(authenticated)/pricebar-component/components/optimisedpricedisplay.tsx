@@ -29,7 +29,7 @@ const OptimisedPriceDisplay: React.FC<OptimisedPricesProps> = ({ data, newData }
             {optimisedPrice !== null && ( // Check if optimisedPrice is not null before rendering
                 <div className="display-price-container">
                     <span>Optimised Price:</span><br />
-                    <span>{optimisedPrice.toFixed(2)}</span>
+                    <span>${optimisedPrice.toFixed(2)}</span>
                     </div>
             )}
         </div>

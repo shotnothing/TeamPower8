@@ -2,7 +2,7 @@
     background-color: #ffffff;
     width: 100vw;
     height: 100vh;
-  }
+}
 
 .introduction-container {
     padding-left: 1vh;
@@ -15,13 +15,7 @@
     padding-bottom: 3vh;
     padding-left: 1vh;
 }
-.search-bar-container {
-    width: 60%;
-    /* margin: auto; */
-    /* display: flex;
-    flex-direction: column; */
-    /* min-width: 300px; */
-}
+
 .overview-container {
     width: 30%;
 }
@@ -31,21 +25,21 @@
     flex-direction: column;
     border: 1px solid #ccc;
 }
-  
+
 .product-list-container{
-    width: 30%;
+    width: 25%;
     border: 1px;
     padding: 0px;
-    margin: 5px;
+    margin: auto;
 }
 .price-bar-container{
-    width: 50%;
+    width: 45%;
     border: 1px;
-    padding: 10px;
+    padding-bottom: 50px;
     margin: 5px;
 }
 .alert-list-container {
-    width: 30%;
+    width: 25%;
     border: 1px;
     padding: 0px;
     margin: 0px;
