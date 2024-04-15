@@ -101,7 +101,7 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
         <h2>Similar Products</h2>
         <ul className="list-group">
           {similarProducts.map((similarProduct) => (
-            <a href={`/mflg/${similarProduct.product_id}`} className="list-group-item list-group-item-action">
+            <a href={`/mflg/${similarProduct.product_id}`} className="list-group-item list-group-item-action link-primary">
               {similarProduct.product_name}
             </a>
           ))}
