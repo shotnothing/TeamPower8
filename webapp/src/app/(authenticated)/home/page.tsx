@@ -65,16 +65,11 @@ const HomePage: React.FC = () => {
                 <Introduction />
             </div>
             
-            <div className='search-and-summary-container'>
-                <div className='search-bar-container'>
-                    <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
-                    {/* <SearchBar /> */}
-                    <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
-                </div>
-
-                {/* <div className='overview-container'>
-                    <OverviewTable />
-                </div> */}
+            
+            <div className='search-bar-container'>
+                <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
+                {/* <SearchBar /> */}
+                <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
             </div>
             
 

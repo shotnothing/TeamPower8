@@ -5,11 +5,6 @@ import { IoWarningOutline } from "react-icons/io5";
 import { AiOutlineSafety } from "react-icons/ai";
 import { MdOutlineDangerous } from "react-icons/md";
 
-// to be deleted - fake data
-import productAnalytics1 from './product_analytics_1.json'
-import productAnalytics2 from './product_analytics_2.json'
-import productAnalytics3 from './product_analytics_3.json'
-
 const alertVariantsBySymbol: Record<string, variants> = {};
 variants.forEach(variant => {
     alertVariantsBySymbol[variant.symbol] = variant;
