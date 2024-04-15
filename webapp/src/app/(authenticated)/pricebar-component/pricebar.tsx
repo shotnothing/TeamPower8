@@ -59,7 +59,7 @@ const PriceBar: React.FC<PriceBarProps> = ({ SimilarProducts }) => {
         { label: 'MFLG product optimised price', color: 'red' },
         { label: 'MFLG product current price', color: 'green' },
         { label: 'Competitor product current price', color: 'steelblue' },
-      ];
+    ];
 
     const handleSliderChange = (newValue: number) => {
         setSliderValue(newValue);
@@ -91,7 +91,7 @@ const PriceBar: React.FC<PriceBarProps> = ({ SimilarProducts }) => {
             <div className="boxplot-container">
                 <div className="content">
                     <div className="prices">
-                        <h5>Slide to choose the percentile for optimised price of product</h5>
+                        Slide to choose the percentile for optimised price of product.
                         <div className="slider-button-container">
                             <DiscreteSlider handleChange={handleSliderChange} />
                             <button onClick={handleUpdateData}>Show optimised price</button>
