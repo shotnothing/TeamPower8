@@ -30,12 +30,12 @@
     width: 25%;
     border: 1px;
     padding: 0px;
-    margin: 5px;
+    margin: auto;
 }
 .price-bar-container{
-    width: 50%;
+    width: 45%;
     border: 1px;
-    padding: 10px;
+    padding-bottom: 50px;
     margin: 5px;
 }
 .alert-list-container {
