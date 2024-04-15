@@ -37,7 +37,7 @@
 			"price": "",
 			"source_url": "SkyHelix_Page.html",
 			"remarks": "",
-			"image_url": "https://s.yimg.com/ny/api/res/1.2/82vUCc.8Bh5vOY60Ja1lew--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://s.yimg.com/os/creatr-uploaded-images/2021-11/fb7af260-42e7-11ec-aeb7-bbf878ba7ac8",
+			"image_url": "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_3000,h_1998,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/fkqm7noaowpdlk4q6shv/SkyHelixSentosaSingaporeTickets-KlookPhilippines.jpg",
 			"tags": [
 				"SkyHelix"
 			]
@@ -51,7 +51,7 @@
 			"price": "",
 			"source_url": "WoT_Page.html",
 			"remarks": "",
-			"image_url": "https://www.mountfaberleisure.com/wp-content/uploads/2023/03/500-x-370_WOT_cleanup.png",
+			"image_url": "https://media.timeout.com/images/105892022/image.jpg",
 			"tags": [
 				"Wings Of Time"
 			]
@@ -59,15 +59,15 @@
 		{
 			"product_id": "5",
 			"company": "Mount Faber Leisure Group",
-			"product_name": "Singapore Island Bus Tour",
+			"product_name": "Sentosa Island Bus Tour",
 			"scrape_timestamp": "2024-04-02T00:00:00Z",
 			"description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.",
 			"price": "",
 			"source_url": "BusTour_Page.html",
 			"remarks": "",
-			"image_url": "https://www.creditcard99.com/photo/HSBC/16808141.jpg",
+			"image_url": "https://cdn-imgix.headout.com/microbrands-content-image/image/f48850f529225d64e16d8bd26537b0a1-Sentosa%20Island%20Bus%20Tour.jpg",
 			"tags": [
-				"Singapore Island Bus Tour"
+				"Sentosa Island Bus Tour"
 			]
 		},
 		{
@@ -79,7 +79,7 @@
 			"price": "",
 			"source_url": "Peak_Page.html",
 			"remarks": "",
-			"image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfkbOlKxnvvWwUYTpnBsIL-0WeKuFgPMCYUg&usqp=CAU",
+			"image_url": "https://ak-d.tripcdn.com/images/0103o120009xhp5ik4816.jpg?proc=source%2Ftrip",
 			"tags": [
 				"Mount Faber Peak"
 			]
