@@ -71,7 +71,7 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
                     <dd className="col-9">${product.original_price}</dd>
 
                     <dt className="col-3">Scrape source</dt>
-                    <dd className="col-9"><a href="{product.source_url}">Link</a></dd>
+                    <dd className="col-9"><a href={product.source_url}>Link</a></dd>
 
                     <dt className="col-3">Scrape date</dt>
                     <dd className="col-9">28 March 2024</dd>
