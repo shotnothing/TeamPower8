@@ -1,7 +1,7 @@
 import { Product, Analytics } from "./types";
 import MOCK_DATA from "./mock-data.json";
 
-const MOCK = false;
+const MOCK = true;
 
 const PRODUCTS_URL = "http://13.250.110.218/api/product/filter?company=mflg";
 const PRODUCT_URL = "http://13.250.110.218/api/product/p/";
