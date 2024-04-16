@@ -5,8 +5,7 @@ const MOCK = false;
 
 const PRODUCTS_URL = "http://13.250.110.218/api/product/filter?company=mflg";
 const PRODUCT_URL = "http://13.250.110.218/api/product/p/";
-
-const ANALYTICS_URL = "http://13.250.110.218/api/analytics/p/"
+const ANALYTICS_URL = "http://13.250.110.218/api/analytics/p/";
 
 
 // Fetch all products
