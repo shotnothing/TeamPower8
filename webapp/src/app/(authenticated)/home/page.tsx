@@ -73,20 +73,20 @@ const HomePage: React.FC = () => {
             </div>
             
 
-            {productList.map((product, index) => (
-                <div className='alert-dashboard' key={index}>
-                    <div className='product-list-container'>
-                        {productList && productList.length >0 && <ProductList productList={[product]}/>}
-                    </div>
+                    {productList.map((product, index) => (
+                        <div className='alert-dashboard' key={index}>
+                            <div className='product-list-container'>
+                                {productList && productList.length >0 && <ProductList productList={[product]}/>}
+                            </div>
 
-                    <div className='price-bar-container'>
-                    <PriceBar sampleSimilarProducts={{
-                            "prices": [10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
-                            "product_price": 25.0,
-                            "ranking": 0.82,
-                            "similar": [3, 5, 6, 20, 35, 49]
-                        }} />
-                    </div>
+                            <div className='price-bar-container'>
+                            <PriceBar sampleSimilarProducts={{
+                                    "prices": [10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
+                                    "product_price": 25.0,
+                                    "ranking": 0.82,
+                                    "similar": [3, 5, 6, 20, 35, 49]
+                                }} />
+                            </div>
 
                     <div className='alert-list-container'>
                         {/* <Alert alertColour={alertColour}/> */}

@@ -4,7 +4,7 @@ export type Product = {
   product_name: string;
   scrape_timestamp: string;
   description: string;
-  price: string;
+  original_price: string;
   source_url: string;
   remarks: string;
   image_url: string;
