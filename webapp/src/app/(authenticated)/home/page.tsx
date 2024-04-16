@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
 
     const fetchProductList = async (value) => {
         try {
-            const response = await fetch("http://13.250.110.218:80/api/product/filter");
+            const response = await fetch("http://13.213.39.217/api/product/filter?company=mflg");
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
     };
     
     const fetchProductRanking = (product_id: number) => {
-        return fetch(`http://13.250.110.218:80/api/analytics/p/${product_id}`);
+        return fetch(`http://13.213.39.217/api/analytics/p/${product_id}`);
     };
     
     return (
