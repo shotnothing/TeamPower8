@@ -1,15 +1,29 @@
-version: '3'
-
 services:
-  backend:
-    build: ./server
-    command: python ./server/manage.py runserver 0.0.0.0:8000
+  api:
+    build: ./api
+    command: python ./api/manage.py runserver 0.0.0.0:80
     volumes:
       - .:/volume
     ports:
-      - "8000:8000"
+      - "80:80"
+    environment:
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}
 
-  frontend:
+  website:
     build: ./webapp
     ports:
       - "3000:3000"
+
+  test:
+  # Run tests in the api container, will not be run by default.
+  # Do not use in production!
+  # Usage: docker-compose --profile dev up test_api
+    profiles: ["dev"] # only runs with dev profile
+    build: ./api
+    command: python ./api/manage.py test backend_app
+    volumes:
+      - .:/volume
+    environment:
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}

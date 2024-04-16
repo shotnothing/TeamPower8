@@ -1,0 +1,6 @@
+.prices {
+    flex: 1; /* Each component takes equal space */
+    width: 100%;
+    /* margin-right: 20px; Add some spacing between components */
+    background-color: white;
+}

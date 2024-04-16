@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.3**
+**Version 0.1.5**
 
-**Date: 31/03/2024**
+**Date: 14/04/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
@@ -31,7 +31,8 @@ None
 	-   `product_name`: The name of the product.
 	-   `scrape_timestamp`: The timestamp when the product information was last scraped or updated.
 	-   `description`: A description of the product.
-	-   `price`: The price of the product.
+	-   `original_price`: The original price of the product.
+	-   `discounted_price`: The discounted price of the product.
 	-   `source_url`: The URL of the source website where the product information was obtained.
 	-   `remarks`: Any additional remarks or notes about the product.
 	-   `image_url`: The URL of the product's image.
@@ -47,7 +48,8 @@ Command: `GET /product/p/3`
 	"product_name":  "Cable Car Ride (Adult)",  
 	"scrape_timestamp":  "2024-03-23T12:00:00Z",  
 	"description":  "Experience the thrill of soaring through the skies on our cable car ride! As you embark on this aerial journey, you'll be treated to breathtaking panoramic views of the surrounding landscape.",  
-	"price":  "18.0",  
+	"original_price":  "18.0",
+	"discounted_price":  "15.0",
 	"source_url":  "https://www.abc.com/cable-car",  
 	"remarks":  "",  
 	"image_url":  "https://www.abc.com/images/cable-car.jpg",  
@@ -55,44 +57,17 @@ Command: `GET /product/p/3`
 }
 ```
 
-### Get Product List
-**GET** `/product/all`
-
-Retrieves a list of **all** products and their info.
-
-**Parameters**
-
-None
-
-**Response**
-
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `products`: An array of products.
-   
-**Example Usage:**
-
-Command: `GET /product/all`
-```json
-{  "products":  [ 
-	{ "product_id":  "1", "company":  "ABC-Inc", ...},
-	{ "product_id":  "2", "company":  "XYZ-leisure", ...},
-	{ "product_id":  "3", "company":  "ABC-Inc", ...},
-	{ "product_id":  "4", "company":  "IRTL", ...},
-	...
-]}
-```
-
 ### Get Filtered Product List
 **GET** `/product/filter`
 
 Retrieves a list of products and their info, filtered by specified fields.
+TODO: Combine with product range
 
 **Parameters**
 - `company`: (optional) Filter products by company name.
 - `name`: (optional) Filter products that have product name that contains `name` .
-- `tag`: (optional) Filter products by those who are tagged with `tag`.
+- `from`: Lower bound of index to filter products, inclusive.
+- `to`: Upper bound of index to filter products, inclusive.
   
 **Response**
 - **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
@@ -102,15 +77,13 @@ Retrieves a list of products and their info, filtered by specified fields.
  
 **Example Usage:**
 
-Command: `GET /product/filter?company=ABC-Inc&tag=cable-car`
+Command: `GET /product/filter?company=ABC-Inc&from=0&to=1`
 ```json
 {  "products":  [ 
 	{ "product_id":  "1", "company":  "ABC-Inc", ...},
 	{ "product_id":  "3", "company":  "ABC-Inc", ...}
 ]}
 ```
-
-
 
 
 ## Company
