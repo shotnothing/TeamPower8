@@ -1,3 +1,7 @@
 .list-group-item-action.link-primary:hover {
     text-decoration: underline;
 }
+
+.description-container {
+    text-align: justify;
+}

@@ -46,14 +46,14 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
         <section className="py-3">
           <div className="container">
             <div className="row gx-5">
-              <aside className="col-lg-6">
+              <aside className="col-lg-6 gx-5">
                 <div className="rounded-4 mb-3 d-flex justify-content-center">
                   <a data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image">
                     <img
-                      style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'fill'}}
                       className="rounded-4 fit"
                       src={product.image_url}
-                      alt=""
+                      alt="no image"
                     />
                   </a>
                 </div>
@@ -63,16 +63,18 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
                   <h1 className="title text-dark">
                     {product.product_name}
                   </h1>
-                  <p>
+                  <p className="description-container">
                     {product.description}
                   </p>
-
                   <div className="row">
                     <dt className="col-3">Price</dt>
-                    <dd className="col-9">{product.price}</dd>
+                    <dd className="col-9">${product.original_price}</dd>
 
-                    <dt className="col-3">Tags</dt>
-                    <dd className="col-9">{product.tags}</dd>
+                    <dt className="col-3">Scrape source</dt>
+                    <dd className="col-9"><a href={product.source_url}>Link</a></dd>
+
+                    <dt className="col-3">Scrape date</dt>
+                    <dd className="col-9">28 March 2024</dd>
                   </div>
                   <hr />
                 </div>
