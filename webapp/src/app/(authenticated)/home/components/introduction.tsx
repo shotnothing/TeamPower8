@@ -13,8 +13,9 @@ const Introduction: React.FC = () => {
   const greenColor = greenVariant ? greenVariant.secondaryColor : '';
 
   return (
-    <div>
+    <div className='introduction-container'>
       {/* <h1 className="text-3xl font-bold">Welcome to our website</h1> */}
+      <h1>Alert Dashboard</h1>
       <p className="text-gray-700 mt-4">
         Gain valuable visibility into current landscape of MFLG product offerings juxtaposed against market rates, all at a glance with the color-coded alert system:
       </p>

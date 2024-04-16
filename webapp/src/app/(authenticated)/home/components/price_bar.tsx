@@ -37,11 +37,17 @@ function extractSimilarPrices(data: ProductData): { [key: string]: number } {
 
 const PriceBar: React.FC<PriceBarProps> = ({ sampleSimilarProducts }) => {
     const extractedData = extractSimilarPrices(sampleSimilarProducts);
-
     const svgRef = useRef<SVGSVGElement>(null);
     const data = extractedData;
     const width = 500;
     const height = 150;
+    
+    const svg = svgRef.current;
+    if (svg) {
+        while (svg.firstChild) {
+            svg.removeChild(svg.firstChild);
+        }
+    };
 
     return (
       <div className="prices">

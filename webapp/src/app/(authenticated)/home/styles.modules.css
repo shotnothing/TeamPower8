@@ -2,20 +2,31 @@
     background-color: #ffffff;
     width: 100vw;
     height: 100vh;
-}
+    padding-left: 30vh;
+    padding-right: 30vh;
+    padding-bottom: 20vh;
+  }
 
 .introduction-container {
     padding-left: 1vh;
 }
 
-.search-and-summary-container {
+/* .search-and-summary-container {
     display: flex;
     justify-content: space-between; 
     padding-top: 3vh;
     padding-bottom: 3vh;
     padding-left: 1vh;
+} */
+.search-bar-container {
+    width: 100%;
+    margin: auto; 
+    display: flex;
+    flex-direction: column; 
+    min-width: 300px;
+    padding-left: 1vh;
+    padding-bottom: 3vh;
 }
-
 .overview-container {
     width: 30%;
 }
