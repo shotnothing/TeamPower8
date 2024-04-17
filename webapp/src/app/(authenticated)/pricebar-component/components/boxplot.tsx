@@ -17,7 +17,7 @@ const BoxPlot: React.FC<BoxPlotProps> = ({ data, width, height, svgRef }) => {
         const dataArray = Object.values(data);
         if (dataArray.length === 0) return;
 
-        const margin = { top: 20, right: 50, bottom: 50, left: 2 };
+        const margin = { top: 30, right: 50, bottom: 50, left: 2 };
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
 
@@ -43,17 +43,15 @@ const BoxPlot: React.FC<BoxPlotProps> = ({ data, width, height, svgRef }) => {
         // Draw box plot
         const boxPlotGroup = g.append('g');
 
-        const boxHeight = yScale.bandwidth();
+        // const boxHeight = yScale.bandwidth();
 
-        Object.entries(data).forEach(([key, value]) => {
-            // For each key-value pair in the data object
-            boxPlotGroup.append('rect')
-                .attr('y', yScale('Box Plot') - 20)
-                .attr('x', xScale(d3.quantile(dataArray, 0.25)))
-                .attr('height', 40)
-                .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
-                .attr('fill', 'rgba(0, 0, 0, 0.01)');
-        });
+
+        boxPlotGroup.append('rect')
+            .attr('y', yScale('Box Plot') - 20)
+            .attr('x', xScale(d3.quantile(dataArray, 0.25)))
+            .attr('height', 40)
+            .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
+            .attr('fill', 'rgba(0, 0, 0, 0.05)');
 
 
         boxPlotGroup.append('line')

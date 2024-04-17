@@ -6,11 +6,8 @@ import SearchBar from './components/search_bar';
 import ProductList from './components/product_list';
 import PriceBar from './components/price_bar';
 import Alert from './components/alert';
-import {variants} from './components/alert_variants';
-import OverviewTable from './components/overview_table';
-
-// to be deleted
-import productListData from './components/product_all.json';
+import { fetchProduct, fetchAnalytics } from "../../../api";
+import { Product, Analytics } from "../../../api/types";
 
 const HomePage: React.FC = () => {
     const [input, setInput] = useState("");
@@ -21,100 +18,92 @@ const HomePage: React.FC = () => {
     // render all even if there is no interaction with search bar (when page is called)
     useEffect(() => {
         fetchProductList(input)
-        // setAlertColour("red")
-        // setproductID("2")
-    });
+        return () => {};
+    }, []);
 
-    // https://github.com/shotnothing/TeamPower8/blob/main/docs/API.md (our group's API)
-    // /product/all --> get product_name
-
-    // const fetchProductList = (value) => {
-    //     fetch("https://api.nusmods.com/v2/2023-2024/moduleList.json").then((response) => response.json())
-    //     .then((json) => {
-    //         // console.log(json);
-
-    //         if (value === "") {
-    //             setProductList(json); // Return all data
-    //             return;
-    //         }
-    //         const regex = new RegExp(value);
-    //         const productList = json.filter((row_data) => {
-    //             return (
-    //                 row_data &&
-    //                 row_data.title &&
-    //                 regex.test(row_data.title) // rmbr to change the product_list.tsx field as well
-    //               );
-    //         });
-    //         // console.log(results)
-    //         setProductList(productList)
-    //     });
-    // };
-
-    const fetchProductList = (value) => {
-        // using fake data - json file 
-        const productList = productListData.products;
+    const fetchProductList = async (value) => {
+        try {
+            const response = await fetch("http://13.213.39.217/api/product/filter?company=mflg");
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const json = await response.json();
+            let productList = json.products;
+            
+            // Filter the productList based on the value
+            if (value !== "") {
+                const regex = new RegExp(value, 'i');
+                productList = productList.filter((product) => regex.test(product.product_name));
+            }
     
-        if (value === "") {
-            setProductList(productList); 
-            return;
+            // Fetch ranking for each product and update productList
+            const updatedListPromises = productList.map(async (product) => {
+                const rankResponse = await fetchProductRanking(product.product_id);
+                const rankJson = await rankResponse.json();
+                const rank_normalized = rankJson.rank_normalized;
+                const similarProducts = rankJson.similar_products;
+                const similarProductsPrices = rankJson.prices;
+                const productName = rankJson.product_name
+                const price = rankJson.original_price;
+                return { ...product, rank_normalized, similarProducts, productName, price, similarProductsPrices };
+            });
+    
+            // Wait for all ranking fetches to complete
+            const updatedList = await Promise.all(updatedListPromises);
+    
+            // Sort productList by rank_normalized (no its not like that, because the two ends are the "greatest")
+            // count their difference from 0.5 (midpoint instead)
+            updatedList.sort((a, b) => Math.abs(b.rank_normalized - 0.5) - Math.abs(a.rank_normalized - 0.5));
+            console.log(updatedList);
+            setProductList(updatedList);
+        } catch (error) {
+            console.error("Error fetching product list:", error);
         }
-    
-        const regex = new RegExp(value, 'i'); 
-        const filteredList = productList.filter((row_data) => {
-            return (
-                row_data &&
-                row_data.product_name &&
-                regex.test(row_data.product_name)
-            );
-        });
-    
-        setProductList(filteredList);
     };
 
+
+    
+    const fetchProductRanking = (product_id: number) => {
+        return fetch(`http://13.213.39.217/api/analytics/p/${product_id}`);
+    };
+    
     return (
         <div className='home-page'>
-            <h1>Alert Dashboard</h1>
-
             <div className='introduction-container'>
                 <Introduction />
             </div>
             
-            <div className='search-and-summary-container'>
-                <div className='search-bar-container'>
-                    <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
-                    {/* <SearchBar /> */}
-                    <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
-                </div>
-
-                {/* <div className='overview-container'>
-                    <OverviewTable />
-                </div> */}
+            
+            <div className='search-bar-container'>
+                <h5>Please search for the MFLG product for which you would like to understand its competitors</h5>
+                {/* <SearchBar /> */}
+                <SearchBar setInput={setInput} fetchProductList={fetchProductList}/>
             </div>
             
 
-            {productList.map((product, index) => (
-                <div className='alert-dashboard' key={index}>
-                    <div className='product-list-container'>
-                        {productList && productList.length >0 && <ProductList productList={[product]}/>}
-                    </div>
+                    {productList.map((product, index) => (
+                        <div className='alert-dashboard' key={index}>
+                            <div className='product-list-container'>
+                                {productList && productList.length >0 && <ProductList productList={[product]}/>}
+                            </div>
 
-                    <div className='price-bar-container'>
-                    <PriceBar sampleSimilarProducts={{
-                            "prices": [10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
-                            "product_price": 25.0,
-                            "ranking": 0.82,
-                            "similar": [3, 5, 6, 20, 35, 49]
-                        }} />
-                    </div>
+                            <div className='price-bar-container'>
+                            <PriceBar SimilarProducts={{
+                                    "product_price": product.price,
+                                    "product_name": product.productName,
+                                    "similar_products": product.similarProducts
+                                }} />
+                            </div>
 
                     <div className='alert-list-container'>
                         {/* <Alert alertColour={alertColour}/> */}
-                        {console.log(product.product_id)}
-                        <Alert product_id={product.product_id}/>
+                        <Alert rank_normalized={product.rank_normalized}/>
                     </div>
-                </div>))};
+                </div>))}
         </div>
-    );
+    )
 };
 
 export default HomePage;
+
+

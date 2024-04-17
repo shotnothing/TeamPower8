@@ -4,7 +4,7 @@ export type Product = {
   product_name: string;
   scrape_timestamp: string;
   description: string;
-  price: string;
+  original_price: string;
   source_url: string;
   remarks: string;
   image_url: string;
@@ -12,8 +12,14 @@ export type Product = {
 };
 
 export type Analytics = {
-  prices: number[];
-  product_price: number;
-  ranking: number;
-  similar: number[]
+  prices: number[]; 
+  product_price: number; 
+  original_price: number; 
+  discounted_price: number | null; 
+  similar: number[]; 
+  similar_products: Product[]; 
+  product_name: string; 
+  rank: number; 
+  rank_normalized: number; 
 }
+

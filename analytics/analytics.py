@@ -15,22 +15,26 @@ from similarity_scoring import *
 
 def run():
     ''' Runs the analytics pipeline.'''
+    # Make export directory if it doesn't exist
+    if not os.path.exists('./analytics/export'):
+        os.makedirs('./analytics/export')
+
     # Run label membership
-    if not os.path.exists('./export/label_membership.csv'):
+    if not os.path.exists('./analytics/export/label_membership.csv'):
         logger.info('Running label membership')
         df = run_fetch_supabase()
         label_df = run_label_membership(df)
-        save_csv(label_df, './export/label_membership.csv')
+        save_csv(label_df, './analytics/export/label_membership.csv')
     else:
         logger.info('Using existing label_membership.csv')
-        label_df = load_csv('./export/label_membership.csv')
+        label_df = load_csv('./analytics/export/label_membership.csv')
 
     # Run similarity scoring
     similarity_matrix_dfs = {}
     for distance_metric_name, distance_metric in SimilarityScoringPipeline \
                                                     .get_distance_metrics() \
                                                     .items():
-        filepath = f'./export/similarity_matrix_{distance_metric_name}.csv'
+        filepath = f'./analytics/export/similarity_matrix_{distance_metric_name}.csv'
         if not os.path.exists(filepath):
             logger.info(f'Running similarity scoring for {distance_metric_name}')
             similarity_matrix_df = run_similarity_scoring(

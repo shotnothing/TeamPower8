@@ -1,11 +1,12 @@
 .legend {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; 
   }
   
   .legend-item {
     display: flex;
     align-items: center;
+    margin-right: 20px;
     margin-bottom: 5px;
   }
   
