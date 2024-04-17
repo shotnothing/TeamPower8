@@ -39,7 +39,7 @@ const PriceBar: React.FC<PriceBarProps> = ({ SimilarProducts }) => {
     const productName = SimilarProducts.product_name
     const svgRef = useRef<SVGSVGElement>(null);
     const data = extractedData;
-    const width = 500;
+    const width = 450;
     const height = 150;
     console.log(SimilarProducts)
     console.log(extractedData)

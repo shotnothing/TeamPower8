@@ -45,15 +45,13 @@ const BoxPlot: React.FC<BoxPlotProps> = ({ data, width, height, svgRef }) => {
 
         // const boxHeight = yScale.bandwidth();
 
-        Object.entries(data).forEach(([key, value]) => {
-            // For each key-value pair in the data object
-            boxPlotGroup.append('rect')
-                .attr('y', yScale('Box Plot') - 20)
-                .attr('x', xScale(d3.quantile(dataArray, 0.25)))
-                .attr('height', 40)
-                .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
-                .attr('fill', 'rgba(0, 0, 0, 0.005)');
-        });
+
+        boxPlotGroup.append('rect')
+            .attr('y', yScale('Box Plot') - 20)
+            .attr('x', xScale(d3.quantile(dataArray, 0.25)))
+            .attr('height', 40)
+            .attr('width', xScale(d3.quantile(dataArray, 0.75)) - xScale(d3.quantile(dataArray, 0.25)))
+            .attr('fill', 'rgba(0, 0, 0, 0.05)');
 
 
         boxPlotGroup.append('line')
