@@ -14,6 +14,8 @@ interface CurrentPricesProps {
 
 const CurrentPricesMFLG:React.FC<CurrentPricesProps> = ({ data, width, height, svgRef , productname}) => {
 
+    console.log(data)
+
     useEffect(() => {
         const dataArray = Object.values(data); // Extract values from the object
 
@@ -47,6 +49,7 @@ const CurrentPricesMFLG:React.FC<CurrentPricesProps> = ({ data, width, height, s
 
         const boxHeight = yScale.bandwidth();
 
+        
 
         Object.entries(data).forEach(([key, value]) => {
             if (key === 'mflg') {
