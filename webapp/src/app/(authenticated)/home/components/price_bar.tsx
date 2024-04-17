@@ -95,11 +95,13 @@ function extractSimilarPrices(data: ProductData): { [key: string]: number } {
     const similarIndices: number[] = data.similar;
     const productPrice: number = data.product_price;
     const extractedData: { [key: string]: number } = {};
-    data.similar_products.forEach(similarProduct => {
-        const productName = similarProduct.product_name;
-        const productPrice = prices[data.similar_products.indexOf(similarProduct)]; 
-        extractedData[productName] = productPrice;
-    });
+    if (data.similar_products) {
+        data.similar_products.forEach(similarProduct => {
+          const productName = similarProduct.product_name;
+          const productPrice = prices[data.similar_products.indexOf(similarProduct)]; 
+          extractedData[productName] = productPrice;
+        });
+      }
     
 
     extractedData['mflg'] = productPrice;

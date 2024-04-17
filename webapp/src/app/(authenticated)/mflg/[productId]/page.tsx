@@ -6,6 +6,7 @@ import "./styles.css";
 import { fetchProduct, fetchAnalytics } from "../../../../api";
 import { Product, Analytics } from "../../../../api/types";
 import PriceBar from "../../pricebar-component/pricebar";
+import { GrAnalytics } from "react-icons/gr";
 
 type ProductPageType = {
   params: { productId: string };
@@ -14,6 +15,9 @@ type ProductPageType = {
 const ProductPage = ({ params: { productId } }: ProductPageType) => {
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
+  const [ProductName, setName] = useState("");
+  const [ProductPrice, setPrice] = useState(0);
+  const [similarProductsJson, setSimilarProductsJson] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,20 +28,64 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
       // Fetch analytics data
       const analyticsResponse = await fetchAnalytics(productId);
 
+
       // Fetch details of similar products
-      const promises = await Promise.all(
-        analyticsResponse.similar.map(async (similarProductId: number) => {
-          return await fetchProduct(similarProductId.toString());
-        })
-        );
-        // Remove empty products
+      // const promises = await Promise.all(
+      //   analyticsResponse.similar.map(async (similarProductId: number) => {
+      //     return await fetchProduct(similarProductId.toString());
+      //   })
+      //   );
+      //   // Remove empty products
+      //   const similarProductsData = promises.filter((v) => !!v) as Product[];
+
+      //   setSimilarProducts(similarProductsData);
+      // };
+
+      const [promises, productName, productPrice] = await Promise.all([
+        Promise.all(
+          analyticsResponse.similar.map(async (similarProductId: number) => {
+            return await fetchProduct(similarProductId.toString());
+          })
+          
+        ),
+        Promise.resolve(analyticsResponse.product_name),
+        Promise.resolve(analyticsResponse.original_price),
+
+        Promise.resolve(analyticsResponse.similar_products)
+
+       
+
+      ]);
         const similarProductsData = promises.filter((v) => !!v) as Product[];
 
         setSimilarProducts(similarProductsData);
+
+        setName(productName);
+
+        setPrice(productPrice);
+
+
+        
       };
 
     fetchData();
   }, [productId]);
+
+const similarProductsName = [];
+for (let i = 0; i < similarProducts.length; i++) {
+  const similarProduct = similarProducts[i];
+  const name = similarProduct.product_name;
+  similarProductsName.push(name);
+}
+
+const similarProductsPrice = [];
+for (let i = 0; i < similarProducts.length; i++) {
+  const similarProduct = similarProducts[i];
+  const price = parseInt(similarProduct.original_price);
+  similarProductsPrice.push(price);
+}
+
+console.log(similarProductsPrice);
 
 
   return (
@@ -95,7 +143,7 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
         }}/> */}
         <div className="card">
           <div className="card-body" style={{ overflowX: 'auto' }}>
-            <PriceBar SimilarProducts={{"prices": [155.89, 50, 14], 
+            {/* <PriceBar SimilarProducts={{"prices": [155.89, 50, 14], 
           "product_price": 25, 
           "original_price": 25, 
           "discounted_price": null, 
@@ -105,8 +153,15 @@ const ProductPage = ({ params: { productId } }: ProductPageType) => {
           {"product_id": 28, "company": "not mflg", "product_name": "National Gallery Singapore Ticket", "scrape_timestamp": "WIP", "description": "National Gallery Singapore\nDiscover Singaporean and Southeast Asian art at the National Gallery Singapore \u2013 home to over 1,000 art works\nExplore Singapore's signature architecture \u2013 the National Gallery Singapore is located in the iconic restored Supreme Court and City Hall buildings, built in 1937 and 1926 respectively\nA day at the National Gallery Singapore is the perfect way to learn more about the city and learn about local and Southeast Asia art", "original_price": 20, "discounted_price": 14, "source_url": "https://www.klook.com/en-US/activity/1256-national-gallery-singapore/", "remarks": "WIP", "image_url": "https://res.klook.com/image/upload/activities/qiwboihtvtnminra0iri.jpg", "tags": "WIP"}], 
           "product_name": "S.E.A. Aquarium Ticket Sentosa, Singapore", 
           "rank": 1, 
-          "rank_normalized": 0.25}}/>
-          {/* <PriceBar SimilarProducts={similarProducts}/> */}
+          "rank_normalized": 0.25}}/> */}
+          <PriceBar SimilarProducts={
+            {prices:similarProductsPrice,
+              product_price: ProductPrice,
+              product_name: ProductName,
+              similar_products: similarProductsName
+            }
+          }/>
+
           </div>
         </div>
       </div>

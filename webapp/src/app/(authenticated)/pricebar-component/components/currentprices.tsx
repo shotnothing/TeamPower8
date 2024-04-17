@@ -65,13 +65,12 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
                 }
         
                 const jitter_check = counts[Math.floor(value).toString()] ? (counts[Math.floor(value).toString()] / 2) : 0;
-                const jitter = Number.isInteger(jitter_check) ? jitter_check * -6 : Math.ceil(jitter_check) * 6;
-                console.log(jitter)
+                const jitter = Number.isInteger(jitter_check) ? jitter_check * -7 : Math.ceil(jitter_check) * 7;
         
                 boxPlotGroup.append('circle')
                     .attr('cy', yScale('Box Plot') + jitter)
                     .attr('cx', (d: any) => xScale(value))
-                    .attr('r', 3)
+                    .attr('r', 4)
                     .attr('fill', 'steelblue')
                     .attr('fill-opacity', 0.5)
                     .on('mouseover', function(event: MouseEvent, d: any) {

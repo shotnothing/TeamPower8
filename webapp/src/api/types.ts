@@ -11,9 +11,22 @@ export type Product = {
   tags: string[];
 };
 
+// export type Analytics = {
+//   prices: number[];
+//   product_price: number;
+//   ranking: number;
+//   similar: number[]
+// }
+
 export type Analytics = {
-  prices: number[];
-  product_price: number;
-  ranking: number;
-  similar: number[]
+  prices: number[]; 
+  product_price: number; 
+  original_price: number; 
+  discounted_price: number | null; 
+  similar: number[]; 
+  similar_products: Product[]; 
+  product_name: string; 
+  rank: number; 
+  rank_normalized: number; 
 }
+
