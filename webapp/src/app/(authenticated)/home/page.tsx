@@ -6,6 +6,8 @@ import SearchBar from './components/search_bar';
 import ProductList from './components/product_list';
 import PriceBar from './components/price_bar';
 import Alert from './components/alert';
+import { fetchProduct, fetchAnalytics } from "../../../api";
+import { Product, Analytics } from "../../../api/types";
 
 const HomePage: React.FC = () => {
     const [input, setInput] = useState("");
@@ -39,7 +41,11 @@ const HomePage: React.FC = () => {
                 const rankResponse = await fetchProductRanking(product.product_id);
                 const rankJson = await rankResponse.json();
                 const rank_normalized = rankJson.rank_normalized;
-                return { ...product, rank_normalized };
+                const similarProducts = rankJson.similar_products;
+                const similarProductsPrices = rankJson.prices;
+                const productName = rankJson.product_name
+                const price = rankJson.original_price;
+                return { ...product, rank_normalized, similarProducts, productName, price, similarProductsPrices };
             });
     
             // Wait for all ranking fetches to complete
@@ -54,6 +60,8 @@ const HomePage: React.FC = () => {
             console.error("Error fetching product list:", error);
         }
     };
+
+
     
     const fetchProductRanking = (product_id: number) => {
         return fetch(`http://13.213.39.217/api/analytics/p/${product_id}`);
@@ -80,11 +88,10 @@ const HomePage: React.FC = () => {
                             </div>
 
                             <div className='price-bar-container'>
-                            <PriceBar sampleSimilarProducts={{
-                                    "prices": [10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
-                                    "product_price": 25.0,
-                                    "ranking": 0.82,
-                                    "similar": [3, 5, 6, 20, 35, 49]
+                            <PriceBar SimilarProducts={{
+                                    "product_price": product.price,
+                                    "product_name": product.productName,
+                                    "similar_products": product.similarProducts
                                 }} />
                             </div>
 
@@ -98,3 +105,5 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
+
