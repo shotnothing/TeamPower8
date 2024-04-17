@@ -48,8 +48,8 @@ const OptimisedPrices:React.FC<OptimisedPricesProps> = ({ data, newData, width, 
 
         boxPlotGroup.append('circle')
             .attr('cy', yScale('Box Plot'))
-            .attr('cx', xScale(d3.quantile(dataArray, newDataArray[0]/100))) // x position for the new red circle
-            .attr('r', 3) // red circle radius
+            .attr('cx', xScale(d3.quantile(dataArray, newDataArray[0]/100)))
+            .attr('r', 4) 
             .attr('fill', 'red')
             .on('mouseover', function(event: MouseEvent, d:any) {
                 tooltip.transition()

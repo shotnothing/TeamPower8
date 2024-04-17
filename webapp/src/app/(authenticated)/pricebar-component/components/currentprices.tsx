@@ -49,57 +49,59 @@ const CurrentPrices: React.FC<CurrentPricesProps> = ({ data, width, height, svgR
             .range(d3.range(0, 1.1, 0.1));
         
         const jitter_range =  Math.round((d3.max(dataArray)!-d3.min(dataArray)!) * 0.1)
-
         Object.entries(data).forEach(([key, value]) => {
             if (key === 'mflg') 
 
-            for (let i = -jitter_range; i <= jitter_range; i++) {
-                counts[(Math.floor(value)+i).toString()] = (counts[(Math.floor(value)+i).toString()] || 0) + 1;
-            };
+                for (let i = -jitter_range; i <= jitter_range; i++) {
+                    counts[(Math.floor(value) + i).toString()] = (counts[(Math.floor(value) + i).toString()] || 0) + 1;
+                }
 
-
-            const jitter_check = counts[Math.floor(value).toString()] ? (counts[Math.floor(value).toString()] / 2) : 0;
-            const jitter = Number.isInteger(jitter_check) ? jitter_check * -3 : Math.ceil(jitter_check) * 3;
-            
-            
-            for (let i = -jitter_range; i <= jitter_range; i++) {
-                counts[(Math.floor(value) + i).toString()] = (counts[(Math.floor(value) + i).toString()] || 0) + 1;
-            }
-            
-            boxPlotGroup.append('circle')
-            .attr('cy', yScale('Box Plot') + jitter)
-            .attr('cx', (d: any) => xScale(value))
-            .attr('r', 3)
-            .attr('fill', 'steelblue')
-            .attr('fill-opacity', 0.5)
-            .on('mouseover', function(event: MouseEvent, d: any) {
-                d3.select(this)
-                    .attr('fill', 'steelblue')
-                    .attr('fill-opacity', 1);
-        
-                tooltip.transition()
-                    .duration(100)
-                    .style('opacity', .9);
-                tooltip.html(`Product: ${key}<br>Current Price: ${value}`)
-                    .style('left', (event.pageX) + 'px')
-                    .style('top', (event.pageY - 28) + 'px');
-            })
-            .on('mousemove', function(event: MouseEvent) {
-                tooltip
-                    .style('left', (event.pageX+40) + 'px')
-                    .style('top', (event.pageY+40) + 'px');
-            })
-            .on('mouseout', function(event: MouseEvent, d: any) {
-                d3.select(this)
-                    .attr('fill', 'steelblue')
-                    .attr('fill-opacity', 0.5);
-        
-                tooltip.transition()
-                    .duration(200)
-                    .style('opacity', 0);
-            });
-        
+            return;
         });
+        Object.entries(data).forEach(([key, value]) => {
+            if (key !== 'mflg') {
+                for (let i = -jitter_range; i <= jitter_range; i++) {
+                    counts[(Math.floor(value) + i).toString()] = (counts[(Math.floor(value) + i).toString()] || 0) + 1;
+                }
+        
+                const jitter_check = counts[Math.floor(value).toString()] ? (counts[Math.floor(value).toString()] / 2) : 0;
+                const jitter = Number.isInteger(jitter_check) ? jitter_check * -7 : Math.ceil(jitter_check) * 7;
+        
+                boxPlotGroup.append('circle')
+                    .attr('cy', yScale('Box Plot') + jitter)
+                    .attr('cx', (d: any) => xScale(value))
+                    .attr('r', 4)
+                    .attr('fill', 'steelblue')
+                    .attr('fill-opacity', 0.5)
+                    .on('mouseover', function(event: MouseEvent, d: any) {
+                        d3.select(this)
+                            .attr('fill', 'steelblue')
+                            .attr('fill-opacity', 1);
+        
+                        tooltip.transition()
+                            .duration(100)
+                            .style('opacity', .9);
+                        tooltip.html(`Product: ${key}<br>Current Price: ${value}`)
+                            .style('left', (event.pageX) + 'px')
+                            .style('top', (event.pageY - 28) + 'px');
+                    })
+                    .on('mousemove', function(event: MouseEvent) {
+                        tooltip
+                            .style('left', (event.pageX+40) + 'px')
+                            .style('top', (event.pageY+40) + 'px');
+                    })
+                    .on('mouseout', function(event: MouseEvent, d: any) {
+                        d3.select(this)
+                            .attr('fill', 'steelblue')
+                            .attr('fill-opacity', 0.5);
+        
+                        tooltip.transition()
+                            .duration(200)
+                            .style('opacity', 0);
+                    });
+            }
+        });
+        
         
 
         const tooltip = d3.select('body').append('div')
