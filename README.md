@@ -22,13 +22,13 @@ rm -rf .git
 cd ../../
 ```
 
-Alternatively, if you want to run it yourself, do
+Alternatively, if you want to run it yourself (WARNING: It can take upwards of 1 hour to run if you don't have a good GPU), do 
 ```bash
 cd ./analytics/
 mkdir export
 python ./analytics.py
 ```
-It can take upwards of 1 hour to run if you don't have a good GPU.
+
 
 To start both the frontend and backend, do
 ```bash
