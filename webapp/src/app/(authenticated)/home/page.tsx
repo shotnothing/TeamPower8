@@ -6,8 +6,8 @@ import SearchBar from './components/search_bar';
 import ProductList from './components/product_list';
 import PriceBar from './components/price_bar';
 import Alert from './components/alert';
-import { fetchProduct, fetchAnalytics } from "../../../api";
-import { Product, Analytics } from "../../../api/types";
+import { fetchProduct, fetchAnalytics } from "../mflg/api";
+import { Product, Analytics } from "../mflg/api/types";
 
 const HomePage: React.FC = () => {
     const [input, setInput] = useState("");
