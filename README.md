@@ -22,7 +22,7 @@ rm -rf .git
 cd ../../
 ```
 
-Alternatively, if you want to run it yourself (WARNING: It can take upwards of 1 hour to run if you don't have a good GPU), do 
+Alternatively, if you want to run it yourself (WARNING: It can take >1 hour to run if you don't have a good GPU), do 
 ```bash
 cd ./analytics/
 mkdir export
