@@ -19,7 +19,9 @@ cd ./analytics/
 mkdir export
 cd ./export/
 git clone https://github.com/shotnothing/DSA3101-Checkpoint.git
-rm -rf .git
+mv ./DSA3101-Checkpoint/* ./ 
+rm -rf ./DSA3101-Checkpoint
+# In windows, rm -r -Force ./DSA3101-Checkpoint
 cd ../../
 ```
 
