@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.5**
+**Version 0.1.6**
 
-**Date: 14/04/2024**
+**Date: 23/04/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
@@ -85,61 +85,6 @@ Command: `GET /product/filter?company=ABC-Inc&from=0&to=1`
 ]}
 ```
 
-
-## Company
-### Get Company List
-**GET** `/company/all`
-
-Retrieves a list of all companies tracked.
-
-**Parameters**
-
-None
-
-**Response**
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `companies`: An array of company IDs.
-   
-**Example Usage:**
-
-Command: `GET /company/all`
-```json
-{  "companies":  [  
-	"ABC-Inc",
-	"XYZ-leisure",
-	"IRTL",
-	...
-]}
-```
-
-### Get Company Info
-**GET** `/company/c/<company_id>`
-
-Retrieves info about a particular company.
-
-**Parameters**
-
-None
-
-**Response**
-- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
-- **Content-Type**: `application/json`
-- **Body**:
-	- `company_id`: The unique identifier of the company.
-	- `name`: The name of the company.
-   
-**Example Usage:**
-
-Command: `GET /company/c/ABC-Inc`
-```json
-{  
-	"company_id": "ABC-Inc",
-	"name": "ABC Incorporated"
-}
-```
-
 ## Analytics
 ### Get Product Analytics
 **GET** `/analytics/p/<product_id>`
@@ -167,5 +112,59 @@ Command: `GET /analytics/p/3`
 	"product_price": 25.0,
 	"ranking": 0.82,
 	"similar": [ 3, 5, 6, 20, 35, 49 ]
+}
+```
+
+## Company (DEPRECIATED)
+### Get Company List
+**GET** `/company/all`
+
+Retrieves a list of all companies tracked.
+
+**Parameters**
+
+None
+
+**Response**
+- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
+- **Content-Type**: `application/json`
+- **Body**:
+	- `companies`: An array of company IDs.
+   
+**Example Usage:**
+
+Command: `GET /company/all`
+```json
+{  "companies":  [  
+	"ABC-Inc",
+	"XYZ-leisure",
+	"IRTL",
+	...
+]}
+```
+
+### Get Company Info (DEPRECIATED)
+**GET** `/company/c/<company_id>`
+
+Retrieves info about a particular company.
+
+**Parameters**
+
+None
+
+**Response**
+- **Status Code**: `200 OK` on success, `400 Bad Request` if invalid parameters are provided.
+- **Content-Type**: `application/json`
+- **Body**:
+	- `company_id`: The unique identifier of the company.
+	- `name`: The name of the company.
+   
+**Example Usage:**
+
+Command: `GET /company/c/ABC-Inc`
+```json
+{  
+	"company_id": "ABC-Inc",
+	"name": "ABC Incorporated"
 }
 ```
