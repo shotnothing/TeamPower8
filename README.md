@@ -10,6 +10,7 @@ This is a repo for the API server that powers the PriceProbe platform, as well a
 Currently, this is a monorepo with all our code in one place. Do take a look at each individual folder for each component of this platform and feel free to raise an [issue](https://github.com/shotnothing/TeamPower8/issues) or start a [discussion](https://github.com/shotnothing/TeamPower8/discussions).
 
 ## Quickstart
+#### Prerequesites 
 Before starting the backend, you will need a Supabase account and setup the authentication and tables. WIP
 
 You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. To use it, do
@@ -29,7 +30,7 @@ mkdir export
 python ./analytics.py
 ```
 
-
+### Running
 To start both the frontend and backend, do
 ```bash
 docker-compose up
