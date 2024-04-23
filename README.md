@@ -30,7 +30,7 @@ mkdir export
 python ./analytics.py
 ```
 
-### Running
+#### Setup
 To start both the frontend and backend, do
 ```bash
 docker-compose up
