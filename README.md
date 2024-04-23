@@ -25,10 +25,8 @@ cd ../../
 
 Alternatively, if you want to run it yourself (WARNING: It can take >1 hour to run if you don't have a good GPU), do 
 ```bash
-cd ./analytics/
-mkdir export
-python ./analytics.py
-cd ..
+mkdir ./analytics/export
+python ./analytics/analytics.py
 ```
 
 #### Setup
