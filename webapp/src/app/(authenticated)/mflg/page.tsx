@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 import { IonIcon } from "@ionic/react";
-import { fetchProducts } from "../../../api";
-import { Product } from "../../../api/types";
+import { fetchProducts } from "./api";
+import { Product } from "./api/types";
 import { arrowBack, arrowForward } from "ionicons/icons";
 
 const AllProductsPage = () => {
