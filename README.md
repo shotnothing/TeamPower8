@@ -28,6 +28,7 @@ Alternatively, if you want to run it yourself (WARNING: It can take >1 hour to r
 cd ./analytics/
 mkdir export
 python ./analytics.py
+cd ..
 ```
 
 #### Setup
