@@ -2,7 +2,7 @@
 
 
 # API Specification
-**Version 0.1.6**
+**Version 0.1.7**
 
 **Date: 23/04/2024**
 
@@ -99,9 +99,12 @@ Retrieves analytics about a particular product.
 - **Content-Type**: `application/json`
 - **Body**:
 	- `prices`: An array which contains the prices of similar products (from similarity heuristic). Same length as `similar`.
- 	- `product_price`: Gets the price of the product.	
-	- `ranking`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
-	- `similar`: An array of product IDs of similar products. Same length as `prices`.
+ 	- `product_price`: Price of the product.
+  	- `rank`: An integer representing the position rank of the price compared to similar products.
+	- `rank_normalized`: A number between 0 to 1 representing the interpolated percentile of price compared to similar products.
+	- `similar`: An array of product IDs of similar products. Same length as `prices`. Planned to depreciate in favor of `similar_products`. 
+	- `similar_products`: An array of the details similar products. Same length as `prices`.
+ 	- `product_name`: Name of the product.
    
 **Example Usage:**
 
@@ -110,8 +113,11 @@ Command: `GET /analytics/p/3`
 {  
 	"prices": [ 10.0, 12.0, 13.0, 24.5, 26.0, 40.0],
 	"product_price": 25.0,
-	"ranking": 0.82,
-	"similar": [ 3, 5, 6, 20, 35, 49 ]
+	"rank_normalized": 0.82,
+	"rank": 4,
+	"similar": [ 3, 5, 6, 20, 35, 49 ],
+	"similar_products": [{...}, {...}, ...],
+	"product_name": "Adventure Tour Visit"
 }
 ```
 
