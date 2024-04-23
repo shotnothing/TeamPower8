@@ -9,7 +9,43 @@ This is a repo for the API server that powers the PriceProbe platform, as well a
 
 Currently, this is a monorepo with all our code in one place. Do take a look at each individual folder for each component of this platform and feel free to raise an [issue](https://github.com/shotnothing/TeamPower8/issues) or start a [discussion](https://github.com/shotnothing/TeamPower8/discussions).
 
-## Usage
+## Quickstart
+Before starting the backend, you will need a Supabase account and setup the authentication and tables. WIP
+
+You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. To use it, do
+```bash
+cd ./analytics/
+mkdir export
+cd ./export/
+git clone https://github.com/shotnothing/DSA3101-Checkpoint.git
+rm -rf .git
+cd ../../
+```
+
+Alternatively, if you want to run it yourself, do
+```bash
+cd ./analytics/
+mkdir export
+python ./analytics.py
+```
+It can take upwards of 1 hour to run if you don't have a good GPU.
+
+To start both the frontend and backend, do
+```bash
+docker-compose up
+```
+
+To just run the frontend, do
+```bash
+docker-compose up webapp
+```
+
+To just run the backend, do
+```bash
+docker-compose up api
+```
+
+## Introduction
 
 Take a look at each directory for details on individual components.
 
