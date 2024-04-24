@@ -1,9 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2024-04-23T09:10:10.140Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" etag="4hRbUYmJEoAmv4wZteA9" version="24.2.7" type="device">
+<mxfile host="app.diagrams.net" modified="2024-04-23T11:58:02.545Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" etag="mtGChaEBjbtksFaYVL_Q" version="24.2.7" type="device">
   <diagram name="Page-1" id="RjWPvsWtETRfIIWB8prd">
-    <mxGraphModel dx="1155" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="956" dy="541" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-204" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="880" width="170" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-202" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="880" width="150" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-178" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="970" width="140" height="100" as="geometry" />
+        </mxCell>
         <mxCell id="QoWXXAPGKTPa81HX4jBD-94" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="320" y="655" width="660" height="35" as="geometry" />
         </mxCell>
@@ -259,6 +268,137 @@
             <mxPoint x="510" y="640" as="sourcePoint" />
             <mxPoint x="60" y="640" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-123" value="Feature Branch 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-126" value="Feature Branch 2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-127" value="Feature Branch 3" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1080" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-131" target="QoWXXAPGKTPa81HX4jBD-135">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="950" />
+              <mxPoint x="1480" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-131" value="Unit Testing (Django/Python Unittest)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="920" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-132" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-123" target="QoWXXAPGKTPa81HX4jBD-131">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1390" y="900" as="sourcePoint" />
+            <mxPoint x="1440" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-133" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1270" y="1029.66" as="sourcePoint" />
+            <mxPoint x="1310" y="1029.66" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-134" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1270" y="1110" as="sourcePoint" />
+            <mxPoint x="1310" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-135" target="QoWXXAPGKTPa81HX4jBD-150">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-135" value="Dev Branch&amp;nbsp;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;main&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-139" target="QoWXXAPGKTPa81HX4jBD-135">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-139" value="Unit Testing (Django/Python Unittest)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="1000" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-140" target="QoWXXAPGKTPa81HX4jBD-135">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="1110" />
+              <mxPoint x="1480" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-140" value="Unit Testing (Django/Python Unittest)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="1080" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-148" value="" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1820" y="1250" as="sourcePoint" />
+            <mxPoint x="1820" y="880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-149" value="Deploy Update" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1825" y="880" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-150" target="QoWXXAPGKTPa81HX4jBD-135">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1810" y="1015" />
+              <mxPoint x="1810" y="950" />
+              <mxPoint x="1500" y="950" />
+              <mxPoint x="1500" y="1015" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-150" target="QoWXXAPGKTPa81HX4jBD-189">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-150" value="Integration Testing (Postman)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-179" value="&lt;b&gt;AWS EC2&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="970" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-183" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-181" target="QoWXXAPGKTPa81HX4jBD-182">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-181" value="Fix Branch 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-182" value="Unit Testing (Django/Python Unittest)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="1160" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-184" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-150" target="QoWXXAPGKTPa81HX4jBD-181">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1660" y="1220" as="sourcePoint" />
+            <mxPoint x="1760" y="1220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1800" y="1045" />
+              <mxPoint x="1800" y="1240" />
+              <mxPoint x="1120" y="1240" />
+              <mxPoint x="1120" y="1190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-185" value="&amp;nbsp; Feature Bugs&amp;nbsp;&amp;nbsp;" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="QoWXXAPGKTPa81HX4jBD-184">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-198" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="QoWXXAPGKTPa81HX4jBD-189" target="QoWXXAPGKTPa81HX4jBD-197">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-189" value="Production Branch&amp;nbsp;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;production&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-197" value="&lt;b&gt;Update Live!&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="1110" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-203" value="Preview Branches" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="880" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-205" value="Unit Tests&amp;nbsp;&lt;div&gt;(GitHub Actions)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1325" y="880" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QoWXXAPGKTPa81HX4jBD-206" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Deployment Pipeline&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="810" width="150" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

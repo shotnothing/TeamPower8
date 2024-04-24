@@ -238,8 +238,6 @@ def route_get_product_analytics(request, product_id):
     response = {
         'prices': prices,
         'product_price': price,
-        'original_price': details['original_price'],
-        'discounted_price': details['discounted_price'],
         'similar': similar,
         'similar_products': similar_products,
         'product_name': details['product_name'],

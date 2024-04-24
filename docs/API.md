@@ -2,9 +2,9 @@
 
 
 # API Specification
-**Version 0.1.5**
+**Version 0.1.6**
 
-**Date: 14/04/2024**
+**Date: 24/04/2024**
 
 Specifications for PriceProbe's RESTful API. All requests are GET requests unless otherwise specified.
 
