@@ -13,7 +13,7 @@ The website server is at http://3101.jwen.cc:3000/.
  
 The API server is at http://3101api.jwen.cc/. 
 
-Try [http://3101api.jwen.cc:80/api/product/p/531](http://3101api.jwen.cc:80/api/product/p/531)!
+Try [http://3101api.jwen.cc:80/api/product/p/531](http://3101api.jwen.cc:80/api/product/p/531)
 
 ## Quickstart
 #### Installation
