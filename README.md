@@ -9,6 +9,11 @@ This is a repo for the API server that powers the PriceProbe platform, as well a
 
 Currently, this is a monorepo with all our code in one place. Do take a look at each individual folder for each component of this platform and feel free to raise an [issue](https://github.com/shotnothing/TeamPower8/issues) or start a [discussion](https://github.com/shotnothing/TeamPower8/discussions).
 
+The website server is at http://3101.jwen.cc:3000/.
+The API server is at http://3101api.jwen.cc/. 
+
+Try [http://3101api.jwen.cc:80/api/product/p/531](http://3101api.jwen.cc:80/api/product/p/531)!
+
 ## Quickstart
 #### Installation
 First, clone the repo
