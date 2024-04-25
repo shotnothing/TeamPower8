@@ -55,6 +55,11 @@ To just run the backend, do
 docker-compose up api
 ```
 
+You can also run the backend unit tests with:
+```bash
+docker-compose up test
+```
+
 ## Introduction
 
 Take a look at each directory for details on individual components.
