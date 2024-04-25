@@ -11,7 +11,7 @@ Currently, this is a monorepo with all our code in one place. Do take a look at 
 
 ## Quickstart
 #### Prerequesites 
-Before starting the backend, you will need a Supabase account and setup the authentication and tables. WIP
+Before starting the backend, you will need a Supabase account and setup the authentication and tables, as shown in our [wiki](https://github.com/shotnothing/TeamPower8/wiki).
 
 You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. To use it, do
 ```bash
