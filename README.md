@@ -27,8 +27,12 @@ SUPABASE_URL=<your url>
 ```
 This file should be at the same level as docker-compose.yaml. If it dosen't exist, create the .env file and put the credentials in.
 
-You also need to set your NextJS credentials:
+You also need to set your NextJS and Google credentials in ./webapp/.env.local, as specified in the tech report (not shared in this repo, contact a team member for a copy):
 ```
+NEXTAUTH_SECRET=<>
+NEXTAUTH_URL=<API server URL (localhost or http://3101.jwen.cc)>:3000
+GOOGLE_CLIENT_ID=<>
+GOOGLE_CLIENT_SECRET=<>
 ```
 
 You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. The associated pre-scraped product data is also available in that repo as cleaned_rows.csv. To use it, do
