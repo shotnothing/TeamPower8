@@ -27,6 +27,10 @@ SUPABASE_URL=<your url>
 ```
 This file should be at the same level as docker-compose.yaml. If it dosen't exist, create the .env file and put the credentials in.
 
+You also need to set your NextJS credentials:
+```
+```
+
 You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. The associated pre-scraped product data is also available in that repo as cleaned_rows.csv. To use it, do
 ```bash
 cd ./analytics/
