@@ -13,8 +13,9 @@ Currently, this is a monorepo with all our code in one place. Do take a look at 
 #### Installation
 First, clone the repo
 
-```
+```bash
 git clone https://github.com/shotnothing/TeamPower8.git
+cd TeamPower8
 ```
 
 #### Setup 
