@@ -1,6 +1,6 @@
 <p align="center"><img src="logo.png" alt="PriceProbe" width="300" style="text-align:center"/></p>
 
-## Welcome!
+## Welcome!👋
 
 ![](https://github.com/shotnothing/TeamPower8/actions/workflows/django.yml//badge.svg)
 
