@@ -81,7 +81,7 @@ Take a look at each directory for details on individual components.
 Our rough architecture is as follows:
 
 ```
-Scrapers -> Database(PostgreSQL on Supabase) -> Backend Server(Django on EC2) -> Frontend Server(React on WIP)
+Scrapers -> Database(PostgreSQL on Supabase) -> Backend Server(Django on EC2) -> Frontend Website
 ```
 
 Some things you may find useful:
