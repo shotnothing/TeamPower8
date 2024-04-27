@@ -2,11 +2,11 @@
 
 ## Welcome!👋
 
-![](https://github.com/shotnothing/TeamPower8/actions/workflows/django.yml//badge.svg)
 [![Powered by Django](https://img.shields.io/badge/Powered%20by-Django-%23092E20?style=for-the-badge&logo=django)]()
 [![Docker Container](https://img.shields.io/badge/Docker%20Hub-priceprobe-%231D63ED?style=for-the-badge&logo=docker&labelColor=%23E5F2FC)](https://hub.docker.com/repository/docker/shotnothing/priceprobe-image/general)
 [![Powered by Next 14](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)]()
 
+![](https://github.com/shotnothing/TeamPower8/actions/workflows/django.yml//badge.svg)
 
 PriceProbe is a platform that provides data-driven pricing optimization solutions. 
 This is a repo for the API server that powers the PriceProbe platform, as well as scraping and data processing utilities.
