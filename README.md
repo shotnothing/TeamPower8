@@ -98,5 +98,5 @@ Some things you may find useful:
 ## Support
 
 - [Wiki](https://github.com/shotnothing/TeamPower8/wiki)
-- [Docker compose up FAQ](https://github.com/shotnothing/TeamPower8/wiki/FAQ-for-docker-compose-up)
+- [Docker compose up FAQ](https://github.com/shotnothing/TeamPower8/wiki/FAQ-for-Setup)
 
