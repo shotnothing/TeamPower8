@@ -4,7 +4,7 @@
 
 [![Powered by Django](https://img.shields.io/badge/Powered%20by-Django-%23092E20?style=for-the-badge&logo=django)]()
 [![Docker Container](https://img.shields.io/badge/Docker%20Hub-priceprobe-%231D63ED?style=for-the-badge&logo=docker&labelColor=%23E5F2FC)](https://hub.docker.com/repository/docker/shotnothing/priceprobe-image/general)
-[![Powered by Next 14](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)]()
+[![Powered by Next 14](https://img.shields.io/badge/Made_with-Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=black&labelColor=f0f0f0)]()
 
 ![](https://github.com/shotnothing/TeamPower8/actions/workflows/django.yml//badge.svg)
 
