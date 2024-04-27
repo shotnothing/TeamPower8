@@ -25,7 +25,7 @@ cd TeamPower8
 ```
 
 #### Setup 
-**(Backend Only)** Before starting the backend, you will need a Supabase account and setup the authentication and tables, as shown in our [wiki](https://github.com/shotnothing/TeamPower8/wiki).
+**(For Backend)** Before starting the backend, you will need a Supabase account and setup the authentication and tables, as shown in our [wiki](https://github.com/shotnothing/TeamPower8/wiki).
 Set the Supabase credentials to your top-level `.env` file with:
 ```
 SUPABASE_KEY=<your key>
@@ -33,7 +33,7 @@ SUPABASE_URL=<your url>
 ```
 This file should be at the same level as docker-compose.yaml. If it dosen't exist, create the .env file and put the credentials in.
 
-**(Frontend Only)** You also need to set your NextJS and Google credentials in ./webapp/.env.local, as specified in the tech report (not shared in this repo, contact a team member for a copy):
+**(For Frontend)** You also need to set your NextJS and Google credentials in ./webapp/.env.local, as specified in the tech report (not shared in this repo, contact a team member for a copy):
 ```
 NEXTAUTH_SECRET=<>
 NEXTAUTH_URL=<API server URL (localhost or http://3101.jwen.cc)>:3000
@@ -41,7 +41,7 @@ GOOGLE_CLIENT_ID=<>
 GOOGLE_CLIENT_SECRET=<>
 ```
 
-**(Backend Only)** You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. The associated pre-scraped product data is also available in that repo as cleaned_rows.csv. To use it, do
+**(For Backend)** You will also need to compute the analytics. It will take a very long time without a GPU, so we have provided the precaulclated analytics results in a seperate git repo. The associated pre-scraped product data is also available in that repo as cleaned_rows.csv. To use it, do
 ```bash
 cd ./analytics/
 mkdir export
